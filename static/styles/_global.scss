@@ -1,0 +1,49 @@
+/*
+ * 
+ *=Display & Flow
+ * display, visibility, float, clear
+ * 
+ *=Positioning
+ * position, top, right, bottom, left, z-index
+ * 
+ *=Dimensions
+ * width (min, max), height (min, max), overflow
+ * 
+ *=Margins, Padding, Borders, Outline
+ * margin (top, right, bottom, left), padding (top, right, bottom, left), 
+ * border (top, right, bottom, left), border-width, border-style, 
+ * border-color, outline, list-style
+ * 
+ *=Typographic Styles
+ * font, font-family, font-size, line-height, font-weight, text-align, 
+ * text-indent, text-transform, text-decoration, letter-spacing, word-spacing, 
+ * white-space, vertical-align, color
+ * 
+ *=Backgrounds
+ * background, background-color, background-image, background-repeat, 
+ * background-position
+ * 
+ *=Opacity, Cursors, Generated Content
+ * opacity, cursor, content, quotes
+ * 
+ * 
+ *=Font weights:
+ * 100: Ultra Light
+ * 200: Thin
+ * 300: Light
+ * 400: Regular
+ * 500: Semi Bold
+ * 600: Bold
+ * 700: Extra Bold
+ * 800: Heavy
+ * 900: Ultra Heavy
+ * 
+ *=Use hyphenation for selectors; use underscores for variables.
+ *
+ */
+
+
+
+body {
+	font-family: 'Source Code Pro', sans-serif;
+}
