@@ -1,49 +1,110 @@
-/*
- * 
- *=Display & Flow
- * display, visibility, float, clear
- * 
- *=Positioning
- * position, top, right, bottom, left, z-index
- * 
- *=Dimensions
- * width (min, max), height (min, max), overflow
- * 
- *=Margins, Padding, Borders, Outline
- * margin (top, right, bottom, left), padding (top, right, bottom, left), 
- * border (top, right, bottom, left), border-width, border-style, 
- * border-color, outline, list-style
- * 
- *=Typographic Styles
- * font, font-family, font-size, line-height, font-weight, text-align, 
- * text-indent, text-transform, text-decoration, letter-spacing, word-spacing, 
- * white-space, vertical-align, color
- * 
- *=Backgrounds
- * background, background-color, background-image, background-repeat, 
- * background-position
- * 
- *=Opacity, Cursors, Generated Content
- * opacity, cursor, content, quotes
- * 
- * 
- *=Font weights:
- * 100: Ultra Light
- * 200: Thin
- * 300: Light
- * 400: Regular
- * 500: Semi Bold
- * 600: Bold
- * 700: Extra Bold
- * 800: Heavy
- * 900: Ultra Heavy
- * 
- *=Use hyphenation for selectors; use underscores for variables.
- *
- */
+//=Display & Flow
+// display, visibility, float, clear
+// 
+//=Positioning
+// position, top, right, bottom, left, z-index
+// 
+//=Dimensions
+// width (min, max), height (min, max), overflow
+// 
+//=Margins, Padding, Borders, Outline
+// margin (top, right, bottom, left), padding (top, right, bottom, left), 
+// border (top, right, bottom, left), border-width, border-style, 
+// border-color, outline, list-style
+// 
+//=Typographic Styles
+// font, font-family, font-size, line-height, font-weight, text-align, 
+// text-indent, text-transform, text-decoration, letter-spacing, word-spacing, 
+// white-space, vertical-align, color
+// 
+//=Backgrounds
+// background, background-color, background-image, background-repeat, 
+// background-position
+// 
+//=Opacity, Cursors, Generated Content
+// opacity, cursor, content, quotes
+// 
+// 
+//=Font weights:
+// 100: Ultra Light
+// 200: Thin
+// 300: Light
+// 400: Regular
+// 500: Semi Bold
+// 600: Bold
+// 700: Extra Bold
+// 800: Heavy
+// 900: Ultra Heavy
+// 
+//=Use hyphenation for selectors; use underscores for variables.
 
+//=RESET
+//========================================================
+* {
+	box-sizing: border-box;
+}
 
+// Override .pure-g letter-spacing to work with monospaced fonts
+.pure-g { letter-spacing: -.71em; }
+
+//=VARIABLES
+//=========================================================
+$page_width: 987px;
+
+$white: #fff;
+$lll-gray: #f9f9f9;
+$ll-gray: #f0f0f0;
+$l-gray: #d1d1d1;
+$gray: #949494;
+$d-gray: #737373;
+$dd-gray: #333;
+$black: #000;
+
+//=HELPERS
+//=========================================================
+// These are global classes that can be reused everywhere 
+// to aid with more elementary structure or design elements
+
+// This is a column
+.c {
+	display: block;
+	float: left;
+}
+
+// This wraps to center
+.cw {
+	width: $page_width;
+	margin: 0 auto;
+}
+
+//=BASE
+//=========================================================
+// Classes to define the base structure of the page
 
 body {
 	font-family: 'Source Code Pro', sans-serif;
+}
+
+section {
+	@include uncollapse;
+}
+
+//=========================================================
+
+$date_w: 15%;
+$amount_w: 15%;
+$type_w: 15%;
+$category_w: 20%;
+$note_w: 35%;
+
+.c {
+	&.date { width: $date_w; }
+	&.amount { width: $amount_w; }
+	&.type { width: $type_w; }
+	&.category { width: $category_w; }
+	&.note { width: $note_w; }
+}
+
+.s-headings {
+	background-color: $ll_gray;
 }
