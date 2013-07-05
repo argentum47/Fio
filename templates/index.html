@@ -24,8 +24,14 @@
 
 		<section class="s-total">
 			<div class="cw">
-				<span class="c date">Total:</span>
-				<span class="c amount">{{ get_balance() | currency:'£' }}</span>
+				<div class="c all-totals">
+					<span class="c date">Total income:</span>
+					<span class="c amount">{{ get_totals().inc | currency:'£' }}</span>
+					<span class="c date">Total expenses:</span>
+					<span class="c amount">{{ get_totals().exp | currency:'£' }}</span>
+					<span class="c date">Balance:</span>
+					<span class="c amount">{{ get_totals().balance | currency:'£' }}</span>
+				</div>
 			</div>
 		</section>
 
@@ -64,7 +70,7 @@
 						</div>
 					</div> <!-- .c.entries -->
 					<div class="c full total">
-						<div class="c amount">{{ daily.total | currency:'£' }}</div>
+						<div class="c amount">{{ daily.balance | currency:'£' }}</div>
 					</div>
 				</div> <!-- .daily -->
 

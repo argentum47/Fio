@@ -100,8 +100,10 @@ $amount_w: 0.15 * $page_width;
 $category_w: 0.25 * $page_width;
 $note_w: 0.4 * $page_width;
 $entries_w: $amount_w + $category_w + $note_w;
+$totals_w: $date_w + $amount_w;
 
 .c {
+	&.all-totals { width: $totals_w; }
 	&.date { width: $date_w; }
 	&.amount { width: $amount_w; }
 	&.category { width: $category_w; }
