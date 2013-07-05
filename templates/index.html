@@ -68,13 +68,20 @@
 								<div class="c category">{{ entry.category }}</div>
 								<div class="c note">{{ entry.note }}</div>
 							</div>
-							<div ng-show="editing" ng-click="editing=false">Editing...</div>
+							<div ng-show="editing">
+								<form ng-submit="editing=false">
+									<div class="c amount"><input type="number" step="any" value="{{ daily.entry.amount }}" ng-model="entry.amount" /></div>
+									<div class="c category"><input type="text" value="{{ daily.entry.category }}" ng-model="entry.category" /></div>
+									<div class="c note"><input type="text" value="{{ daily.entry.note }}" ng-model="entry.note" /></div>
+									<input type="submit" value="OK" style="position: absolute; left: -9999px" />
+								</form>
+							</div>
 							<span class="remove" ng-click="remove_entry(daily.$$hashKey, entry.$$hashKey)">[x]</span>
 							<span class="edit" ng-click="edit_entry(daily.$$hashKey, entry.$$hashKey)">[e]</span>
 						</div>
 					</div> <!-- .c.entries -->
 					<div class="c full total">
-						<div class="c amount">{{ daily.balance | number:2 }}</div>
+						<div class="c amount">{{ get_daily_totals(daily).balance | number:2 }}</div>
 					</div>
 				</div> <!-- .daily -->
 

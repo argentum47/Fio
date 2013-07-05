@@ -25,9 +25,7 @@ function DataCtrl($scope) {
   };
 
   $scope.add_new_daily = function(date, amount, category, note) {
-    $scope.dailies.push({date: date,
-      subentries: [{amount: amount, category: category, note: note}],
-      balance: amount});
+    $scope.dailies.push({date: date, subentries: [{amount: amount, category: category, note: note}]});
   }
 
   $scope.inject_to_dailies = function(entry) {
@@ -49,13 +47,6 @@ function DataCtrl($scope) {
           
           // Add a subentry
           daily['subentries'].push({amount: entry['amount'],  category: entry['category'], note: entry['note'], type: entry['type']});
-          
-          // Calculate new balance
-          var new_balance = 0;
-          angular.forEach(daily.subentries, function(entry) {
-            new_balance += entry.amount;
-          });
-          daily.balance = new_balance;
           
           found_existing_daily = true;
 
@@ -105,19 +96,28 @@ function DataCtrl($scope) {
     }); // forEach daily
   }
 
+  $scope.get_daily_totals = function(daily) {
+    var totals = {balance: 0, inc: 0, exp: 0}
+    angular.forEach(daily.subentries, function(entry) {
+      totals.balance += entry.amount;
+      if (entry.amount > 0) {
+        totals.inc += entry.amount;
+      }
+      else if (entry.amount < 0) {
+        totals.exp += entry.amount;
+      }
+    });
+    return totals;
+  }
+
   $scope.get_totals = function() {
     var totals = {balance: 0, inc: 0, exp: 0};
 
     angular.forEach($scope.dailies, function(daily) {
-      totals.balance += daily.balance;
-      angular.forEach(daily.subentries, function(entry) {
-        if (entry.amount > 0) {
-          totals.inc += entry.amount;
-        }
-        else if (entry.amount < 0) {
-          totals.exp += entry.amount;
-        }
-      });
+      var daily_totals = $scope.get_daily_totals(daily);
+      totals.balance += daily_totals.balance;
+      totals.inc += daily_totals.inc;
+      totals.exp += daily_totals.exp;
     });
 
     return totals;
