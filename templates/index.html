@@ -60,7 +60,7 @@
 							<div class="c amount">{{ entry.amount | currency:'£' }}</div>
 							<div class="c category">{{ entry.category }}</div>
 							<div class="c note">{{ entry.note }}</div>
-							<span class="remove" ng-click="remove_entry($i)">[x]</span>
+							<span class="remove" ng-click="remove_entry(daily.$$hashKey, entry.$$hashKey)">[x]</span>
 						</div>
 					</div> <!-- .c.entries -->
 					<div class="c full total">

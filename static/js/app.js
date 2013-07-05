@@ -80,15 +80,34 @@ function DataCtrl($scope) {
     $scope.note = '';
   };
 
-  $scope.remove_entry = function(i) {
-    var entry_to_remove = $scope.entries[i];
-    console.log("remove " + entry_to_remove);
+  $scope.remove_entry = function(daily_hash, entry_hash) {
+    angular.forEach($scope.dailies, function(daily) {
+      var keep_looking = true;
+
+      if (keep_looking) {
+        // Find the entry and get rid of it
+        if (daily.$$hashKey == daily_hash) {
+          angular.forEach(daily.subentries, function(entry) {
+            if (entry.$$hashKey == entry_hash) {
+              daily.subentries.splice(daily.subentries.indexOf(entry), 1);
+              keep_looking = false;
+            }
+          }); // forEach subentries
+        }
+
+        // If this leaves us with an empty daily, remove it, too
+        if ($.isEmptyObject(daily.subentries)) {
+          $scope.dailies.splice($scope.dailies.indexOf(daily), 1);
+        }
+      } // if keep_looking
+
+    }); // forEach daily
   }
 
   $scope.get_balance = function() {
     var balance = 0;
     angular.forEach($scope.dailies, function(daily) {
-      angular.forEach(daily['subentries'], function(entry) {
+      angular.forEach(daily.subentries, function(entry) {
         balance += entry.amount;
       });
     });
