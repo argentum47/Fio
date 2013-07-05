@@ -128,19 +128,21 @@ $totals_w: $date_w + $amount_w;
 
 	&:hover {
 		background-color: $ll_gray;
-		.remove { display: block; }
+		.edit, .remove { display: block; }
 	}
 	&:not(:nth-last-child(1)) {
 		border-bottom: 1px dashed $gray;
 	}
-	.remove {
+	.edit, .remove {
 		display: none;
 		position: absolute;
-		right: -3em;
-		width: 3em;
+		top: 0;
+		width: 2.5em;
 		text-align: center;
 		cursor: pointer;
 	}
+	.edit { right: -5em; }
+	.remove { right: -2.5em; }
 }
 
 .total {

@@ -50,17 +50,21 @@ section {
   position: relative; }
   .entry:hover {
     background-color: #f0f0f0; }
-    .entry:hover .remove {
+    .entry:hover .edit, .entry:hover .remove {
       display: block; }
   .entry:not(:nth-last-child(1)) {
     border-bottom: 1px dashed #949494; }
-  .entry .remove {
+  .entry .edit, .entry .remove {
     display: none;
     position: absolute;
-    right: -3em;
-    width: 3em;
+    top: 0;
+    width: 2.5em;
     text-align: center;
     cursor: pointer; }
+  .entry .edit {
+    right: -5em; }
+  .entry .remove {
+    right: -2.5em; }
 
 .total {
   border-top: 1px dashed #949494;

@@ -1,5 +1,5 @@
 <!doctype html>
-<html ng-app="fio">
+<html ng-app>
 <head>
   <title>Raha</title>
 
@@ -62,11 +62,15 @@
 				<div class="daily" ng-repeat="daily in dailies | orderBy:order">
 					<div class="c date">{{ daily.date | date: 'dd.MM.yyyy' }}</div>
 					<div class="c entries">
-						<div class="entry" ng-repeat="entry in daily.subentries">
-							<div class="c amount {{ get_type(entry.amount) }}">{{ entry.amount | number:2 }}</div>
-							<div class="c category">{{ entry.category }}</div>
-							<div class="c note">{{ entry.note }}</div>
+						<div class="entry" ng-repeat="entry in daily.subentries" ng-init="editing=false">
+							<div ng-hide="editing" ng-click="editing=true">
+								<div class="c amount {{ get_type(entry.amount) }}">{{ entry.amount | number:2 }}</div>
+								<div class="c category">{{ entry.category }}</div>
+								<div class="c note">{{ entry.note }}</div>
+							</div>
+							<div ng-show="editing" ng-click="editing=false">Editing...</div>
 							<span class="remove" ng-click="remove_entry(daily.$$hashKey, entry.$$hashKey)">[x]</span>
+							<span class="edit" ng-click="edit_entry(daily.$$hashKey, entry.$$hashKey)">[e]</span>
 						</div>
 					</div> <!-- .c.entries -->
 					<div class="c full total">
