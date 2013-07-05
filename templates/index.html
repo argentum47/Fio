@@ -51,7 +51,7 @@
 					<div class="c amount"><input type="number" step="any" ng-model="amount" required /></div>
 					<div class="c category"><input type="text" ng-model="category" required /></div>
 					<div class="c note"><input type="text" ng-model="note" /></div>
-					<input type="submit" value="Add" />
+					<input type="submit" value="Add" style="position: absolute; left: -9999px" />
 				</form>
 			</div>
 		</section>
@@ -63,10 +63,11 @@
 					<div class="c date">{{ daily.date | date: 'dd.MM.yyyy' }}</div>
 					<div class="c entries">
 						<div class="entry" ng-repeat="entry in daily.subentries" ng-init="editing=false">
-							<div ng-hide="editing" ng-click="editing=true">
+							<div ng-hide="editing">
 								<div class="c amount {{ get_type(entry.amount) }}">{{ entry.amount | number:2 }}</div>
 								<div class="c category">{{ entry.category }}</div>
 								<div class="c note">{{ entry.note }}</div>
+								<span class="edit" ng-click="edit_entry(daily.$$hashKey, entry.$$hashKey);editing=true">[e]</span>
 							</div>
 							<div ng-show="editing">
 								<form ng-submit="editing=false">
@@ -75,9 +76,9 @@
 									<div class="c note"><input type="text" value="{{ daily.entry.note }}" ng-model="entry.note" /></div>
 									<input type="submit" value="OK" style="position: absolute; left: -9999px" />
 								</form>
+								<span class="cancel-edit" ng-click="editing=false">[c]</span>
 							</div>
 							<span class="remove" ng-click="remove_entry(daily.$$hashKey, entry.$$hashKey)">[x]</span>
-							<span class="edit" ng-click="edit_entry(daily.$$hashKey, entry.$$hashKey)">[e]</span>
 						</div>
 					</div> <!-- .c.entries -->
 					<div class="c full total">

@@ -128,21 +128,24 @@ $totals_w: $date_w + $amount_w;
 
 	&:hover {
 		background-color: $ll_gray;
-		.edit, .remove { display: block; }
+		.edit, .remove, .cancel-edit { display: block; }
 	}
 	&:not(:nth-last-child(1)) {
 		border-bottom: 1px dashed $gray;
 	}
-	.edit, .remove {
+	.edit, .remove, .cancel-edit {
 		display: none;
 		position: absolute;
 		top: 0;
-		width: 2.5em;
+		width: 2.3em;
 		text-align: center;
 		cursor: pointer;
 	}
-	.edit { right: -5em; }
-	.remove { right: -2.5em; }
+	.edit, .cancel-edit { right: -4.6em; }
+	.remove { right: -2.3em; }
+	input {
+		width: 100%;
+	}
 }
 
 .total {
@@ -158,6 +161,7 @@ $totals_w: $date_w + $amount_w;
 }
 
 .s-new-entry {
+	margin-bottom: 3em;
 	input:not([type=submit]) {
 		width: 100%;
 		height: 25px;
