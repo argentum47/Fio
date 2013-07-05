@@ -44,6 +44,10 @@
 	box-sizing: border-box;
 }
 
+input {
+	font-family: 'Source Code Pro';
+}
+
 // Override .pure-g letter-spacing to work with monospaced fonts
 .pure-g { letter-spacing: -.71em; }
 
@@ -91,20 +95,67 @@ section {
 
 //=========================================================
 
-$date_w: 15%;
-$amount_w: 15%;
-$type_w: 15%;
-$category_w: 20%;
-$note_w: 35%;
+$date_w: 0.2 * $page_width;
+$amount_w: 0.15 * $page_width;
+$category_w: 0.25 * $page_width;
+$note_w: 0.4 * $page_width;
+$entries_w: $amount_w + $category_w + $note_w;
 
 .c {
 	&.date { width: $date_w; }
 	&.amount { width: $amount_w; }
-	&.type { width: $type_w; }
 	&.category { width: $category_w; }
 	&.note { width: $note_w; }
+	&.full { width: 100%; }
+	&.entries { 
+		width: $entries_w; 
+	}
+}
+
+.entry, .daily {
+	@include uncollapse;
+}
+
+.daily {
+	border-bottom: 1px solid $black;
+	margin-bottom: 3em;
+}
+
+.entry {
+	position: relative;
+
+	&:hover {
+		background-color: $ll_gray;
+		.remove { display: block; }
+	}
+	&:not(:nth-last-child(1)) {
+		border-bottom: 1px dashed $gray;
+	}
+	.remove {
+		display: none;
+		position: absolute;
+		right: -3em;
+		width: 3em;
+		text-align: center;
+		cursor: pointer;
+	}
+}
+
+.total {
+	border-top: 1px dashed $gray;
+	background-color: $lll_gray;
+	.amount {
+		margin-left: $date_w;
+	}
 }
 
 .s-headings {
 	background-color: $ll_gray;
+}
+
+.s-new-entry {
+	input:not([type=submit]) {
+		width: 100%;
+		height: 25px;
+	}
 }

@@ -1,43 +1,78 @@
 <!doctype html>
-<html>
+<html ng-app>
 <head>
   <title>Raha</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- The grid -->
-  <link rel="stylesheet" href="http://yui.yahooapis.com/combo?pure/0.2.0/base-min.css&pure/0.2.0/grids-min.css">
+  <link rel="stylesheet" href="http://yui.yahooapis.com/combo?pure/0.2.0/base-min.css&pure/0.2.0/grids-min.css&pure/0.2.0/forms-min.css">
 
   <!-- The styles -->
   <link rel="stylesheet" href="static/styles/css/main.css">
   
   <!-- The before-load scripts -->
   <script src="http://modernizr.com/downloads/modernizr-2.5.3.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+  <script src="static/js/app.js"></script>
  
 </head>
 <body>
 
-	<section class="s-total">
-		<div class="cw">
-			<span class="c date">Total:</span>
-			<span class="c amount">£457</span>
-		</div>
-	</section>
+	<div ng-controller="DataCtrl" ng-init="init_data_ctrl()">
 
-	<section class="s-headings">
-		<div class="cw">
-			<div class="c date">Date</div>
-			<div class="c amount">Amount</div>
-			<div class="c type">Type</div>
-			<div class="c category">Category</div>
-			<div class="c notes">Notes</div>
-		</div>
-	</section>
+		<section class="s-total">
+			<div class="cw">
+				<span class="c date">Total:</span>
+				<span class="c amount">{{ balance() | currency:'£' }}</span>
+			</div>
+		</section>
 
-	<section class="s-data">
-		<div class="cw">
-			Expenses
-		</div>
-	</section>
+		<section class="s-headings">
+			<div class="cw">
+				<div class="c date">Date</div>
+				<div class="c amount">Amount</div>
+				<div class="c category">Category</div>
+				<div class="c note">Notes</div>
+			</div>
+		</section>
+
+		<section class="s-new-entry" ng-init="init_add_entry()">
+			<div class="cw">
+				<form name="add-entry" ng-submit="add_entry()">
+					<div class="c date"><input type="date" name="date" ng-model="date" required /></div>
+					<div class="c amount"><input type="number" step="any" ng-model="amount" required /></div>
+					<div class="c category"><input type="text" ng-model="category" required /></div>
+					<div class="c note"><input type="text" ng-model="note" /></div>
+					<input type="submit" value="Add" />
+				</form>
+			</div>
+		</section>
+
+		<section class="s-data">
+			<div class="cw">
+				
+				<div class="daily" ng-repeat="daily in dailies | orderBy:order">
+					<div class="c date">{{ daily.date | date: 'dd/MMM/yyyy' }}</div>
+					<div class="c entries">
+						<div class="entry" ng-repeat="entry in daily.subentries">
+							<div class="c amount">{{ entry.amount | currency:'£' }}</div>
+							<div class="c category">{{ entry.category }}</div>
+							<div class="c note">{{ entry.note }}</div>
+							<span class="remove" ng-click="remove_entry($i)">[x]</span>
+						</div>
+					</div> <!-- .c.entries -->
+					<div class="c full total">
+						<div class="c amount">{{ daily.total | currency:'£' }}</div>
+					</div>
+				</div> <!-- .daily -->
+
+			</div>
+		</section>
+
+	</div>
+
+	<!-- The document.ready scripts -->
 
 </body>

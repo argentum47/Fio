@@ -2,6 +2,9 @@
 * {
   box-sizing: border-box; }
 
+input {
+  font-family: 'Source Code Pro'; }
+
 .pure-g {
   letter-spacing: -.71em; }
 
@@ -21,15 +24,51 @@ section {
   width: 100%; }
 
 .c.date {
-  width: 15%; }
+  width: 197.4px; }
 .c.amount {
-  width: 15%; }
-.c.type {
-  width: 15%; }
+  width: 148.05px; }
 .c.category {
-  width: 20%; }
+  width: 246.75px; }
 .c.note {
-  width: 35%; }
+  width: 394.8px; }
+.c.full {
+  width: 100%; }
+.c.entries {
+  width: 789.6px; }
+
+.entry, .daily {
+  float: left;
+  width: 100%; }
+
+.daily {
+  border-bottom: 1px solid black;
+  margin-bottom: 3em; }
+
+.entry {
+  position: relative; }
+  .entry:hover {
+    background-color: #f0f0f0; }
+    .entry:hover .remove {
+      display: block; }
+  .entry:not(:nth-last-child(1)) {
+    border-bottom: 1px dashed #949494; }
+  .entry .remove {
+    display: none;
+    position: absolute;
+    right: -3em;
+    width: 3em;
+    text-align: center;
+    cursor: pointer; }
+
+.total {
+  border-top: 1px dashed #949494;
+  background-color: #f9f9f9; }
+  .total .amount {
+    margin-left: 197.4px; }
 
 .s-headings {
   background-color: #f0f0f0; }
+
+.s-new-entry input:not([type=submit]) {
+  width: 100%;
+  height: 25px; }
