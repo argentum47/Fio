@@ -122,4 +122,15 @@ function DataCtrl($scope) {
 
     return totals;
   }
+
+  $scope.get_type = function(amount) {
+    var type = '';
+    if (amount > 0) {
+      type = 'income';
+    }
+    else if (amount < 0) {
+      type = 'expense';
+    }
+    return type;
+  }
 }
