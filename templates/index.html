@@ -39,7 +39,16 @@
 			<div class="cw">
 				<div class="c date">Date</div>
 				<div class="c amount">Amount</div>
-				<div class="c category">Category</div>
+				<div class="c category">
+					<select ng-model="by_category">
+					  <option value=""></option>
+					  <option value="Groceries">Groceries</option>
+					  <option value="Entertainment">Entertainment</option>
+					  <option value="Salary">Salary</option>
+					  <option value="Eating out">Eating out</option>
+					  <option value="Cinema">Cinema</option>
+					</select>
+				</div>
 				<div class="c note">Notes</div>
 			</div>
 		</section>
@@ -58,11 +67,10 @@
 
 		<section class="s-data">
 			<div class="cw">
-				
-				<div class="daily" ng-repeat="daily in dailies | orderBy:order">
+				<div class="daily" ng-repeat="daily in dailies | orderBy:order" ng-show="filtered_entries.length">
 					<div class="c date">{{ daily.date | date: 'dd.MM.yyyy' }}</div>
 					<div class="c entries">
-						<div class="entry" ng-repeat="entry in daily.subentries" ng-init="editing=false">
+						<div class="entry" ng-repeat="entry in filtered_entries = (daily.subentries | filter: {category: by_category})" ng-init="editing=false">
 							<div ng-hide="editing">
 								<div class="c amount {{ get_type(entry.amount) }}">{{ entry.amount | number:2 }}</div>
 								<div class="c category">{{ entry.category }}</div>
@@ -85,7 +93,7 @@
 						<div class="c amount">{{ get_daily_totals(daily).balance | number:2 }}</div>
 					</div>
 				</div> <!-- .daily -->
-
+				<div class="no-data" ng-show="dailies.length < 1">No entries added</div>
 			</div>
 		</section>
 
