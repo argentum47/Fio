@@ -89,18 +89,28 @@
 							</div>
 
 							<div ng-show="editing">
-								<form ng-submit="editing=false">
+								<form ng-submit="editing=false;process_edits(entry)" 
+								      ng-init="set_entry_date(daily.date, entry)">
 									<div class="c date">
-										<input type="date" value="{{ daily.date | date:'yyyy-MM-dd' }}" />
+										<input type="date"  
+										       value="{{ daily.date | date:'yyyy-MM-dd' }}" 
+										       ng-model="entry.date" />
 									</div>
 									<div class="c amount">
-										<input type="number" step="any" value="{{ entry.amount }}" ng-model="entry.amount" />
+										<input type="number" 
+										       step="any" 
+										       value="{{ entry.amount }}" 
+										       ng-model="entry.amount" />
 									</div>
 									<div class="c category">
-										<input type="text" value="{{ entry.category }}" ng-model="entry.category" />
+										<input type="text" 
+										       value="{{ entry.category }}" 
+										       ng-model="entry.category" />
 									</div>
 									<div class="c note">
-										<input type="text" value="{{ entry.note }}" ng-model="entry.note" />
+										<input type="text" 
+										       value="{{ entry.note }}" 
+										       ng-model="entry.note" />
 									</div>
 									<input type="submit" value="OK" style="position: absolute; left: -9999px" />
 								</form>

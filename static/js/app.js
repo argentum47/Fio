@@ -1,7 +1,7 @@
 var app = angular.module('fio', []);
 
 // Control the UI for the user's entries data list
-app.controller('IOCtrl', function($scope, DataServices) {
+app.controller('IOCtrl', function($scope, $filter, DataServices) {
 
   $scope.today = new Date().toJSON().slice(0,10);
   $scope.order = '-date';     // the order in which dailies are shown
@@ -30,8 +30,18 @@ app.controller('IOCtrl', function($scope, DataServices) {
     $scope.note = '';
   };
 
+  $scope.process_edits = function(entry) {
+    console.log("Edits now need to be processed");
+    console.log("new entry is ");
+    console.log(entry)
+  }
+
   $scope.remove_entry = function(daily_hash, entry_hash) {
     DataServices.remove_from_dailies(daily_hash, entry_hash, $scope.dailies);
+  }
+
+  $scope.set_entry_date = function(date, entry) {
+    entry.date = date;
   }
 
   $scope.get_daily_totals = function(daily) {
@@ -89,7 +99,7 @@ app.factory('DataServices', function() {
           && daily.date.getFullYear() === entry.date.getFullYear()) {
           
           // Add a subentry
-          daily.subentries.push({amount: entry.amount,  category: entry.category, note: entry.note, type: entry.type});
+          daily.subentries.push({amount: entry.amount,  category: entry.category, note: entry.note});
           
           found_existing_daily = true;
 
