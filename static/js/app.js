@@ -30,14 +30,28 @@ app.controller('IOCtrl', function($scope, $filter, DataServices) {
     $scope.note = '';
   };
 
-  $scope.process_edits = function(entry) {
-    console.log("Edits now need to be processed");
-    console.log("new entry is ");
-    console.log(entry)
+  $scope.process_edits = function(daily, entry) {
+    // DataServices.update_entry(entry);
+
+    // Convert form date into a Date object
+    entry.date = new Date(entry.date);
+
+    // If the date has changed, reorganise dailies
+    if ($filter('date')(daily.date, 'yyyy-MM-dd')
+        != $filter('date')(entry.date, 'yyyy-MM-dd')) {
+
+      // Remove entry from our dailies list
+      DataServices.remove_from_dailies(daily.$$hashKey, entry.$$hashKey, $scope.dailies);
+    
+      // Re-inject the entry into a suitable place accorring to the edited date
+      $scope.dailies = DataServices.inject_to_dailies(entry, $scope.dailies);
+    
+    }
   }
 
-  $scope.remove_entry = function(daily_hash, entry_hash) {
-    DataServices.remove_from_dailies(daily_hash, entry_hash, $scope.dailies);
+  $scope.remove_entry = function(daily, entry) {
+    DataServices.remove_from_dailies(daily.$$hashKey, entry.$$hashKey, $scope.dailies);
+    // DataServices.remove_entry(entry)
   }
 
   $scope.set_entry_date = function(date, entry) {
@@ -58,7 +72,7 @@ app.controller('IOCtrl', function($scope, $filter, DataServices) {
 });
 
 // Provide entry and daily manipulation services
-app.factory('DataServices', function() {
+app.factory('DataServices', function($filter) {
 
   // Declare services
   var s = {};
@@ -94,9 +108,8 @@ app.factory('DataServices', function() {
       angular.forEach(dailies, function(daily) {
 
         // If we find a match (the time does not matter, only DD/MM/YYYYY)
-        if (daily.date.getDate() === entry.date.getDate() 
-          && daily.date.getMonth() === entry.date.getMonth() 
-          && daily.date.getFullYear() === entry.date.getFullYear()) {
+        if ($filter('date')(daily.date, 'yyyy-MM-dd')
+            == $filter('date')(entry.date, 'yyyy-MM-dd')) {
           
           // Add a subentry
           daily.subentries.push({amount: entry.amount,  category: entry.category, note: entry.note});

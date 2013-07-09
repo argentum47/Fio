@@ -89,7 +89,7 @@
 							</div>
 
 							<div ng-show="editing">
-								<form ng-submit="editing=false;process_edits(entry)" 
+								<form ng-submit="editing=false;process_edits(daily, entry)" 
 								      ng-init="set_entry_date(daily.date, entry)">
 									<div class="c date">
 										<input type="date"  
@@ -118,7 +118,7 @@
 
 						</div> <!-- .entry-details -->
 
-						<span class="remove" ng-click="remove_entry(daily.$$hashKey, entry.$$hashKey)" ng-show="editing">[x]</span>
+						<span class="remove" ng-click="remove_entry(daily, entry)" ng-show="editing">[x]</span>
 						<span class="cancel-edit" ng-click="editing=false" ng-show="editing">[c]</span>
 
 					</div> <!-- .entry -->
