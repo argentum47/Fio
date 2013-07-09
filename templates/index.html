@@ -70,29 +70,49 @@
 			<div class="cw">
 				
 				<!-- A daily listing -->
-				<div class="daily" ng-repeat="daily in dailies | orderBy:order" ng-show="filtered_entries.length">
-					<div class="entry" ng-repeat="entry in filtered_entries = (daily.subentries | filter: filters)" ng-init="editing=false">
+				<div class="daily" 
+				     ng-repeat="daily in dailies | orderBy:order" 
+				     ng-show="filtered_entries.length">
+
+					<div class="entry" 
+					     ng-repeat="entry in filtered_entries = (daily.subentries | filter: filters)" 
+					     ng-init="editing=false" 
+					     ng-click="edit_entry(daily.$$hashKey, entry.$$hashKey);editing=true"
+					     ng-class="{'editing': editing}">
+
 						<div ng-hide="editing">
 							<div class="c date">{{ daily.date | date: 'dd.MM.yyyy' }}</div>
 							<div class="c amount {{ get_type(entry.amount) }}">{{ entry.amount | number:2 }}</div>
 							<div class="c category">{{ entry.category }}</div>
 							<div class="c note">{{ entry.note }}</div>
-							<span class="edit" ng-click="edit_entry(daily.$$hashKey, entry.$$hashKey);editing=true">[e]</span>
 						</div>
+
 						<div ng-show="editing">
 							<form ng-submit="editing=false">
-								<div class="c amount"><input type="number" step="any" value="{{ daily.entry.amount }}" ng-model="entry.amount" /></div>
-								<div class="c category"><input type="text" value="{{ daily.entry.category }}" ng-model="entry.category" /></div>
-								<div class="c note"><input type="text" value="{{ daily.entry.note }}" ng-model="entry.note" /></div>
+								<div class="c date">
+									<input type="date" value="{{ daily.date | date:'yyyy-MM-dd' }}" />
+								</div>
+								<div class="c amount">
+									<input type="number" step="any" value="{{ entry.amount }}" ng-model="entry.amount" />
+								</div>
+								<div class="c category">
+									<input type="text" value="{{ entry.category }}" ng-model="entry.category" />
+								</div>
+								<div class="c note">
+									<input type="text" value="{{ entry.note }}" ng-model="entry.note" />
+								</div>
 								<input type="submit" value="OK" style="position: absolute; left: -9999px" />
 							</form>
 							<span class="cancel-edit" ng-click="editing=false">[c]</span>
-						</div>
-						<span class="remove" ng-click="remove_entry(daily.$$hashKey, entry.$$hashKey)">[x]</span>
+							<span class="remove" ng-click="remove_entry(daily.$$hashKey, entry.$$hashKey)">[x]</span>
+						</div> <!-- when editing -->
+
 					</div> <!-- .entry -->
+
 					<div class="c full total">
 						<div class="c amount">{{ get_daily_totals(daily).balance | number:2 }}</div>
 					</div>
+
 				</div> <!-- .daily -->
 
 				<div class="no-data" ng-show="dailies.length < 1">No entries added</div>
