@@ -67,33 +67,54 @@
 		</section>
 
 		<section class="s-data">
+			<div ng-click="switch_view()">SWITCH VIEW</div>
 			<div class="cw">
-				<div class="daily" ng-repeat="daily in dailies | orderBy:order" ng-show="filtered_entries.length">
-					<div class="c date">{{ daily.date | date: 'dd.MM.yyyy' }}</div>
-					<div class="c entries">
-						<div class="entry" ng-repeat="entry in filtered_entries = (daily.subentries | filter: filters)" ng-init="editing=false">
-							<div ng-hide="editing">
-								<div class="c amount {{ get_type(entry.amount) }}">{{ entry.amount | number:2 }}</div>
-								<div class="c category">{{ entry.category }}</div>
-								<div class="c note">{{ entry.note }}</div>
-								<span class="edit" ng-click="edit_entry(daily.$$hashKey, entry.$$hashKey);editing=true">[e]</span>
+				
+				<!-- Switch views according to current layout -->
+				<div ng-switch on="layout">
+					<div ng-switch-when="dailies_layout">
+
+						<div class="daily" ng-repeat="daily in dailies | orderBy:order" ng-show="filtered_entries.length">
+							<div class="c date">{{ daily.date | date: 'dd.MM.yyyy' }}</div>
+							<div class="c entries">
+								<div class="entry" ng-repeat="entry in filtered_entries = (daily.subentries | filter: filters)" ng-init="editing=false">
+									<div ng-hide="editing">
+										<div class="c amount {{ get_type(entry.amount) }}">{{ entry.amount | number:2 }}</div>
+										<div class="c category">{{ entry.category }}</div>
+										<div class="c note">{{ entry.note }}</div>
+										<span class="edit" ng-click="edit_entry(daily.$$hashKey, entry.$$hashKey);editing=true">[e]</span>
+									</div>
+									<div ng-show="editing">
+										<form ng-submit="editing=false">
+											<div class="c amount"><input type="number" step="any" value="{{ daily.entry.amount }}" ng-model="entry.amount" /></div>
+											<div class="c category"><input type="text" value="{{ daily.entry.category }}" ng-model="entry.category" /></div>
+											<div class="c note"><input type="text" value="{{ daily.entry.note }}" ng-model="entry.note" /></div>
+											<input type="submit" value="OK" style="position: absolute; left: -9999px" />
+										</form>
+										<span class="cancel-edit" ng-click="editing=false">[c]</span>
+									</div>
+									<span class="remove" ng-click="remove_entry(daily.$$hashKey, entry.$$hashKey)">[x]</span>
+								</div>
+							</div> <!-- .c.entries -->
+							<div class="c full total">
+								<div class="c amount">{{ get_daily_totals(daily).balance | number:2 }}</div>
 							</div>
-							<div ng-show="editing">
-								<form ng-submit="editing=false">
-									<div class="c amount"><input type="number" step="any" value="{{ daily.entry.amount }}" ng-model="entry.amount" /></div>
-									<div class="c category"><input type="text" value="{{ daily.entry.category }}" ng-model="entry.category" /></div>
-									<div class="c note"><input type="text" value="{{ daily.entry.note }}" ng-model="entry.note" /></div>
-									<input type="submit" value="OK" style="position: absolute; left: -9999px" />
-								</form>
-								<span class="cancel-edit" ng-click="editing=false">[c]</span>
-							</div>
-							<span class="remove" ng-click="remove_entry(daily.$$hashKey, entry.$$hashKey)">[x]</span>
-						</div>
-					</div> <!-- .c.entries -->
-					<div class="c full total">
-						<div class="c amount">{{ get_daily_totals(daily).balance | number:2 }}</div>
-					</div>
-				</div> <!-- .daily -->
+						</div> <!-- .daily -->
+
+					</div> <!-- switch when layouts.DAILIES -->
+					<div ng-switch-when="entries_layout">
+
+						<div class="entry" ng-repeat="entry in entries | orderBy:order">
+							<div class="c date">{{ entry.date | date: 'dd.MM.yyyy' }}</div>
+							<div class="c amount {{ get_type(entry.amount) }}">{{ entry.amount | number:2 }}</div>
+							<div class="c category">{{ entry.category }}</div>
+							<div class="c note">{{ entry.note }}</div>
+						</div> <!-- .entry -->
+
+					</div> <!-- switch when layouts.ENTRIES -->
+				</div> <!-- ng-switch on view -->
+
+
 				<div class="no-data" ng-show="dailies.length < 1">No entries added</div>
 			</div>
 		</section>
