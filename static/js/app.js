@@ -1,29 +1,22 @@
 var app = angular.module('fio', []);
 
 // Control the UI for the user's entries data list
-app.controller('DataCtrl', function($scope, DataServices) {
+app.controller('IOCtrl', function($scope, DataServices) {
 
   $scope.today = new Date().toJSON().slice(0,10);
   $scope.order = '-date';     // the order in which dailies are shown
   $scope.entries = [];        // the list of entries for this user
   $scope.dailies = [];        // the list of entries grouped by day shown to the user
 
-  $scope.init_data_ctrl = function() {
+  $scope.init_io_ctrl = function() {
 
     // Get entries and convert to dailies
     $scope.entries = DataServices.get_entries();
     $scope.dailies = DataServices.entries_to_dailies($scope.entries);
 
-    // Init with daily view
-    $scope.layout = 'dailies_layout';
-
     // Fill date input with today's date
     $scope.date = $scope.today;
   }; // init_data_ctrl()
-
-  $scope.switch_view = function() {
-    $scope.layout = $scope.layout == 'dailies_layout' ? 'entries_layout' : 'dailies_layout';
-  }
 
   $scope.add_entry = function() {
     var new_entry = {date: new Date($scope.date), amount: $scope.amount, category: $scope.category, note: $scope.note};
