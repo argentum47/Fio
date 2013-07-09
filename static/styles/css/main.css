@@ -17,7 +17,8 @@ input {
   margin: 0 auto; }
 
 body {
-  font-family: 'Source Code Pro', sans-serif; }
+  font-family: 'Source Code Pro', sans-serif;
+  color: #333333; }
 
 section {
   float: left;
@@ -35,8 +36,6 @@ section {
   width: 394.8px; }
 .c.full {
   width: 100%; }
-.c.entries {
-  width: 789.6px; }
 
 .entry, .daily {
   float: left;
@@ -45,13 +44,27 @@ section {
 .daily {
   border-bottom: 1px solid black;
   margin-bottom: 3em; }
+  .daily .entry:first-child .amount {
+    margin-left: 0; }
+  .daily .entry:first-child .date {
+    display: block; }
+  .daily .entry:first-child:hover .date {
+    color: inherit; }
 
 .entry {
   position: relative; }
+  .entry .amount {
+    margin-left: 197.4px; }
+  .entry .date {
+    display: none; }
   .entry:hover {
     background-color: #f0f0f0; }
-    .entry:hover .edit, .entry:hover .remove, .entry:hover .cancel-edit {
+    .entry:hover .edit, .entry:hover .remove, .entry:hover .cancel-edit, .entry:hover .date {
       display: block; }
+    .entry:hover .amount {
+      margin-left: 0; }
+    .entry:hover .date {
+      color: #949494; }
   .entry:not(:nth-last-child(1)) {
     border-bottom: 1px dashed #949494; }
   .entry .edit, .entry .remove, .entry .cancel-edit {

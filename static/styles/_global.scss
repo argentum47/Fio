@@ -56,12 +56,12 @@ input {
 $page_width: 987px;
 
 $white: #fff;
-$lll-gray: #f9f9f9;
-$ll-gray: #f0f0f0;
-$l-gray: #d1d1d1;
+$lll_gray: #f9f9f9;
+$ll_gray: #f0f0f0;
+$l_gray: #d1d1d1;
 $gray: #949494;
-$d-gray: #737373;
-$dd-gray: #333;
+$d_gray: #737373;
+$dd_gray: #333;
 $black: #000;
 
 //=HELPERS
@@ -87,6 +87,7 @@ $black: #000;
 
 body {
 	font-family: 'Source Code Pro', sans-serif;
+	color: $dd_gray;
 }
 
 section {
@@ -99,7 +100,6 @@ $date_w: 0.2 * $page_width;
 $amount_w: 0.15 * $page_width;
 $category_w: 0.25 * $page_width;
 $note_w: 0.4 * $page_width;
-$entries_w: $amount_w + $category_w + $note_w;
 $totals_w: $date_w + $amount_w;
 
 .c {
@@ -109,9 +109,6 @@ $totals_w: $date_w + $amount_w;
 	&.category { width: $category_w; }
 	&.note { width: $note_w; }
 	&.full { width: 100%; }
-	&.entries { 
-		width: $entries_w; 
-	}
 }
 
 .entry, .daily {
@@ -121,14 +118,36 @@ $totals_w: $date_w + $amount_w;
 .daily {
 	border-bottom: 1px solid $black;
 	margin-bottom: 3em;
-}
+	.entry:first-child {
+		.amount {
+			margin-left: 0;
+		}
+		.date {
+			display: block;
+		}
+		&:hover .date {
+			color: inherit;
+		}
+	}
+ }
 
 .entry {
 	position: relative;
-
+	.amount {
+		margin-left: $date_w;
+	}
+	.date {
+		display: none;
+	}
 	&:hover {
 		background-color: $ll_gray;
-		.edit, .remove, .cancel-edit { display: block; }
+		.edit, .remove, .cancel-edit, .date { display: block; }
+		.amount {
+			margin-left: 0;
+		}
+		.date {
+			color: $gray;
+		}
 	}
 	&:not(:nth-last-child(1)) {
 		border-bottom: 1px dashed $gray;
