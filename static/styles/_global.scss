@@ -133,34 +133,39 @@ $totals_w: $date_w + $amount_w;
 
 .entry {
 	position: relative;
+	cursor: pointer;
 	.amount {
 		margin-left: $date_w;
 	}
 	.date {
 		display: none;
 	}
+	&.editing {
+		.amount { margin: 0; }
+		.date { display: block; }
+	}
 	&:hover {
 		background-color: $ll_gray;
-		.edit, .remove, .cancel-edit, .date { display: block; }
+		.date { 
+			display: block;
+			color: $gray; 
+		}
 		.amount {
 			margin-left: 0;
-		}
-		.date {
-			color: $gray;
 		}
 	}
 	&:not(:nth-last-child(1)) {
 		border-bottom: 1px dashed $gray;
 	}
-	.edit, .remove, .cancel-edit {
-		display: none;
+	.remove, .cancel-edit {
+		display: block;
 		position: absolute;
 		top: 0;
 		width: 2.3em;
 		text-align: center;
 		cursor: pointer;
 	}
-	.edit, .cancel-edit { right: -4.6em; }
+	.cancel-edit { right: -4.6em; }
 	.remove { right: -2.3em; }
 	input {
 		width: 100%;

@@ -52,29 +52,33 @@ section {
     color: inherit; }
 
 .entry {
-  position: relative; }
+  position: relative;
+  cursor: pointer; }
   .entry .amount {
     margin-left: 197.4px; }
   .entry .date {
     display: none; }
+  .entry.editing .amount {
+    margin: 0; }
+  .entry.editing .date {
+    display: block; }
   .entry:hover {
     background-color: #f0f0f0; }
-    .entry:hover .edit, .entry:hover .remove, .entry:hover .cancel-edit, .entry:hover .date {
-      display: block; }
+    .entry:hover .date {
+      display: block;
+      color: #949494; }
     .entry:hover .amount {
       margin-left: 0; }
-    .entry:hover .date {
-      color: #949494; }
   .entry:not(:nth-last-child(1)) {
     border-bottom: 1px dashed #949494; }
-  .entry .edit, .entry .remove, .entry .cancel-edit {
-    display: none;
+  .entry .remove, .entry .cancel-edit {
+    display: block;
     position: absolute;
     top: 0;
     width: 2.3em;
     text-align: center;
     cursor: pointer; }
-  .entry .edit, .entry .cancel-edit {
+  .entry .cancel-edit {
     right: -4.6em; }
   .entry .remove {
     right: -2.3em; }

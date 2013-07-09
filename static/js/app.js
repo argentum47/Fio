@@ -17,7 +17,7 @@ app.controller('IOCtrl', function($scope, DataServices) {
     // Fill date input with today's date
     $scope.date = $scope.today;
   }; // init_data_ctrl()
-
+ 
   $scope.add_entry = function() {
     var new_entry = {date: new Date($scope.date), amount: $scope.amount, category: $scope.category, note: $scope.note};
     // DataServices.save_entry(new_entry)
