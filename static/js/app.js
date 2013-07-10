@@ -243,7 +243,21 @@ app.directive('stopEditing', function($timeout) {
 // Focus the first input contained in the directive applied to
 // unless other inputs of the form have focus
 // (this would mean we are still editing the entry)
-app.directive('focusOnClick', function($timeout) {
+app.directive('pressEnter', function($timeout) {
+  return function(scope, element, attrs) {
+    element.bind("keydown keypress", function(event) {
+      if(event.which === 13) {
+        scope.$apply(function(){
+          scope.$eval(attrs.pressEnter);
+        });
+        event.preventDefault();
+      }
+    });
+  };
+});
+
+// Execute the expression when enter is pressed
+app.directive('focusOnClick', function() {
   return {
     link: function(scope, element, attrs) {
       element.bind('click', function() {
