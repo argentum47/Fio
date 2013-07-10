@@ -18,7 +18,7 @@
 			</div>
 
 			<div ng-show="editing">
-				<form press-enter="editing=false;process_edits(daily, entry)" 
+				<form stop-editing="editing=false;process_edits(daily, entry)" 
 				      ng-init="set_entry_date(daily.date, entry)">
 					<div class="c date">
 						<input type="date"  
