@@ -14,7 +14,7 @@
   <!-- The before-load scripts -->
   <script src="http://modernizr.com/downloads/modernizr-2.5.3.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+  <script src="static/lib/angular.min.js"></script>
   <script src="static/js/app.js"></script>
  
 </head>
@@ -56,12 +56,11 @@
 
 		<section class="s-new-entry">
 			<div class="cw">
-				<form name="add-entry" ng-submit="add_entry()">
+				<form name="add-entry" press-enter="add_entry()">
 					<div class="c date"><input type="date" name="date" ng-model="date" required /></div>
 					<div class="c amount"><input type="number" step="any" ng-model="amount" required /></div>
 					<div class="c category"><input type="text" ng-model="category" required /></div>
 					<div class="c note"><input type="text" ng-model="note" /></div>
-					<input type="submit" value="Add" style="position: absolute; left: -9999px" />
 				</form>
 			</div>
 		</section>
