@@ -18,7 +18,7 @@
 			</div>
 
 			<div ng-show="editing">
-				<form ng-submit="editing=false;process_edits(daily, entry)" 
+				<form press-enter="editing=false;process_edits(daily, entry)" 
 				      ng-init="set_entry_date(daily.date, entry)">
 					<div class="c date">
 						<input type="date"  
@@ -41,7 +41,6 @@
 						       value="{{ entry.note }}" 
 						       ng-model="entry.note" />
 					</div>
-					<input type="submit" value="OK" style="position: absolute; left: -9999px" />
 				</form>
 			</div> <!-- when editing -->
 
