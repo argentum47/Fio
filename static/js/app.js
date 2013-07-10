@@ -234,19 +234,23 @@ app.directive('stopEditing', function($timeout) {
           });
         } /* if no other has blur */
       }); /* timeout */
-      
+
     }); /* input bind blur */
 
   }; /* return function */
 }); /* stopEditing */
 
+// Focus the first input contained in the directive applied to
+// unless other inputs of the form have focus
+// (this would mean we are still editing the entry)
 app.directive('focusOnClick', function($timeout) {
   return {
     link: function(scope, element, attrs) {
       element.bind('click', function() {
         $timeout(function() {
-          console.log("trying to find input to focus")
-          element.find('input')[0].focus();
+          if (!element.find('input').is(':focus')) {
+            element.find('input')[0].focus();
+          }
         });
       });
     }

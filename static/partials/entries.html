@@ -8,7 +8,8 @@
 	     ng-class="{'editing': editing}">
 
 	    <div class="entry-details" 
-	         ng-click="editing=true">
+	         ng-click="editing=true" 
+	         focus-on-click>
 
 			<div ng-hide="editing">
 				<div class="c date">{{ daily.date | date: 'dd.MM.yyyy' }}</div>
