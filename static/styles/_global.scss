@@ -157,7 +157,7 @@ $totals_w: $date_w + $amount_w;
 	&:not(:nth-last-child(1)) {
 		border-bottom: 1px dashed $gray;
 	}
-	.remove, .cancel-edit {
+	.remove {
 		display: block;
 		position: absolute;
 		top: 0;
@@ -165,7 +165,6 @@ $totals_w: $date_w + $amount_w;
 		text-align: center;
 		cursor: pointer;
 	}
-	.cancel-edit { right: -4.6em; }
 	.remove { right: -2.3em; }
 	input {
 		width: 100%;

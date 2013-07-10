@@ -71,15 +71,13 @@ section {
       margin-left: 0; }
   .entry:not(:nth-last-child(1)) {
     border-bottom: 1px dashed #949494; }
-  .entry .remove, .entry .cancel-edit {
+  .entry .remove {
     display: block;
     position: absolute;
     top: 0;
     width: 2.3em;
     text-align: center;
     cursor: pointer; }
-  .entry .cancel-edit {
-    right: -4.6em; }
   .entry .remove {
     right: -2.3em; }
   .entry input {
