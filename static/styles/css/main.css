@@ -41,15 +41,12 @@ section {
   float: left;
   width: 100%; }
 
-.daily {
-  border-bottom: 1px solid black;
-  margin-bottom: 3em; }
-  .daily .entry:first-child .amount {
-    margin-left: 0; }
-  .daily .entry:first-child .date {
-    display: block; }
-  .daily .entry:first-child:hover .date {
-    color: inherit; }
+.daily .entry:first-child .amount {
+  margin-left: 0; }
+.daily .entry:first-child .date {
+  display: block; }
+.daily .entry:first-child:hover .date {
+  color: inherit; }
 
 .entry {
   position: relative;
@@ -85,7 +82,8 @@ section {
     width: 100%; }
 
 .total {
-  border-top: 1px dashed #949494;
+  margin-bottom: 3em;
+  border-bottom: 1px solid #949494;
   background-color: #f9f9f9; }
   .total .amount {
     margin-left: 197.4px; }

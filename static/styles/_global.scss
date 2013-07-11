@@ -116,8 +116,6 @@ $totals_w: $date_w + $amount_w;
 }
 
 .daily {
-	border-bottom: 1px solid $black;
-	margin-bottom: 3em;
 	.entry:first-child {
 		.amount {
 			margin-left: 0;
@@ -173,7 +171,8 @@ $totals_w: $date_w + $amount_w;
 }
 
 .total {
-	border-top: 1px dashed $gray;
+	margin-bottom: 3em;
+	border-bottom: 1px solid $gray;
 	background-color: $lll_gray;
 	.amount {
 		margin-left: $date_w;
