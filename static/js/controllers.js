@@ -27,6 +27,7 @@ angular.module('fio.controllers', [])
   $scope.add_entry = function() {
     var new_entry = {date: new Date($scope.date), amount: $scope.amount, category: $scope.category, note: $scope.note};
     // DS.save_entry(new_entry)
+    $scope.entries.push(new_entry);
     $scope.dailies = DS.inject_to_dailies(new_entry, $scope.dailies);
 
     // Reset fields
@@ -56,6 +57,7 @@ angular.module('fio.controllers', [])
   }
 
   $scope.remove_entry = function(daily, entry) {
+    $scope.entries.splice($scope.entries.indexOf(entry), 1);
     DS.remove_from_dailies(daily.$$hashKey, entry.$$hashKey, $scope.dailies);
     // DS.remove_entry(entry)
   }
