@@ -257,7 +257,7 @@ app.directive('pressEnter', function($timeout) {
 });
 
 // Execute the expression when enter is pressed
-app.directive('focusOnClick', function() {
+app.directive('focusOnClick', function($timeout) {
   return {
     link: function(scope, element, attrs) {
       element.bind('click', function() {
