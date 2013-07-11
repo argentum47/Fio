@@ -4,7 +4,12 @@ angular.module('fio.controllers', [])
 .controller('IOCtrl', function($scope, $filter, DataServices) {
 
   var DS = DataServices;
-  
+
+  var templates_url = 'static/partials/io/'
+  $scope.templates = {
+    'entries': templates_url + 'entries.html'
+  }
+
   $scope.today = new Date().toJSON().slice(0,10);
   $scope.order = '-date';     // the order in which dailies are shown
   $scope.entries = [];        // the list of entries for this user
