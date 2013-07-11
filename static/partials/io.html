@@ -10,7 +10,6 @@
 				<span class="c date">Balance:</span>
 				<span class="c amount">{{ get_totals().balance | currency:'€':2 }}</span>
 			</div>
-			<div class="c note"><input type="text" placeholder="Search everything" ng-model="filters.$" /></div>
 		</div>
 	</section>
 
@@ -23,7 +22,7 @@
 					<option value="" ng-click="filtering=false">Everything</option>
 					<option value="Groceries" ng-click="activate_filtering()">Groceries</option>
 					<option value="Entertainment" ng-click="filtering=true">Entertainment</option>
-					<option value="Salary" ng-click="filtering=true">Salary</option>
+					<option value="Restaurants & coffee shops" ng-click="filtering=true">Rest</option>
 					<option value="Eating out" ng-click="filtering=true">Eating out</option>
 					<option value="Cinema" ng-click="filtering=true">Cinema</option>
 				</select>
