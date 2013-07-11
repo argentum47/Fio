@@ -153,19 +153,20 @@ $totals_w: $date_w + $amount_w;
 		.amount {
 			margin-left: 0;
 		}
+		.remove { display: block; }
 	}
 	&:not(:nth-last-child(1)) {
 		border-bottom: 1px dashed $gray;
 	}
 	.remove {
-		display: block;
+		display: none;
 		position: absolute;
 		top: 0;
+		right: -2.3em;
 		width: 2.3em;
 		text-align: center;
 		cursor: pointer;
 	}
-	.remove { right: -2.3em; }
 	input {
 		width: 100%;
 	}

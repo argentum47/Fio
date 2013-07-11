@@ -69,17 +69,18 @@ section {
       color: #949494; }
     .entry:hover .amount {
       margin-left: 0; }
+    .entry:hover .remove {
+      display: block; }
   .entry:not(:nth-last-child(1)) {
     border-bottom: 1px dashed #949494; }
   .entry .remove {
-    display: block;
+    display: none;
     position: absolute;
     top: 0;
+    right: -2.3em;
     width: 2.3em;
     text-align: center;
     cursor: pointer; }
-  .entry .remove {
-    right: -2.3em; }
   .entry input {
     width: 100%; }
 
