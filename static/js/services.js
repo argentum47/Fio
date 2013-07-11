@@ -8,13 +8,21 @@ angular.module('fio.services', [])
 
   // Retrieve entries from the API
   s.get_entries = function() {
-    var entries = [{date: new Date('February 5, 2013'), amount: -137, category: 'Groceries', note: "Bought a lot of alcohol for a party"},
-      {date: new Date('March 3, 2011'), amount: -100, category: 'Entertainment', note: "Went to the cinema and bought popcorn"},
-      {date: new Date('March 3, 2011'), amount: -15.6, category: 'Groceries', note: "Milk, cheese etc"},
-      {date: new Date('April 4, 2013'), amount: -20, category: 'Groceries', note: "Food for the weekend"},
-      {date: new Date('April 4, 2013'), amount: 700, category: 'Salary', note: "My first salary"},
-      {date: new Date('April 4, 2013'), amount: -24.53, category: 'Eating out', note: "Datenight"}];
-    return entries
+    // For now, use test data from csv file
+    var entries;
+    $.ajax('http://127.0.0.1:5000/static/data.csv', {
+      async: false,
+      success: function(data) {
+        var raw_entries = csvjson.csv2json(data).rows;
+        // Convert date strings to Dates and amount strings to Numbers
+        angular.forEach(raw_entries, function(entry) {
+          entry.date = new Date(entry.date);
+          entry.amount = Number(entry.amount.replace('£',''));
+        });
+        entries = raw_entries;
+      }
+    });
+    return entries;
   };
   
   // Add a new daily object to given dailies
@@ -63,6 +71,7 @@ angular.module('fio.services', [])
     angular.forEach(entries, function(entry) {
       dailies = s.inject_to_dailies(entry, dailies);
     });
+    console.log(dailies);
     return dailies;
   }
 

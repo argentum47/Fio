@@ -5,7 +5,7 @@ angular.module('fio.controllers', [])
 
   var DS = DataServices;
 
-  var templates_url = 'static/partials/io/'
+  var templates_url = 'static/partials/io/';
   $scope.templates = {
     'entries': templates_url + 'entries.html'
   }
