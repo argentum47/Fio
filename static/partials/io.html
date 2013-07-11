@@ -1,0 +1,50 @@
+<div ng-init="init_io_ctrl()">
+
+	<section class="s-total">
+		<div class="cw">
+			<div class="c all-totals">
+				<span class="c date">Total income:</span>
+				<span class="c amount">{{ get_totals().inc | number:2 }}</span>
+				<span class="c date">Total expenses:</span>
+				<span class="c amount">{{ get_totals().exp | number:2 }}</span>
+				<span class="c date">Balance:</span>
+				<span class="c amount">{{ get_totals().balance | number:2 }}</span>
+			</div>
+			<div class="c note"><input type="text" placeholder="Search everything" ng-model="filters.$" /></div>
+		</div>
+	</section>
+
+	<section class="s-headings">
+		<div class="cw">
+			<div class="c date">Date</div>
+			<div class="c amount">Amount</div>
+			<div class="c category">
+				<select ng-model="filters.category">
+					<option value="" ng-click="filtering=false">Everything</option>
+					<option value="Groceries" ng-click="activate_filtering()">Groceries</option>
+					<option value="Entertainment" ng-click="filtering=true">Entertainment</option>
+					<option value="Salary" ng-click="filtering=true">Salary</option>
+					<option value="Eating out" ng-click="filtering=true">Eating out</option>
+					<option value="Cinema" ng-click="filtering=true">Cinema</option>
+				</select>
+			</div>
+			<div class="c note"><input type="text" placeholder="Search notes" ng-model="filters.note" /></div>
+		</div>
+	</section>
+
+	<section class="s-new-entry">
+		<div class="cw">
+			<form name="add-entry" press-enter="add_entry()">
+				<div class="c date"><input type="date" name="date" ng-model="date" required /></div>
+				<div class="c amount"><input type="number" step="any" ng-model="amount" required /></div>
+				<div class="c category"><input type="text" ng-model="category" required /></div>
+				<div class="c note"><input type="text" ng-model="note" /></div>
+			</form>
+		</div>
+	</section>
+
+	<section class="s-data">
+		<div class="cw" ng-include src="'/static/partials/io/entries.html'"></div>
+	</section>
+
+</div>
