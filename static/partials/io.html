@@ -4,11 +4,11 @@
 		<div class="cw">
 			<div class="c all-totals">
 				<span class="c date">Total income:</span>
-				<span class="c amount">{{ get_totals().inc | number:2 }}</span>
+				<span class="c amount">{{ get_totals().inc | currency:'€':2 }}</span>
 				<span class="c date">Total expenses:</span>
-				<span class="c amount">{{ get_totals().exp | number:2 }}</span>
+				<span class="c amount">{{ get_totals().exp | currency:'€':2 }}</span>
 				<span class="c date">Balance:</span>
-				<span class="c amount">{{ get_totals().balance | number:2 }}</span>
+				<span class="c amount">{{ get_totals().balance | currency:'€':2 }}</span>
 			</div>
 			<div class="c note"><input type="text" placeholder="Search everything" ng-model="filters.$" /></div>
 		</div>
