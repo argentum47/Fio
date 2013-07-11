@@ -1,3 +1,8 @@
+<!-- Full total of filtered entries -->
+<div class="c full total" ng-show="filters.note || filters.category || filters.$">
+	<div class="c amount">Full total</div>
+</div>
+
 <!-- A daily listing -->
 <div class="daily" 
      ng-repeat="daily in dailies | orderBy:order" 
@@ -51,10 +56,9 @@
 
 	</div> <!-- .entry -->
 
-	<div class="c full total" ng-hide="filters.note || filters.category">
+	<div class="c full total" ng-hide="filters.note || filters.category || filters.$">
 		<div class="c amount">{{ get_daily_totals(daily).balance | currency:'€':2 }}</div>
 	</div>
 </div> <!-- .daily -->
-
 
 <div class="no-data" ng-show="dailies.length < 1">No entries added</div><!-- A daily listing -->

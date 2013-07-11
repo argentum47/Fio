@@ -10,6 +10,7 @@
 				<span class="c date">Balance:</span>
 				<span class="c amount">{{ get_totals().balance | currency:'€':2 }}</span>
 			</div>
+			<div class="c category"><input type="text" ng-model="filters.$" /></div>
 		</div>
 	</section>
 
@@ -33,7 +34,7 @@
 
 	<section class="s-new-entry">
 		<div class="cw">
-			<form name="add-entry" press-enter="add_entry()">
+			<form name="add-entry" press-enter="add_entry()" ng-click="filters={}">
 				<div class="c date"><input type="date" name="date" ng-model="date" required /></div>
 				<div class="c amount"><input type="number" step="any" ng-model="amount" required /></div>
 				<div class="c category"><input type="text" ng-model="category" required /></div>
