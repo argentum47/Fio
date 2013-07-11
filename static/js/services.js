@@ -71,7 +71,6 @@ angular.module('fio.services', [])
     angular.forEach(entries, function(entry) {
       dailies = s.inject_to_dailies(entry, dailies);
     });
-    console.log(dailies);
     return dailies;
   }
 
