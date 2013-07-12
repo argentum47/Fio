@@ -29,16 +29,20 @@ angular.module('fio.controllers', [])
   }; // init_data_ctrl()
  
   $scope.add_entry = function() {
-    var new_entry = {date: new Date($scope.date), amount: $scope.amount, category: $scope.category, note: $scope.note};
-    // DS.save_entry(new_entry)
-    $scope.entries.push(new_entry);
-    $scope.dailies = DS.inject_to_dailies(new_entry, $scope.dailies);
 
-    // Reset fields
-    $scope.date = $scope.today;
-    $scope.amount = '';
-    $scope.category = '';
-    $scope.note = '';
+    // Only add if necessary fields have been filled in 
+    if ($scope.addEntryForm.$valid) {
+      var new_entry = {date: new Date($scope.date), amount: $scope.amount, category: $scope.category.cat, note: $scope.note};
+      // DS.save_entry(new_entry)
+      $scope.entries.push(new_entry);
+      $scope.dailies = DS.inject_to_dailies(new_entry, $scope.dailies);
+
+      // Reset fields
+      $scope.date = $scope.today;
+      $scope.amount = '';
+      $scope.category = '';
+      $scope.note = '';
+    }
   };
 
   $scope.process_edits = function(daily, entry) {
