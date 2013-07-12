@@ -29,7 +29,8 @@
 					<div class="c date">
 						<input type="date"  
 						       value="{{ daily.date | date:'yyyy-MM-dd' }}" 
-						       ng-model="entry.date" />
+						       ng-model="entry.date" 
+						       ng-class="{'no-hide': (filters.note || filters.category || filters.$)}" />
 					</div>
 					<div class="c amount">
 						<input type="number" 

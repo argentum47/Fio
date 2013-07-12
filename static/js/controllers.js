@@ -12,6 +12,7 @@ angular.module('fio.controllers', [])
 
   $scope.today = new Date().toJSON().slice(0,10);
   $scope.order = '-date';     // the order in which dailies are shown
+  $scope.categories = [];
   $scope.entries = [];        // the list of entries for this user
   $scope.dailies = [];        // the list of entries grouped by day shown to the user
 
@@ -19,6 +20,9 @@ angular.module('fio.controllers', [])
     // Get entries and convert to dailies
     $scope.entries = DS.get_entries();
     $scope.dailies = DS.entries_to_dailies($scope.entries);
+
+    // Get categories
+    $scope.categories = DS.get_categories();
 
     // Fill date input with today's date
     $scope.date = $scope.today;

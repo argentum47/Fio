@@ -24,12 +24,36 @@ angular.module('fio.services', [])
     });
     return entries;
   };
+
+  s.get_categories = function() {
+    var cats = {
+      'Income': ['Misc income', 'Salary'],
+      'Expense': ['Restaurants & coffee shops', 'Transfer to savings', 'Transfer to joint account', 'Phone bill', 'Entertainment', 'Transport & Travel', 'Initial balance', 'Unseen expense']
+    }
+
+    // Need to be converted to separate objects to be usable in ng-options
+    return s.dict_to_objects(cats, 'type', 'cat');
+  };
+
+  // Converts {key1: [a,b,c], key2: [c,d,e]} ==> [{key: 'key1', el: 'a'}, {key: 'key2', el: 'c'}....]
+  s.dict_to_objects = function(d, key_name, list_name) {
+    var os = [];
+    angular.forEach(d, function(list, key) {
+      angular.forEach(list, function(value) {
+        var new_o = {};
+        new_o[key_name] = key;
+        new_o[list_name] = value;
+        os.push(new_o);
+      });
+    });
+    return os;
+  };
   
   // Add a new daily object to given dailies
   s.add_new_daily = function(date, amount, category, note, dailies) {
     dailies.push({date: date, subentries: [{amount: amount, category: category, note: note}]});
     return dailies;
-  }
+  };
 
   // Find the correct place to inject an entry into given dailies
   s.inject_to_dailies = function(entry, dailies) {
@@ -71,7 +95,6 @@ angular.module('fio.services', [])
     angular.forEach(entries, function(entry) {
       dailies = s.inject_to_dailies(entry, dailies);
     });
-    console.log(dailies);
     return dailies;
   }
 
