@@ -1,4 +1,70 @@
+/* 
+ * Variables, mixins, abstract classes and functions that do not themselves compile to CSS,
+ * but are used throughout the project.
+ */
+
+//=VARIABLES
+//=====================================
+
+//=Dimensions
+$focal_width: 280px;
+
+//=Colours
+$white: #fff;
+$lll_gray: #f9f9f9;
+$ll_gray: #f0f0f0;
+$l_gray: #d1d1d1;
+$gray: #949494;
+$d_gray: #737373;
+$dd_gray: #333;
+$black: #000;
+
+// kuler.adobe.com/Cumberland-vintage-red-color-theme-356905/
+$vintage_red: #f84322;
+$main_color: $vintage_red;
+
+//=Fonts
+$mono_font: 'Source Code Pro', sans-serif;
+
+//=Styling helpers
+//=====================================
+
 @mixin uncollapse {
 	float: left;
 	width: 100%;
+}
+
+@mixin center-wrapper($width) {
+	width: $width;
+	margin: 0 auto;
+}
+
+//=Extendables
+//=====================================
+
+//=Functional stuff
+//=====================================
+
+// Enables the use of variables inside calc() with string interpolation
+// Proper use: calcu(property, "1100% - #{dim_variable}")
+@mixin calcu($property, $expression) {
+	#{$property}: -moz-calc(#{$expression}); 
+  	#{$property}: -o-calc(#{$expression}); 
+  	#{$property}: -webkit-calc(#{$expression}); 
+  	#{$property}: calc(#{$expression}); 
+}
+
+@mixin placeholder {
+	&::-webkit-input-placeholder { /* WebKit browsers */
+    	@content;
+	}
+	&:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+	    @content;
+	}
+	&::-moz-placeholder { /* Mozilla Firefox 19+ */
+	    @content;
+	}
+	&:-ms-input-placeholder { /* Internet Explorer 10+ */
+	    @content;
+	}
 }

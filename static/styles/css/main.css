@@ -1,4 +1,9 @@
 @import url(http://fonts.googleapis.com/css?family=Source+Code+Pro:300,400,500,600,700&subset=latin,latin-ext);
+@import url(http://fonts.googleapis.com/css?family=Kite+One:300,400,500,600,700&subset=latin,latin-ext);
+/* 
+ * Variables, mixins, abstract classes and functions that do not themselves compile to CSS,
+ * but are used throughout the project.
+ */
 * {
   box-sizing: border-box; }
 
@@ -19,6 +24,18 @@ input {
 body {
   font-family: 'Source Code Pro', sans-serif;
   color: #333333; }
+
+.focal {
+  float: left;
+  width: 280px;
+  font-family: 'Kite One'; }
+
+.view {
+  float: left;
+  width: -moz-calc(100% - 280px);
+  width: -o-calc(100% - 280px);
+  width: -webkit-calc(100% - 280px);
+  width: calc(100% - 280px); }
 
 section {
   float: left;

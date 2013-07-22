@@ -17,15 +17,22 @@
 </head>
 <body>
 
-	<nav>
-		<ul>
-			<li><a href="#/io">IO</a></li>
-			<li><a href="#/recurring">Recurring</a></li>
-			<li><a href="#/totals">Totals</a></li>
-		</ul>
-	</nav>
+	<!-- The sidebar overview and nav. Focal point of experience. -->
+	<aside class="focal">
 
-	<div ng-view></div>
+		<div class="balance">273.48</div>
+
+		<nav>
+			<ul>
+				<li><a href="#/io">IO</a></li>
+				<li><a href="#/recurring">Recurring</a></li>
+				<li><a href="#/totals">Totals</a></li>
+			</ul>
+		</nav>
+
+	</aside>
+
+	<div class="view" ng-view></div>
 
 	<!-- The document.ready libraries -->
 	<script src="static/lib/jquery-1.10.2.min.js"></script>
