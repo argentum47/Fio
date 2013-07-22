@@ -17,7 +17,7 @@
 	         focus-on-click>
 
 			<div ng-hide="editing">
-				<div class="c date">{{ daily.date | date: 'dd.MM.yyyy' }}</div>
+				<div class="c date" ng-class="{'no-hide': (filters.note || filters.category || filters.$)}">{{ daily.date | date: 'dd.MM.yyyy' }}</div>
 				<div class="c amount {{ get_type(entry.amount) }}">{{ entry.amount | currency:'€':2 }}</div>
 				<div class="c category">{{ entry.category }}</div>
 				<div class="c note">{{ entry.note }}</div>
@@ -29,8 +29,7 @@
 					<div class="c date">
 						<input type="date"  
 						       value="{{ daily.date | date:'yyyy-MM-dd' }}" 
-						       ng-model="entry.date" 
-						       ng-class="{'no-hide': (filters.note || filters.category || filters.$)}" />
+						       ng-model="entry.date" />
 					</div>
 					<div class="c amount">
 						<input type="number" 
