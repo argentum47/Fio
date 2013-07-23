@@ -1,17 +1,16 @@
+@charset "UTF-8";
 @import url(http://fonts.googleapis.com/css?family=Source+Code+Pro:300,400,500,600,700&subset=latin,latin-ext);
-@import url(http://fonts.googleapis.com/css?family=Kite+One:300,400,500,600,700&subset=latin,latin-ext);
 /* 
  * Variables, mixins, abstract classes and functions that do not themselves compile to CSS,
  * but are used throughout the project.
  */
 * {
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0; }
 
 input {
   font-family: 'Source Code Pro'; }
-
-.pure-g {
-  letter-spacing: -.71em; }
 
 .c {
   display: block;
@@ -21,14 +20,16 @@ input {
   width: 987px;
   margin: 0 auto; }
 
+body, html {
+  min-height: 100%;
+  height: 100%; }
+
 body {
-  font-family: 'Source Code Pro', sans-serif;
   color: #333333; }
 
 .focal {
   float: left;
-  width: 280px;
-  font-family: 'Kite One'; }
+  width: 280px; }
 
 .view {
   float: left;
@@ -40,6 +41,32 @@ body {
 section {
   float: left;
   width: 100%; }
+
+.focal {
+  font-family: 'Source Code Pro', sans-serif;
+  background-color: #f1f1ed; }
+  .focal > * {
+    padding: 0 19.6px;
+    padding-bottom: 0.345em; }
+    .focal > *:first-child {
+      padding-top: 19.6px; }
+    .focal > *:nth-last-child(1) {
+      padding-bottom: 19.6px; }
+  .focal .balance {
+    text-align: center; }
+    .focal .balance span {
+      position: relative; }
+      .focal .balance span:before {
+        content: '€';
+        display: block;
+        position: absolute;
+        left: -1em;
+        width: 1em;
+        height: 100%;
+        font-size: 40%; }
+  .focal date {
+    display: block;
+    font-size: 14px; }
 
 .c.all-totals {
   width: 345.45px; }
