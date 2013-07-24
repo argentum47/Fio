@@ -29,7 +29,7 @@ $mono_font: 'Source Code Pro', sans-serif;
 //=Styling helpers
 //=====================================
 
-@mixin uncollapse {
+%uncollapse {
 	float: left;
 	width: 100%;
 }

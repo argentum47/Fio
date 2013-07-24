@@ -5,12 +5,19 @@
  * Variables, mixins, abstract classes and functions that do not themselves compile to CSS,
  * but are used throughout the project.
  */
+section, .entry, .daily {
+  float: left;
+  width: 100%; }
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0; }
 
 input {
+  font-family: 'Source Code Pro'; }
+
+.amt {
   font-family: 'Source Code Pro'; }
 
 .c {
@@ -31,10 +38,6 @@ input {
   width: -o-calc(100% - 280px);
   width: -webkit-calc(100% - 280px);
   width: calc(100% - 280px); }
-
-section {
-  float: left;
-  width: 100%; }
 
 body {
   font: 300 1em/1.5em 'Cardo', Baskerville, serif;
@@ -76,10 +79,6 @@ body {
 .c.note {
   width: 394.8px; }
 .c.full {
-  width: 100%; }
-
-.entry, .daily {
-  float: left;
   width: 100%; }
 
 .daily .entry:first-child .amount {

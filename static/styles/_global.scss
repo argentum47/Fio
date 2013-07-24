@@ -58,6 +58,11 @@ input {
 // These are global classes that can be reused everywhere 
 // to aid with more elementary structure or design elements
 
+// Numbers should be monospaced
+.amt {
+	font-family: 'Source Code Pro';
+}
+
 // This is a column
 .c {
 	display: block;
@@ -84,7 +89,7 @@ input {
 }
 
 section {
-	@include uncollapse;
+	@extend %uncollapse;
 }
 
 //=========================================================
@@ -143,7 +148,7 @@ $totals_w: $date_w + $amount_w;
 }
 
 .entry, .daily {
-	@include uncollapse;
+	@extend %uncollapse;
 }
 
 .daily {
