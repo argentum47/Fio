@@ -106,8 +106,11 @@ body {
 $date_w: 0.2 * $module_width;
 $amount_w: 0.1 * $module_width;
 $amount_p: 0.05 * $module_width;
-$category_w: 0.3 * $module_width;
-$note_w: 0.35 * $module_width;
+$category_w: 0.25 * $module_width;
+$note_w: 0.4 * $module_width;
+
+$entries_fs: em(15px);
+$entries_lh: em(27px, $entries_fs);
 
 .c {
 	display: block;
@@ -127,22 +130,45 @@ $note_w: 0.35 * $module_width;
 }
 
 .daily {
+	padding-bottom: em(25px, $entries_fs);
+	margin-bottom: em(25px, $entries_fs);
+	border-bottom: 1px solid $ll_gray;
 	.amt {
 		text-align: right;
 	}
 }
 
+.daily-totals {
+	border-top: 1px solid $white;
+	line-height: $entries_lh;
+	.amount {
+		float: none;
+		margin-left: $date_w;
+	}
+}
+
 .entry {
 	position: relative;
+	line-height: $entries_lh;
 	cursor: pointer;
 	.amount { margin-left: $date_w; }
-	&.editing {
-		.amount { margin-left: 0 }
-		.timeline-date { display: none }
-	}
+	&.editing .amount { margin-left: 0 }
 	&:hover {
 		background-color: $ll_gray;
 		.remove { display: block; }
+	}
+	&:after {
+		content: '';
+		display: block;
+		position: absolute;
+		top: 0;
+		right: 0;
+		height: 100%;
+		width: em(70px, $entries_fs);
+		@include background-image(linear-gradient(90deg, rgba($white, 0) 0%, $lll_gray 30%));
+	}
+	input {
+		width: 100%;
 	}
 	.remove {
 		display: none;
@@ -153,14 +179,16 @@ $note_w: 0.35 * $module_width;
 		text-align: center;
 		cursor: pointer;
 	}
-	input {
-		width: 100%;
-	}
 }
 
 .module-io {
-	font-size: em(15px);
+	font-size: $entries_fs;
 	background-color: $lll_gray;
+	// This adds the timeline
+	/* @include background-image(linear-gradient(90deg, 
+		                                      $lll_gray ceil($date_w / 2 - 1), 
+		                                      $ll_gray ceil($date_w / 2), 
+		                                      $lll_gray ceil($date_w / 2 + 2))); */
 }
 
 .timeline-date {
@@ -170,18 +198,10 @@ $note_w: 0.35 * $module_width;
 	z-index: 1; 	// Get out of the way of the entry hover
 	span:first-child {
 		display: block;
-		font-size: em(26px, em(15px));
+		font-size: em(26px, $entries_fs);
 	}
 	span:nth-last-child(1) {
 		font-style: italic;
-	}
-}
-
-.daily-totals {
-	margin-bottom: 3em;
-	.amount {
-		float: none;
-		margin-left: $date_w;
 	}
 }
 

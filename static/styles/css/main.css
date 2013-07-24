@@ -51,28 +51,50 @@ body {
     width: 98.7px;
     margin-right: 49.35px; }
   .c.category {
-    width: 296.1px; }
+    width: 246.75px; }
   .c.note {
-    width: 345.45px; }
+    width: 394.8px; }
   .c.full {
     width: 100%; }
 
-.daily .amt {
-  text-align: right; }
+.daily {
+  padding-bottom: 26.66667px;
+  margin-bottom: 26.66667px;
+  border-bottom: 1px solid #f0f0f0; }
+  .daily .amt {
+    text-align: right; }
+
+.daily-totals {
+  border-top: 1px solid white;
+  line-height: 28.8px; }
+  .daily-totals .amount {
+    float: none;
+    margin-left: 197.4px; }
 
 .entry {
   position: relative;
+  line-height: 28.8px;
   cursor: pointer; }
   .entry .amount {
     margin-left: 197.4px; }
   .entry.editing .amount {
     margin-left: 0; }
-  .entry.editing .timeline-date {
-    display: none; }
   .entry:hover {
     background-color: #f0f0f0; }
     .entry:hover .remove {
       display: block; }
+  .entry:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 74.66667px;
+    background-image: -webkit-linear-gradient(-360deg, rgba(255, 255, 255, 0) 0%, #f9f9f9 30%);
+    background-image: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, #f9f9f9 30%); }
+  .entry input {
+    width: 100%; }
   .entry .remove {
     display: none;
     position: absolute;
@@ -81,12 +103,14 @@ body {
     width: 2.3em;
     text-align: center;
     cursor: pointer; }
-  .entry input {
-    width: 100%; }
 
 .module-io {
   font-size: 0.9375em;
-  background-color: #f9f9f9; }
+  background-color: #f9f9f9;
+  /* @include background-image(linear-gradient(90deg, 
+  	                                      $lll_gray ceil($date_w / 2 - 1), 
+  	                                      $ll_gray ceil($date_w / 2), 
+  	                                      $lll_gray ceil($date_w / 2 + 2))); */ }
 
 .timeline-date {
   position: absolute;
@@ -98,12 +122,6 @@ body {
     font-size: 27.73333px; }
   .timeline-date span:nth-last-child(1) {
     font-style: italic; }
-
-.daily-totals {
-  margin-bottom: 3em; }
-  .daily-totals .amount {
-    float: none;
-    margin-left: 197.4px; }
 
 .s-headings {
   background-color: #f0f0f0; }
