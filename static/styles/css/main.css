@@ -21,18 +21,11 @@ input {
   width: 987px;
   margin: 0 auto; }
 
-body, html {
-  min-height: 100%;
-  height: 100%; }
-
-body {
-  color: #333333; }
-
-.focal {
+.totals {
   float: left;
   width: 280px; }
 
-.view {
+.module {
   float: left;
   width: -moz-calc(100% - 280px);
   width: -o-calc(100% - 280px);
@@ -43,21 +36,24 @@ section {
   float: left;
   width: 100%; }
 
-.focal {
-  font-family: 'Source Code Pro', sans-serif;
+body {
+  font: 300 1em/1.5em 'Cardo', Baskerville, serif;
+  color: #333333; }
+
+.totals {
   background-color: #f1f1ed; }
-  .focal > * {
+  .totals > * {
     padding: 0 19.6px;
     padding-bottom: 0.345em; }
-    .focal > *:first-child {
+    .totals > *:first-child {
       padding-top: 19.6px; }
-    .focal > *:nth-last-child(1) {
+    .totals > *:nth-last-child(1) {
       padding-bottom: 19.6px; }
-  .focal .balance {
+  .totals .balance {
     text-align: center; }
-    .focal .balance span {
+    .totals .balance span {
       position: relative; }
-      .focal .balance span:before {
+      .totals .balance span:before {
         content: '€';
         display: block;
         position: absolute;
@@ -65,7 +61,7 @@ section {
         width: 1em;
         height: 100%;
         font-size: 40%; }
-  .focal date {
+  .totals date {
     display: block;
     font-size: 14px; }
 
