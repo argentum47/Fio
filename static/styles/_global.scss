@@ -47,7 +47,7 @@
 }
 
 input {
-	font-family: 'Source Code Pro';
+	font-family: $main_font;
 }
 
 // Override .pure-g letter-spacing to work with monospaced fonts
@@ -60,7 +60,7 @@ input {
 
 // Numbers should be monospaced
 .amt {
-	font-family: 'Source Code Pro';
+	font-family: $mono_font;
 }
 
 // This is a column
@@ -96,7 +96,7 @@ section {
 
 body {
 	// All numbers should be monospaced
-	font: 300 1em/1.5em 'Cardo', Baskerville, serif;
+	font: 300 1em/1.5em $main_font;
 	color: $dd_gray;
 }
 

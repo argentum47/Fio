@@ -15,10 +15,10 @@ section, .entry, .daily {
   padding: 0; }
 
 input {
-  font-family: 'Source Code Pro'; }
+  font-family: "Cardo", "Baskerville", serif; }
 
 .amt {
-  font-family: 'Source Code Pro'; }
+  font-family: "Source Code Pro", sans-serif; }
 
 .c {
   display: block;
@@ -40,7 +40,7 @@ input {
   width: calc(100% - 280px); }
 
 body {
-  font: 300 1em/1.5em 'Cardo', Baskerville, serif;
+  font: 300 1em/1.5em "Cardo", "Baskerville", serif;
   color: #333333; }
 
 .totals {
