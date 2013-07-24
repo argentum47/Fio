@@ -1,5 +1,6 @@
 @charset "UTF-8";
 @import url(http://fonts.googleapis.com/css?family=Source+Code+Pro:300,400,500,600,700&subset=latin,latin-ext);
+@import url(http://fonts.googleapis.com/css?family=Cardo:300,400,500,600,700&subset=latin,latin-ext);
 /* 
  * Variables, mixins, abstract classes and functions that do not themselves compile to CSS,
  * but are used throughout the project.
