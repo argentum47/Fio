@@ -7,6 +7,11 @@
      ng-repeat="daily in dailies | orderBy:order" 
      ng-show="filtered_entries.length">
 
+	<div class="timeline-date">
+		<span>{{ daily.date | date: 'dd' }}</span>
+		<span>{{ daily.date | date: 'EEEE' }}</span>
+	</div>
+
 	<div class="entry" 
 	     ng-repeat="entry in filtered_entries = (daily.subentries | filter: filters)" 
 	     ng-class="{'editing': editing}" 
@@ -14,7 +19,6 @@
 	     focus-on-click>
 
 		<div ng-hide="editing">
-			<div class="c date" ng-class="{'no-hide': (filters.note || filters.category || filters.$)}">{{ daily.date | date: 'dd.MM.yyyy' }}</div>
 			<div class="c amount amt {{ get_type(entry.amount) }}">{{ entry.amount | currency:'€':2 }}</div>
 			<div class="c category">{{ entry.category }}</div>
 			<div class="c note">{{ entry.note }}</div>
@@ -57,4 +61,4 @@
 	</div>
 </div> <!-- .daily -->
 
-<div class="no-data" ng-show="dailies.length < 1">No entries added</div><!-- A daily listing
+<div class="no-data" ng-show="dailies.length < 1">No entries added</div>

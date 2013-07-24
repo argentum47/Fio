@@ -42,7 +42,9 @@ body {
 
 .c {
   display: block;
-  float: left; }
+  overflow: hidden;
+  float: left;
+  white-space: nowrap; }
   .c.date {
     width: 197.4px; }
   .c.amount {
@@ -61,9 +63,11 @@ body {
 .entry {
   position: relative;
   cursor: pointer; }
-  .entry:not(:first-child):not(.editing) .amount {
+  .entry .amount {
     margin-left: 197.4px; }
-  .entry:not(:first-child):not(.editing) .date {
+  .entry.editing .amount {
+    margin-left: 0; }
+  .entry.editing .timeline-date {
     display: none; }
   .entry:hover {
     background-color: #f0f0f0; }
@@ -84,9 +88,19 @@ body {
   font-size: 0.9375em;
   background-color: #f9f9f9; }
 
+.timeline-date {
+  position: absolute;
+  width: 197.4px;
+  text-align: center;
+  z-index: 1; }
+  .timeline-date span:first-child {
+    display: block;
+    font-size: 27.73333px; }
+  .timeline-date span:nth-last-child(1) {
+    font-style: italic; }
+
 .daily-totals {
-  margin-bottom: 3em;
-  background-color: #f9f9f9; }
+  margin-bottom: 3em; }
   .daily-totals .amount {
     float: none;
     margin-left: 197.4px; }

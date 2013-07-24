@@ -111,7 +111,9 @@ $note_w: 0.35 * $module_width;
 
 .c {
 	display: block;
+	overflow: hidden;
 	float: left;
+	white-space: nowrap;
 
 	&.date { width: $date_w; }
 	&.amount { width: $amount_w; margin-right: $amount_p; }
@@ -133,9 +135,10 @@ $note_w: 0.35 * $module_width;
 .entry {
 	position: relative;
 	cursor: pointer;
-	&:not(:first-child):not(.editing) {
-		.amount { margin-left: $date_w; }
-		.date { display: none; }
+	.amount { margin-left: $date_w; }
+	&.editing {
+		.amount { margin-left: 0 }
+		.timeline-date { display: none }
 	}
 	&:hover {
 		background-color: $ll_gray;
@@ -160,9 +163,22 @@ $note_w: 0.35 * $module_width;
 	background-color: $lll_gray;
 }
 
+.timeline-date {
+	position: absolute;
+	width: $date_w;
+	text-align: center;
+	z-index: 1; 	// Get out of the way of the entry hover
+	span:first-child {
+		display: block;
+		font-size: em(26px, em(15px));
+	}
+	span:nth-last-child(1) {
+		font-style: italic;
+	}
+}
+
 .daily-totals {
 	margin-bottom: 3em;
-	background-color: $lll_gray;
 	.amount {
 		float: none;
 		margin-left: $date_w;
