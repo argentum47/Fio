@@ -189,9 +189,6 @@ $totals_w: $date_w + $amount_w;
 		}
 		.remove { display: block; }
 	}
-	&:not(:nth-last-child(1)) {
-		border-bottom: 1px dashed $gray;
-	}
 	.remove {
 		display: none;
 		position: absolute;
@@ -206,9 +203,14 @@ $totals_w: $date_w + $amount_w;
 	}
 }
 
+.module-io {
+	overflow: hidden;
+	font-size: em(15px);
+	background-color: $lll_gray;
+}
+
 .total {
 	margin-bottom: 3em;
-	border-bottom: 1px solid $gray;
 	background-color: $lll_gray;
 	.amount {
 		margin-left: $date_w;
@@ -220,7 +222,6 @@ $totals_w: $date_w + $amount_w;
 }
 
 .s-new-entry {
-	margin-bottom: 3em;
 	input:not([type=submit]) {
 		width: 100%;
 		height: 25px;

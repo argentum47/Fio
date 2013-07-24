@@ -46,6 +46,11 @@ $main_font: 'Cardo', 'Baskerville', serif;
 //=Functional stuff
 //=====================================
 
+// Pixels to ems
+@function em($px, $base: 16px) {
+    @return ($px / $base) * 1em;
+}
+
 // Enables the use of variables inside calc() with string interpolation
 // Proper use: calcu(property, "1100% - #{dim_variable}")
 @mixin calcu($property, $expression) {
