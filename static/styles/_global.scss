@@ -85,7 +85,7 @@ input {
 
 .module {
 	float: left;
-	@include calcu(width, "100% - #{$focal_width}");
+	width: $module_width;
 }
 
 section {
@@ -98,50 +98,23 @@ body {
 	// All numbers should be monospaced
 	font: 300 1em/1.5em $main_font;
 	color: $dd_gray;
+	background-color: $ll_gray;
 }
 
-// All pixels, no ems
-.totals {
-	background-color: #f1f1ed;
-	& > * {
-		$p: 0.07;
-		padding: 0 ($p * $focal_width);
-		padding-bottom: 0.345em;
-		&:first-child { padding-top: $p * $focal_width; }
-		&:nth-last-child(1) { padding-bottom: $p * $focal_width; }
-	}
-	.balance {
-		text-align: center;
-		span {
-			position: relative;
-			&:before {
-				content: '€';
-				display: block;
-				position: absolute;
-				left: -1em;
-				width: 1em;
-				height: 100%;
-				font-size: 40%;
-			}
-		}
-	}
-	date {
-		display: block;
-		font-size: 14px
-	}
-}
+// Entries ================================================
 
-$page_width: 987px;
-$date_w: 0.2 * $page_width;
-$amount_w: 0.15 * $page_width;
-$category_w: 0.25 * $page_width;
-$note_w: 0.4 * $page_width;
-$totals_w: $date_w + $amount_w;
+$date_w: 0.2 * $module_width;
+$amount_w: 0.1 * $module_width;
+$amount_p: 0.05 * $module_width;
+$category_w: 0.3 * $module_width;
+$note_w: 0.35 * $module_width;
 
 .c {
-	&.all-totals { width: $totals_w; }
+	display: block;
+	float: left;
+
 	&.date { width: $date_w; }
-	&.amount { width: $amount_w; }
+	&.amount { width: $amount_w; margin-right: $amount_p; }
 	&.category { width: $category_w; }
 	&.note { width: $note_w; }
 	&.full { width: 100%; }
@@ -152,41 +125,20 @@ $totals_w: $date_w + $amount_w;
 }
 
 .daily {
-	.entry:first-child {
-		.amount {
-			margin-left: 0;
-		}
-		.date {
-			display: block;
-		}
-		&:hover .date {
-			color: inherit;
-		}
+	.amt {
+		text-align: right;
 	}
- }
+}
 
 .entry {
 	position: relative;
 	cursor: pointer;
-	.amount {
-		margin-left: $date_w;
-	}
-	.date {
-		display: none;
-	}
-	&.editing {
-		.amount { margin: 0; }
-		.date { display: block; }
+	&:not(:first-child):not(.editing) {
+		.amount { margin-left: $date_w; }
+		.date { display: none; }
 	}
 	&:hover {
 		background-color: $ll_gray;
-		.date { 
-			display: block;
-			color: $gray; 
-		}
-		.amount {
-			margin-left: 0;
-		}
 		.remove { display: block; }
 	}
 	.remove {
@@ -204,15 +156,15 @@ $totals_w: $date_w + $amount_w;
 }
 
 .module-io {
-	overflow: hidden;
 	font-size: em(15px);
 	background-color: $lll_gray;
 }
 
-.total {
+.daily-totals {
 	margin-bottom: 3em;
 	background-color: $lll_gray;
 	.amount {
+		float: none;
 		margin-left: $date_w;
 	}
 }

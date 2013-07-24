@@ -8,7 +8,7 @@ angular.module('fio.directives', [])
 
     // Unfocus focused input on ENTER keypress
     // (assuming only one input can have focus at any one time)
-    element.bind("keydown keypress", function(event) {
+    element.find('input').bind("keydown keypress", function(event) {
       if(event.which === 13) {
         element.find('input:focus').blur();
       }
