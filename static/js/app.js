@@ -3,5 +3,5 @@ var app = angular.module('fio', ['fio.services', 'fio.controllers', 'fio.directi
   $routeProvider.when('/io', {templateUrl: 'static/partials/io.html', controller: 'IOCtrl'});
   $routeProvider.when('/recurring', {templateUrl: 'static/partials/recurring.html'});
   $routeProvider.when('/totals', {templateUrl: 'static/partials/totals.html'});
-  $routeProvider.otherwise({redirectTo: '/'});
+  $routeProvider.otherwise({redirectTo: '/io'});
 }]);
