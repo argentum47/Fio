@@ -1,6 +1,6 @@
-<div ng-init="init_io_ctrl()">
+<div ng-init="init_io_ctrl()" class="module-io">
 
-	<section class="s-total">
+	<!-- <section class="s-total">
 		<div class="cw">
 			<div class="c all-totals">
 				<span class="c date">Total income:</span>
@@ -13,8 +13,8 @@
 			<div class="c category"><input type="text" ng-model="filters.$" /></div>
 		</div>
 	</section>
-
-	<section class="s-headings">
+ -->
+<!-- 	<section class="s-headings">
 		<div class="cw">
 			<div class="c date">Date</div>
 			<div class="c amount">Amount</div>
@@ -30,9 +30,9 @@
 			</div>
 			<div class="c note"><input type="text" placeholder="Search notes" ng-model="filters.note" /></div>
 		</div>
-	</section>
+	</section> -->
 
-	<section class="s-new-entry">
+<!-- 	<section class="s-new-entry">
 		<div class="cw">
 			<form name="addEntryForm" 
 			      press-enter="add_entry()" 
@@ -48,10 +48,10 @@
 				<div class="c note"><input type="text" ng-model="note" /></div>
 			</form>
 		</div>
-	</section>
+	</section> -->
 
 	<section class="s-data">
-		<div class="cw" ng-include src="templates.entries"></div>
+		<div ng-include src="templates.entries"></div>
 	</section>
 
 </div>
