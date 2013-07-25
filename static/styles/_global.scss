@@ -188,6 +188,7 @@ $entries_lh: em(27px, $entries_fs);
 	.amount { margin-left: $date_w; }
 	&.editing { 
 		line-height: 2 * $entries_lh;
+		background-color: $d_gray;
 		.amount {
 			margin-left: 0;
 		}
@@ -230,6 +231,7 @@ $entries_lh: em(27px, $entries_fs);
 	width: $date_w;
 	text-align: center;
 	z-index: 1; 	// Get out of the way of the entry hover
+	@include calcu(left, "(100% - #{$page_width}) / 2");
 	span:first-child {
 		display: block;
 		font-size: em(26px, $entries_fs);

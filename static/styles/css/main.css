@@ -111,7 +111,8 @@ body {
   .entry .amount {
     margin-left: 197.4px; }
   .entry.editing {
-    line-height: 57.6px; }
+    line-height: 57.6px;
+    background-color: #737373; }
     .entry.editing .amount {
       margin-left: 0; }
   .entry:hover .remove {
@@ -145,7 +146,11 @@ body {
   position: absolute;
   width: 197.4px;
   text-align: center;
-  z-index: 1; }
+  z-index: 1;
+  left: -moz-calc((100% - 987px) / 2);
+  left: -o-calc((100% - 987px) / 2);
+  left: -webkit-calc((100% - 987px) / 2);
+  left: calc((100% - 987px) / 2); }
   .timeline-date span:first-child {
     display: block;
     font-size: 27.73333px; }

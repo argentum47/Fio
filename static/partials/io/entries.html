@@ -2,7 +2,6 @@
      ng-repeat="daily in dailies | orderBy:order" 
      ng-show="filtered_entries.length">
 
-  	<div class="cw">
 		<div class="timeline-date">
 			<span>{{ daily.date | date: 'dd' }}</span>
 			<span>{{ daily.date | date: 'EEEE' }}</span>
@@ -14,48 +13,49 @@
 		     ng-click="editing=true" 
 		     focus-on-click>
 
-			<div ng-hide="editing">
-				<div class="c amount amt {{ get_type(entry.amount) }}">{{ entry.amount | currency:'':2 }}</div>
-				<div class="c category">{{ entry.category }}</div>
-				<div class="c note">{{ entry.note }}</div>
-			</div>
+		    <div class="cw">
+				<div ng-hide="editing">
+					<div class="c amount amt {{ get_type(entry.amount) }}">{{ entry.amount | currency:'':2 }}</div>
+					<div class="c category">{{ entry.category }}</div>
+					<div class="c note">{{ entry.note }}</div>
+				</div>
 
-			<div ng-show="editing">
-				<form stop-editing="editing=false;process_edits(daily, entry)" 
-				      ng-init="set_entry_date(daily.date, entry)">
-					<div class="c date">
-						<input type="date"  
-						       value="{{ daily.date | date:'yyyy-MM-dd' }}" 
-						       ng-model="entry.date" />
-					</div>
-					<div class="c amount amt">
-						<input type="number" 
-						       step="any" 
-						       value="{{ entry.amount }}" 
-						       ng-model="entry.amount" />
-					</div>
-					<div class="c category">
-						<input type="text" 
-						       value="{{ entry.category }}" 
-						       ng-model="entry.category" />
-					</div>
-					<div class="c note">
-						<input type="text" 
-						       value="{{ entry.note }}" 
-						       ng-model="entry.note" />
-					</div>
-				</form>
-			</div> <!-- when editing -->
+				<div ng-show="editing">
+					<form stop-editing="editing=false;process_edits(daily, entry)" 
+					      ng-init="set_entry_date(daily.date, entry)">
+						<div class="c date">
+							<input type="date"  
+							       value="{{ daily.date | date:'yyyy-MM-dd' }}" 
+							       ng-model="entry.date" />
+						</div>
+						<div class="c amount amt">
+							<input type="number" 
+							       step="any" 
+							       value="{{ entry.amount }}" 
+							       ng-model="entry.amount" />
+						</div>
+						<div class="c category">
+							<input type="text" 
+							       value="{{ entry.category }}" 
+							       ng-model="entry.category" />
+						</div>
+						<div class="c note">
+							<input type="text" 
+							       value="{{ entry.note }}" 
+							       ng-model="entry.note" />
+						</div>
+					</form>
+				</div> <!-- when editing -->
 
-			<span class="remove" ng-click="remove_entry(daily, entry)">[x]</span>
+				<span class="remove" ng-click="remove_entry(daily, entry)">[x]</span>
 
+			</div> <!-- .cw -->
 		</div> <!-- .entry -->
 
-		<div class="c full daily-totals" ng-hide="filters.note || filters.category || filters.$">
+		<div class="cw daily-totals" ng-hide="filters.note || filters.category || filters.$">
 			<div class="c amount amt" ng-show="get_daily_totals(daily).inc">{{ get_daily_totals(daily).inc | currency:'':2 }}</div>
 			<div class="c amount amt" ng-show="get_daily_totals(daily).exp">{{ get_daily_totals(daily).exp | currency:'':2 }}</div>
 		</div>
-	</div> <!-- .cw -->
 </div> <!-- .daily -->
 
 <div class="no-data" ng-show="dailies.length < 1">No entries added</div>
