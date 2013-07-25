@@ -55,7 +55,6 @@ angular.module('fio.directives', [])
     link: function(scope, element, attrs) {
       element.bind('click', function(event) {
         $timeout(function() {
-          log(event)
           if (!element.find('input').is(':focus')) {
 
             // Start out by focusing the first input
