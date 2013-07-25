@@ -73,16 +73,20 @@ input {
 //=========================================================
 // Classes to define the base structure of the page
 
+$page_frame_w: 7px;
+
 .totals {
 	position: fixed;
 	top: 0;
 	width: 100%;
 	height: 150px;
+	padding: $page_frame_w $page_frame_w 0 $page_frame_w;
 	z-index: 2;
 }
 
 .module {
-	margin-top: 150px;
+	overflow: hidden;
+	margin: (150px + $page_frame_w) $page_frame_w $page_frame_w $page_frame_w;
 }
 
 section {
@@ -94,6 +98,31 @@ section {
 body {
 	font: 300 1em/1.5em $main_font;
 	color: $dd_gray;
+}
+
+.page-frame {
+	span {
+		display: block;
+		position: fixed;
+		background-color: $gray;
+		z-index: 5;
+	}
+	.top, .bottom {
+		width: 100%;
+		height: $page_frame_w;
+	}
+	.left, .right {
+		height: 100%;
+		width: $page_frame_w;
+	}
+	.top, .left {
+		top: 0;
+		left: 0
+	}
+	.bottom, .right {
+		bottom: 0;
+		right: 0;
+	}
 }
 
 .totals {
