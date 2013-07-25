@@ -53,10 +53,21 @@ angular.module('fio.directives', [])
 .directive('focusOnClick', function($timeout) {
   return {
     link: function(scope, element, attrs) {
-      element.bind('click', function() {
+      element.bind('click', function(event) {
         $timeout(function() {
+          log(event)
           if (!element.find('input').is(':focus')) {
+
+            // Start out by focusing the first input
             element.find('input')[0].focus();
+
+            // Attempt to perform a mouse click again 
+            // to focus the input I actually wanted to change
+            var el_at_pointer = $(document.elementFromPoint(event.clientX, event.clientY));
+            if (el_at_pointer.is('input')) {
+              el_at_pointer.focus();
+            }
+
           }
         });
       });
