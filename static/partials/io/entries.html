@@ -19,7 +19,7 @@
 	     focus-on-click>
 
 		<div ng-hide="editing">
-			<div class="c amount amt {{ get_type(entry.amount) }}">{{ entry.amount | currency:'€':2 }}</div>
+			<div class="c amount amt {{ get_type(entry.amount) }}">{{ entry.amount | currency:'':2 }}</div>
 			<div class="c category">{{ entry.category }}</div>
 			<div class="c note">{{ entry.note }}</div>
 		</div>
@@ -56,8 +56,8 @@
 	</div> <!-- .entry -->
 
 	<div class="c full daily-totals" ng-hide="filters.note || filters.category || filters.$">
-		<div class="c amount amt" ng-show="get_daily_totals(daily).inc">{{ get_daily_totals(daily).inc | currency:'€':2 }}</div>
-		<div class="c amount amt" ng-show="get_daily_totals(daily).exp">{{ get_daily_totals(daily).exp | currency:'€':2 }}</div>
+		<div class="c amount amt" ng-show="get_daily_totals(daily).inc">{{ get_daily_totals(daily).inc | currency:'':2 }}</div>
+		<div class="c amount amt" ng-show="get_daily_totals(daily).exp">{{ get_daily_totals(daily).exp | currency:'':2 }}</div>
 	</div>
 </div> <!-- .daily -->
 

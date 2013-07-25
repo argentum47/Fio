@@ -11,6 +11,9 @@ angular.module('fio.filters', [])
 		if (is_negative) {
 			currency = "-" + currency;
 		}
+		else {
+			currency = "+" + currency;
+		}
 		return currency;
 	}
 });
