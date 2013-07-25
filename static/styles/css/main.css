@@ -32,17 +32,21 @@ input {
   margin: 0 auto; }
 
 .totals {
-  float: left;
-  width: 280px; }
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 150px;
+  z-index: 2; }
 
 .module {
-  float: left;
-  width: 987px; }
+  margin-top: 150px; }
 
 body {
   font: 300 1em/1.5em "Cardo", "Baskerville", serif;
-  color: #333333;
-  background-color: #f9f9f9; }
+  color: #333333; }
+
+.totals {
+  background-color: white; }
 
 .c {
   display: block;
@@ -64,15 +68,11 @@ body {
 .daily {
   padding-top: 26.66667px;
   padding-bottom: 26.66667px;
-  border-bottom: 1px solid #d1d1d1;
-  /* 	@include background-image(radial-gradient(($date_w + (($amount_w + $category_w + $note_w) / 2)) -10px, 
-  		                      circle, 
-  		                      rgba($ll_gray, 0.5) 100px, 
-  		                      rgba($white, 0) 200px)); */ }
+  border-bottom: 1px solid #d1d1d1; }
   .daily .amt {
     text-align: right; }
-  .daily > *:nth-last-child(2) .amount {
-    border-bottom: 1px solid #d1d1d1; }
+  .daily .cw > *:nth-last-child(2) .amount {
+    border-bottom: 2px dotted #949494; }
 
 .daily-totals {
   line-height: 28.8px; }
@@ -113,11 +113,7 @@ body {
 
 .module-io {
   font-size: 0.9375em;
-  background-color: white;
-  /* @include background-image(linear-gradient(90deg, 
-  	                                      $lll_gray ceil($date_w / 2 - 1), 
-  	                                      $ll_gray ceil($date_w / 2), 
-  	                                      $lll_gray ceil($date_w / 2 + 2))); */ }
+  background-color: white; }
 
 .timeline-date {
   position: absolute;

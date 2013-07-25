@@ -17,10 +17,9 @@
 </head>
 <body>
 
-	<div class="module" ng-view></div>
-
-	<!-- The sidebar overview and nav. Focal point of experience. -->
-	<aside class="totals">
+	<header class="totals">
+		<div class="cw">Here totals</div>
+		<div class="cw thead">Here filtering</div>
 <!-- 		<nav>
 			<ul>
 				<li><a href="#/io">IO</a></li>
@@ -28,7 +27,9 @@
 				<li><a href="#/totals">Totals</a></li>
 			</ul>
 		</nav> -->
-	</aside>
+	</header>
+
+	<div class="module" ng-view></div>
 
 	<!-- The document.ready libraries -->
 	<script src="static/lib/jquery-1.10.2.min.js"></script>
