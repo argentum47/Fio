@@ -104,7 +104,7 @@ body {
 	span {
 		display: block;
 		position: fixed;
-		background-color: $gray;
+		background-color: $d_gray;
 		z-index: 5;
 	}
 	.top, .bottom {
@@ -126,6 +126,7 @@ body {
 }
 
 .totals {
+	border-bottom: 1px solid $d_gray;
 	background-color: $white;
 }
 
@@ -188,7 +189,7 @@ $entries_lh: em(27px, $entries_fs);
 	&:hover {
 		.remove { display: block; }
 	}
-	&:after {
+	&:not(.editing):after {
 		content: '';
 		display: block;
 		position: absolute;
