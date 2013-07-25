@@ -184,8 +184,14 @@ $entries_lh: em(27px, $entries_fs);
 	position: relative;
 	line-height: $entries_lh;
 	cursor: pointer;
+	@include transition(line-height, 0.3s);
 	.amount { margin-left: $date_w; }
-	&.editing .amount { margin-left: 0 }
+	&.editing { 
+		line-height: 2 * $entries_lh;
+		.amount {
+			margin-left: 0;
+		}
+	}
 	&:hover {
 		.remove { display: block; }
 	}

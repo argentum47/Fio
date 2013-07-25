@@ -104,11 +104,16 @@ body {
 .entry {
   position: relative;
   line-height: 28.8px;
-  cursor: pointer; }
+  cursor: pointer;
+  -webkit-transition: line-height, 0.3s;
+  -moz-transition: line-height, 0.3s;
+  transition: line-height, 0.3s; }
   .entry .amount {
     margin-left: 197.4px; }
-  .entry.editing .amount {
-    margin-left: 0; }
+  .entry.editing {
+    line-height: 57.6px; }
+    .entry.editing .amount {
+      margin-left: 0; }
   .entry:hover .remove {
     display: block; }
   .entry:not(.editing):after {
