@@ -16,20 +16,25 @@ angular.module('fio.directives', [])
 
     // Listen to any contained inputs losing focus
     element.find('input').bind('blur', function(event) {
-
+      
       // Give it a moment to allow any other inputs to get focus
       $timeout(function() {
+
         // Only okay to execute expression when sure that
         // no other inputs in the same form now have focus
-        if (!$(event.target).parents('form').find('input').is(':focus')) {
+        // and that all required stuff has been filled out
+        if (!$(element).find('input').is(':focus')
+            && !$(element).hasClass('ng-invalid')) {
+
+          log("Not other has focus and is valid")
           scope.$apply(function() {
-            scope.$eval(attrs.stopEditing)
+            scope.$eval(attrs.stopEditing);
           });
-        } /* if no other has blur */
+
+        } /* if no other has blur and is valid */
+
       }); /* timeout */
-
     }); /* input bind blur */
-
   }; /* return function */
 }) /* stopEditing */
 
