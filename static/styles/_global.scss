@@ -203,7 +203,7 @@ $block_spacing: em(20px, $entries_fs);
 		.remove { display: block; }
 	}
 	// This is the separator between entries and totals
-	&.last .amount { border-bottom: 2px dotted $gray; }	
+	&.last:not(.editing) .amount { border-bottom: 2px dotted $gray; }	
 	.amount { margin-left: $date_w; }
 	.c { cursor: pointer; }
 	input {
@@ -277,7 +277,6 @@ $block_spacing: em(20px, $entries_fs);
 
 .timeline-month {
 	height: $month_height;
-	font-size: em(17px, $entries_fs);
 	font-weight: 700;
 	font-variant: small-caps;
 	text-transform: lowercase;

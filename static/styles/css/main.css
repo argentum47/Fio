@@ -124,7 +124,7 @@ body {
       margin-left: 0; }
     .entry.editing .remove {
       display: block; }
-  .entry.last .amount {
+  .entry.last:not(.editing) .amount {
     border-bottom: 2px dotted #949494; }
   .entry .amount {
     margin-left: 197.4px; }
@@ -191,7 +191,6 @@ body {
 
 .timeline-month {
   height: 32px;
-  font-size: 18.13333px;
   font-weight: 700;
   font-variant: small-caps;
   text-transform: lowercase;
