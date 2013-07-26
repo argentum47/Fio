@@ -48,6 +48,9 @@
 
 input {
 	font-family: $main_font;
+	background-color: transparent;
+	border: 0;
+	outline: 0;
 }
 
 // Override .pure-g letter-spacing to work with monospaced fonts
@@ -167,7 +170,7 @@ $entries_lh: em(27px, $entries_fs);
 		text-align: right;
 	}
 	// This is the separator between entries and totals
-	.cw > *:nth-last-child(2) .amount {
+	& > *:nth-last-child(2) .amount {
 		border-bottom: 2px dotted $gray;
 	}
 }
@@ -184,7 +187,7 @@ $entries_lh: em(27px, $entries_fs);
 	position: relative;
 	line-height: $entries_lh;
 	cursor: pointer;
-	@include transition(line-height, 0.3s);
+	@include transition(line-height, 0.2s);
 	.amount { margin-left: $date_w; }
 	&.editing { 
 		line-height: 2 * $entries_lh;
@@ -209,6 +212,7 @@ $entries_lh: em(27px, $entries_fs);
 	}
 	input {
 		width: 100%;
+		color: $white;
 	}
 	.remove {
 		display: none;
