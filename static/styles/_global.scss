@@ -170,7 +170,7 @@ $entries_lh: em(27px, $entries_fs);
 		text-align: right;
 	}
 	// This is the separator between entries and totals
-	& > *:nth-last-child(2) .amount {
+	& > *:nth-last-child(2):not(.editing) .amount {
 		border-bottom: 2px dotted $gray;
 	}
 }

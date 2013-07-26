@@ -95,7 +95,7 @@ body {
   border-bottom: 1px solid #d1d1d1; }
   .daily .amt {
     text-align: right; }
-  .daily > *:nth-last-child(2) .amount {
+  .daily > *:nth-last-child(2):not(.editing) .amount {
     border-bottom: 2px dotted #949494; }
 
 .daily-totals {
