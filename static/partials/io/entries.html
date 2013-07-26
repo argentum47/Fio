@@ -12,11 +12,11 @@
 		<div class="entry" 
 		     ng-repeat="entry in filtered_entries = (daily.subentries | filter: filters)" 
 		     ng-class="{'editing': editing}" 
-		     ng-click="editing=true;daily.currently_editing = daily.currently_editing + 1" 
 		     focus-on-click>
 
 		    <div class="cw">
-				<div ng-hide="editing">
+				<div ng-hide="editing"
+				     ng-click="editing=true;daily.currently_editing = daily.currently_editing + 1">
 					<div class="c amount amt {{ get_type(entry.amount) }}">{{ entry.amount | currency:'':2 }}</div>
 					<div class="c category">{{ entry.category }}</div>
 					<div class="c note">{{ entry.note }}</div>
@@ -24,7 +24,9 @@
 
 				<div ng-show="editing">
 					<form name="edit-entry" 
-					      stop-editing="editing=false;daily.currently_editing = daily.currently_editing - 1;process_edits(daily, entry)" 
+					      stop-editing="editing=false;
+					                    daily.currently_editing = daily.currently_editing - 1;
+					                    process_edits(daily, entry)" 
 					      ng-init="set_entry_date(daily.date, entry)" 
 					      novalidate>
 						<div class="c date">
