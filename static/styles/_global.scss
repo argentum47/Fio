@@ -82,14 +82,14 @@ $page_frame_w: 7px;
 	position: fixed;
 	top: 0;
 	width: 100%;
-	height: 150px;
+	height: 50px;
 	padding: $page_frame_w $page_frame_w 0 $page_frame_w;
 	z-index: 2;
 }
 
 .module {
 	overflow: hidden;
-	margin: (150px + $page_frame_w) $page_frame_w $page_frame_w $page_frame_w;
+	margin: (50px + $page_frame_w) $page_frame_w $page_frame_w $page_frame_w;
 }
 
 section {
@@ -143,6 +143,8 @@ $note_w: 0.4 * $module_width;
 
 $entries_fs: em(15px);
 $entries_lh: em(27px, $entries_fs);
+$month_height: em(30px, $entries_fs);
+$block_spacing: em(20px, $entries_fs);
 
 .c {
 	display: block;
@@ -157,29 +159,8 @@ $entries_lh: em(27px, $entries_fs);
 	&.full { width: 100%; }
 }
 
-.entry, .daily {
+.entries {
 	@extend %uncollapse;
-}
-
-.daily {
-	position: relative;
-	padding-top: em(20px, $entries_fs);
-	padding-bottom: em(20px, $entries_fs);
-	// This is the separator between entries and totals
-	& > *:nth-last-child(2):not(.editing) .amount {
-		border-bottom: 2px dotted $gray;
-	}
-	// This draws the timeline
-	&:after {
-		content: '';
-		display: block;
-		position: absolute;
-		top: 0;
-		width: 2px;
-		height: 100%;
-		border-right: 2px dotted $gray;
-		@include calcu(left, "((100% - #{$page_width}) / 2) + (#{$date_w} / 2)")
-	}
 	.amt {
 		text-align: right;
 	}
@@ -194,18 +175,10 @@ $entries_lh: em(27px, $entries_fs);
 }
 
 .entry {
+	@extend %uncollapse;
 	position: relative;
 	line-height: $entries_lh;
-	cursor: pointer;
 	@include transition(line-height, 0.2s);
-	.amount { margin-left: $date_w; }
-	&.editing { 
-		line-height: 2 * $entries_lh;
-		background-color: $d_gray;
-		.amount {
-			margin-left: 0;
-		}
-	}
 	&:hover {
 		.remove { display: block; }
 	}
@@ -219,10 +192,22 @@ $entries_lh: em(27px, $entries_fs);
 			top: 0;
 			right: 0;
 			height: 100%;
-			width: em(70px, $entries_fs);
-			@include background-image(linear-gradient(90deg, rgba($white, 0) 0%, $white 30%));
+			width: em(20px, $entries_fs);
+			@include background-image(linear-gradient(90deg, rgba($white, 0) 0%, $white 100%));
 		}
 	}
+	&.editing { 
+		line-height: 2 * $entries_lh;
+		background-color: $d_gray;
+		z-index: 1;
+		.amount {
+			margin-left: 0;
+		}
+	}
+	// This is the separator between entries and totals
+	&.last .amount { border-bottom: 2px dotted $gray; }	
+	.amount { margin-left: $date_w; }
+	.c { cursor: pointer; }
 	input {
 		width: 100%;
 		color: $white;
@@ -238,46 +223,61 @@ $entries_lh: em(27px, $entries_fs);
 	}
 }
 
+
+
 .module-io {
 	font-size: $entries_fs;
 	background-color: $white;
 }
 
-.month-year {
-	margin-bottom: em(40px, em(10px, $entries_fs));
-	text-align: center;
-	span {
-		position: relative;
-		font-family: 'Nevis';
-		font-size: em(10px, $entries_fs);
-		text-transform: uppercase;
-		background-color: $white;
+.timeline-block {
+	@extend %uncollapse;
+	position: relative;
+	position: relative;
+	padding-top: $block_spacing;
+	padding-bottom: $block_spacing;
+	margin-bottom: 2px; // This is so the dotted line stays nice
+	// This draws the timeline
+	&:after {
+		content: '';
+		display: block;
+		position: absolute;
+		top: 0;
+		width: 2px;
+		height: 100%;
+		border-right: 2px dotted $gray;
+		@include calcu(left, "((100% - #{$page_width}) / 2) + (#{$date_w} / 2)")
+	}
+	&.with-month {
+		// When we also display the month, we need extra space for
+		// 2 * $block_spacing for the space between the month and the date 
+		// 1 * $block_spacing for the space above the month
+		// $month_height for the actual month. 
+		// .timeline_date is subsequently pushed down exactly that amount.
+		padding-top: (3 * $block_spacing) + $month-height;
+		.timeline-date { top: (3 * $block_spacing) + $month_height; }
 	}
 }
 
-.timeline-date {
+.timeline-date, 
+.timeline-month {
 	position: absolute;
+	top: $block_spacing;
 	width: $date_w;
 	text-align: center;
 	background-color: $white;
 	z-index: 1; 	// Get out of the way of the entry hover
 	@include calcu(left, "(100% - #{$page_width}) / 2");
-	span:first-child {
+	.date {
 		display: block;
 		font-size: em(26px, $entries_fs);
 	}
-	span:nth-last-child(1) {
+	.day {
 		font-style: italic;
 	}
 }
 
-.s-headings {
-	background-color: $ll_gray;
-}
-
-.s-new-entry {
-	input:not([type=submit]) {
-		width: 100%;
-		height: 25px;
-	}
+.timeline-month {
+	height: $month_height;
+	line-height: $month_height;
 }

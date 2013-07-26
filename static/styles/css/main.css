@@ -11,7 +11,7 @@
   font-weight: normal;
   font-style: normal; }
 
-section, .entry, .daily {
+section, .entries, .entry, .timeline-block {
   float: left;
   width: 100%; }
 
@@ -38,13 +38,13 @@ input {
   position: fixed;
   top: 0;
   width: 100%;
-  height: 150px;
+  height: 50px;
   padding: 7px 7px 0 7px;
   z-index: 2; }
 
 .module {
   overflow: hidden;
-  margin: 157px 7px 7px 7px; }
+  margin: 57px 7px 7px 7px; }
 
 body {
   font: 300 1em/1.5em "Cardo", "Baskerville", serif;
@@ -89,26 +89,8 @@ body {
   .c.full {
     width: 100%; }
 
-.daily {
-  position: relative;
-  padding-top: 21.33333px;
-  padding-bottom: 21.33333px; }
-  .daily > *:nth-last-child(2):not(.editing) .amount {
-    border-bottom: 2px dotted #949494; }
-  .daily:after {
-    content: '';
-    display: block;
-    position: absolute;
-    top: 0;
-    width: 2px;
-    height: 100%;
-    border-right: 2px dotted #949494;
-    left: -moz-calc(((100% - 987px) / 2) + (197.4px / 2));
-    left: -o-calc(((100% - 987px) / 2) + (197.4px / 2));
-    left: -webkit-calc(((100% - 987px) / 2) + (197.4px / 2));
-    left: calc(((100% - 987px) / 2) + (197.4px / 2)); }
-  .daily .amt {
-    text-align: right; }
+.entries .amt {
+  text-align: right; }
 
 .daily-totals {
   line-height: 28.8px; }
@@ -119,17 +101,9 @@ body {
 .entry {
   position: relative;
   line-height: 28.8px;
-  cursor: pointer;
   -webkit-transition: line-height, 0.2s;
   -moz-transition: line-height, 0.2s;
   transition: line-height, 0.2s; }
-  .entry .amount {
-    margin-left: 197.4px; }
-  .entry.editing {
-    line-height: 57.6px;
-    background-color: #737373; }
-    .entry.editing .amount {
-      margin-left: 0; }
   .entry:hover .remove {
     display: block; }
   .entry:not(.editing) .note {
@@ -141,9 +115,21 @@ body {
       top: 0;
       right: 0;
       height: 100%;
-      width: 74.66667px;
-      background-image: -webkit-linear-gradient(-360deg, rgba(255, 255, 255, 0) 0%, white 30%);
-      background-image: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, white 30%); }
+      width: 21.33333px;
+      background-image: -webkit-linear-gradient(-360deg, rgba(255, 255, 255, 0) 0%, white 100%);
+      background-image: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, white 100%); }
+  .entry.editing {
+    line-height: 57.6px;
+    background-color: #737373;
+    z-index: 1; }
+    .entry.editing .amount {
+      margin-left: 0; }
+  .entry.last .amount {
+    border-bottom: 2px dotted #949494; }
+  .entry .amount {
+    margin-left: 197.4px; }
+  .entry .c {
+    cursor: pointer; }
   .entry input {
     width: 100%;
     color: white; }
@@ -160,18 +146,33 @@ body {
   font-size: 0.9375em;
   background-color: white; }
 
-.month-year {
-  margin-bottom: 3.75em;
-  text-align: center; }
-  .month-year span {
-    position: relative;
-    font-family: 'Nevis';
-    font-size: 10.66667px;
-    text-transform: uppercase;
-    background-color: white; }
+.timeline-block {
+  position: relative;
+  position: relative;
+  padding-top: 21.33333px;
+  padding-bottom: 21.33333px;
+  margin-bottom: 2px; }
+  .timeline-block:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    width: 2px;
+    height: 100%;
+    border-right: 2px dotted #949494;
+    left: -moz-calc(((100% - 987px) / 2) + (197.4px / 2));
+    left: -o-calc(((100% - 987px) / 2) + (197.4px / 2));
+    left: -webkit-calc(((100% - 987px) / 2) + (197.4px / 2));
+    left: calc(((100% - 987px) / 2) + (197.4px / 2)); }
+  .timeline-block.with-month {
+    padding-top: 96px; }
+    .timeline-block.with-month .timeline-date {
+      top: 96px; }
 
-.timeline-date {
+.timeline-date,
+.timeline-month {
   position: absolute;
+  top: 21.33333px;
   width: 197.4px;
   text-align: center;
   background-color: white;
@@ -180,15 +181,14 @@ body {
   left: -o-calc((100% - 987px) / 2);
   left: -webkit-calc((100% - 987px) / 2);
   left: calc((100% - 987px) / 2); }
-  .timeline-date span:first-child {
+  .timeline-date .date,
+  .timeline-month .date {
     display: block;
     font-size: 27.73333px; }
-  .timeline-date span:nth-last-child(1) {
+  .timeline-date .day,
+  .timeline-month .day {
     font-style: italic; }
 
-.s-headings {
-  background-color: #f0f0f0; }
-
-.s-new-entry input:not([type=submit]) {
-  width: 100%;
-  height: 25px; }
+.timeline-month {
+  height: 32px;
+  line-height: 32px; }
