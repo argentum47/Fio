@@ -10,6 +10,7 @@ angular.module('fio.controllers', [])
     'entries': templates_url + 'entries.html'
   }
 
+  $scope.today_date = new Date();
   $scope.today = new Date().toJSON().slice(0,10);
   $scope.order = '-date';     // the order in which dailies are shown
   $scope.categories = [];
@@ -68,6 +69,12 @@ angular.module('fio.controllers', [])
     $scope.entries.splice($scope.entries.indexOf(entry), 1);
     DS.remove_from_dailies(daily.$$hashKey, entry.$$hashKey, $scope.dailies);
     // DS.remove_entry(entry)
+  }
+
+  // This is used to get dailies at specific positions in the *sorted* list
+  $scope.get_daily_at = function(index) {
+    var sorted_list = $filter('orderBy')($scope.dailies, $scope.order);
+    return sorted_list[index];
   }
 
   $scope.set_entry_date = function(date, entry) {
