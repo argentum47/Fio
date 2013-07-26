@@ -3,7 +3,7 @@ angular.module('fio.directives', [])
 // Directive that executes expression when the FORM it is applied to either
 // detects an ENTER keypress
 // or detects that all of it's inputs have lost focus
-.directive('stopEditing', function($timeout) {
+.directive('finaliseEditing', function($timeout) {
   return function(scope, element, attrs) {
 
     // Unfocus focused input on ENTER keypress
@@ -27,7 +27,7 @@ angular.module('fio.directives', [])
             && !$(element).hasClass('ng-invalid')) {
 
           scope.$apply(function() {
-            scope.$eval(attrs.stopEditing);
+            scope.$eval(attrs.finaliseEditing);
           });
 
         } /* if no other has blur and is valid */

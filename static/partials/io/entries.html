@@ -37,9 +37,10 @@
 
 					<div ng-show="editing">
 						<form name="edit-entry" 
-						      stop-editing="editing=false;
+						      finalise-editing="editing=false;
 						                    daily.currently_editing = daily.currently_editing - 1;
 						                    process_edits(daily, entry)" 
+						      when-click-outside="$(element).parents('.entry')" 
 						      ng-init="set_entry_date(daily.date, entry)" 
 						      novalidate>
 							<div class="c date">
