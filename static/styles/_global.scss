@@ -279,5 +279,9 @@ $block_spacing: em(20px, $entries_fs);
 
 .timeline-month {
 	height: $month_height;
+	font-size: em(17px, $entries_fs);
+	font-weight: 700;
+	font-variant: small-caps;
+	text-transform: lowercase;
 	line-height: $month_height;
 }

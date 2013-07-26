@@ -191,4 +191,8 @@ body {
 
 .timeline-month {
   height: 32px;
+  font-size: 18.13333px;
+  font-weight: 700;
+  font-variant: small-caps;
+  text-transform: lowercase;
   line-height: 32px; }
