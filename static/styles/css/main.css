@@ -100,12 +100,7 @@ body {
 
 .entry {
   position: relative;
-  line-height: 28.8px;
-  -webkit-transition: line-height, 0.2s;
-  -moz-transition: line-height, 0.2s;
-  transition: line-height, 0.2s; }
-  .entry:hover .remove {
-    display: block; }
+  line-height: 28.8px; }
   .entry:not(.editing) .note {
     position: relative; }
     .entry:not(.editing) .note:after {
@@ -121,9 +116,14 @@ body {
   .entry.editing {
     line-height: 57.6px;
     background-color: #737373;
-    z-index: 1; }
+    z-index: 1;
+    -webkit-transition: line-height, 0.2s;
+    -moz-transition: line-height, 0.2s;
+    transition: line-height, 0.2s; }
     .entry.editing .amount {
       margin-left: 0; }
+    .entry.editing .remove {
+      display: block; }
   .entry.last .amount {
     border-bottom: 2px dotted #949494; }
   .entry .amount {
@@ -137,7 +137,7 @@ body {
     display: none;
     position: absolute;
     top: 0;
-    right: -2.3em;
+    right: 0em;
     width: 2.3em;
     text-align: center;
     cursor: pointer; }
