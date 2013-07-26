@@ -162,11 +162,23 @@ $entries_lh: em(27px, $entries_fs);
 }
 
 .daily {
+	position: relative;
 	padding-top: em(20px, $entries_fs);
 	padding-bottom: em(20px, $entries_fs);
 	// This is the separator between entries and totals
 	& > *:nth-last-child(2):not(.editing) .amount {
 		border-bottom: 2px dotted $gray;
+	}
+	// This draws the timeline
+	&:after {
+		content: '';
+		display: block;
+		position: absolute;
+		top: 0;
+		width: 2px;
+		height: 100%;
+		border-right: 2px dotted $gray;
+		@include calcu(left, "((100% - #{$page_width}) / 2) + (#{$date_w} / 2)")
 	}
 	.amt {
 		text-align: right;
@@ -247,6 +259,7 @@ $entries_lh: em(27px, $entries_fs);
 	position: absolute;
 	width: $date_w;
 	text-align: center;
+	background-color: $white;
 	z-index: 1; 	// Get out of the way of the entry hover
 	@include calcu(left, "(100% - #{$page_width}) / 2");
 	span:first-child {

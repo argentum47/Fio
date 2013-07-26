@@ -90,10 +90,23 @@ body {
     width: 100%; }
 
 .daily {
+  position: relative;
   padding-top: 21.33333px;
   padding-bottom: 21.33333px; }
   .daily > *:nth-last-child(2):not(.editing) .amount {
     border-bottom: 2px dotted #949494; }
+  .daily:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    width: 2px;
+    height: 100%;
+    border-right: 2px dotted #949494;
+    left: -moz-calc(((100% - 987px) / 2) + (197.4px / 2));
+    left: -o-calc(((100% - 987px) / 2) + (197.4px / 2));
+    left: -webkit-calc(((100% - 987px) / 2) + (197.4px / 2));
+    left: calc(((100% - 987px) / 2) + (197.4px / 2)); }
   .daily .amt {
     text-align: right; }
 
@@ -161,6 +174,7 @@ body {
   position: absolute;
   width: 197.4px;
   text-align: center;
+  background-color: white;
   z-index: 1;
   left: -moz-calc((100% - 987px) / 2);
   left: -o-calc((100% - 987px) / 2);
