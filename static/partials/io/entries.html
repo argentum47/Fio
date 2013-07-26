@@ -1,9 +1,16 @@
 <div class="daily" 
-     ng-repeat="daily in dailies | orderBy:order" 
-	 ng-init="daily.currently_editing = 0" 
+     ng-repeat="(index, daily) in dailies | orderBy:order"
+	 ng-init="daily.currently_editing = 0;" 
      ng-show="filtered_entries.length">
 
-		<div class="timeline-date" 
+		<div class="month-year" 
+		     ng-hide="($first && daily.date.getMonth() == today_date.getMonth() && daily.date.getFullYear() == today_date.getFullYear()) ||
+		              (get_daily_at(index - 1).date.getMonth() == daily.date.getMonth() && 
+		              get_daily_at(index - 1).date.getFullYear() == daily.date.getFullYear())">
+		    {{ daily.date | date: 'MMMM yyyy' }}
+		</div>
+
+     	<div class="timeline-date" 
 		     ng-show="daily.currently_editing == 0">
 			<span>{{ daily.date | date: 'dd' }}</span>
 			<span>{{ daily.date | date: 'EEEE' }}</span>
@@ -62,6 +69,9 @@
 			<div class="c amount amt" ng-show="get_daily_totals(daily).inc">{{ get_daily_totals(daily).inc | currency:'':2 }}</div>
 			<div class="c amount amt" ng-show="get_daily_totals(daily).exp">{{ get_daily_totals(daily).exp | currency:'':2 }}</div>
 		</div>
+
+
+
 </div> <!-- .daily -->
 
 <div class="no-data" ng-show="dailies.length < 1">No entries added</div>
