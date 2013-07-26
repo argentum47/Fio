@@ -26,7 +26,6 @@ angular.module('fio.directives', [])
         if (!$(element).find('input').is(':focus')
             && !$(element).hasClass('ng-invalid')) {
 
-          log("Not other has focus and is valid")
           scope.$apply(function() {
             scope.$eval(attrs.stopEditing);
           });
