@@ -162,8 +162,8 @@ $entries_lh: em(27px, $entries_fs);
 }
 
 .daily {
-	padding-top: em(25px, $entries_fs);
-	padding-bottom: em(25px, $entries_fs);
+	padding-top: em(20px, $entries_fs);
+	padding-bottom: em(20px, $entries_fs);
 	// This is the separator between entries and totals
 	& > *:nth-last-child(2):not(.editing) .amount {
 		border-bottom: 2px dotted $gray;
@@ -229,6 +229,18 @@ $entries_lh: em(27px, $entries_fs);
 .module-io {
 	font-size: $entries_fs;
 	background-color: $white;
+}
+
+.month-year {
+	margin-bottom: em(40px, em(10px, $entries_fs));
+	text-align: center;
+	span {
+		position: relative;
+		font-family: 'Nevis';
+		font-size: em(10px, $entries_fs);
+		text-transform: uppercase;
+		background-color: $white;
+	}
 }
 
 .timeline-date {

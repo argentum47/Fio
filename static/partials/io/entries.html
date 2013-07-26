@@ -7,7 +7,7 @@
 		     ng-hide="($first && daily.date.getMonth() == today_date.getMonth() && daily.date.getFullYear() == today_date.getFullYear()) ||
 		              (get_daily_at(index - 1).date.getMonth() == daily.date.getMonth() && 
 		              get_daily_at(index - 1).date.getFullYear() == daily.date.getFullYear())">
-		    {{ daily.date | date: 'MMMM yyyy' }}
+		    <span>{{ daily.date | date: 'MMMM yyyy' }}</span>
 		</div>
 
      	<div class="timeline-date" 

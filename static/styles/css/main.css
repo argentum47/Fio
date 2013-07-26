@@ -90,8 +90,8 @@ body {
     width: 100%; }
 
 .daily {
-  padding-top: 26.66667px;
-  padding-bottom: 26.66667px; }
+  padding-top: 21.33333px;
+  padding-bottom: 21.33333px; }
   .daily > *:nth-last-child(2):not(.editing) .amount {
     border-bottom: 2px dotted #949494; }
   .daily .amt {
@@ -146,6 +146,16 @@ body {
 .module-io {
   font-size: 0.9375em;
   background-color: white; }
+
+.month-year {
+  margin-bottom: 3.75em;
+  text-align: center; }
+  .month-year span {
+    position: relative;
+    font-family: 'Nevis';
+    font-size: 10.66667px;
+    text-transform: uppercase;
+    background-color: white; }
 
 .timeline-date {
   position: absolute;
