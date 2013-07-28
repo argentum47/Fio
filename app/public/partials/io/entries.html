@@ -1,0 +1,67 @@
+<div class="daily" 
+     ng-repeat="daily in dailies | orderBy:order" 
+	 ng-init="daily.currently_editing = 0" 
+     ng-show="filtered_entries.length">
+
+		<div class="timeline-date" 
+		     ng-show="daily.currently_editing == 0">
+			<span>{{ daily.date | date: 'dd' }}</span>
+			<span>{{ daily.date | date: 'EEEE' }}</span>
+		</div>
+
+		<div class="entry" 
+		     ng-repeat="entry in filtered_entries = (daily.subentries | filter: filters)" 
+		     ng-class="{'editing': editing}" 
+		     focus-on-click>
+
+		    <div class="cw">
+				<div ng-hide="editing"
+				     ng-click="editing=true;daily.currently_editing = daily.currently_editing + 1">
+					<div class="c amount amt {{ get_type(entry.amount) }}">{{ entry.amount | currency:'':2 }}</div>
+					<div class="c category">{{ entry.category }}</div>
+					<div class="c note">{{ entry.note }}</div>
+				</div>
+
+				<div ng-show="editing">
+					<form name="edit-entry" 
+					      stop-editing="editing=false;
+					                    daily.currently_editing = daily.currently_editing - 1;
+					                    process_edits(daily, entry)" 
+					      ng-init="set_entry_date(daily.date, entry)" 
+					      novalidate>
+						<div class="c date">
+							<input type="date"  
+							       value="{{ daily.date | date:'yyyy-MM-dd' }}" 
+							       ng-model="entry.date" required />
+						</div>
+						<div class="c amount amt">
+							<input type="number" 
+							       step="any" 
+							       value="{{ entry.amount }}" 
+							       ng-model="entry.amount" required />
+						</div>
+						<div class="c category">
+							<input type="text" 
+							       value="{{ entry.category }}" 
+							       ng-model="entry.category" required />
+						</div>
+						<div class="c note">
+							<input type="text" 
+							       value="{{ entry.note }}" 
+							       ng-model="entry.note" />
+						</div>
+					</form>
+				</div> <!-- when editing -->
+
+				<span class="remove" ng-click="remove_entry(daily, entry)">[x]</span>
+
+			</div> <!-- .cw -->
+		</div> <!-- .entry -->
+
+		<div class="cw daily-totals" ng-hide="filters.note || filters.category || filters.$">
+			<div class="c amount amt" ng-show="get_daily_totals(daily).inc">{{ get_daily_totals(daily).inc | currency:'':2 }}</div>
+			<div class="c amount amt" ng-show="get_daily_totals(daily).exp">{{ get_daily_totals(daily).exp | currency:'':2 }}</div>
+		</div>
+</div> <!-- .daily -->
+
+<div class="no-data" ng-show="dailies.length < 1">No entries added</div>

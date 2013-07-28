@@ -1,0 +1,169 @@
+@import url(http://fonts.googleapis.com/css?family=Source+Code+Pro:300,400,500,600,700&subset=latin,latin-ext);
+@import url(http://fonts.googleapis.com/css?family=Cardo:300,400,500,600,700&subset=latin,latin-ext);
+/* 
+ * Variables, mixins, abstract classes and functions that do not themselves compile to CSS,
+ * but are used throughout the project.
+ */
+@font-face {
+  font-family: 'Nevis';
+  src: url("../../fonts/nevis-webfont.eot");
+  src: url("../../fonts/nevis-webfont.eot?#iefix") format("embedded-opentype"), url("../../fonts/nevis-webfont.woff") format("woff"), url("../../fonts/nevis-webfont.ttf") format("truetype"), url("../../fonts/nevis-webfont.svg#webfontbold") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+section, .entry, .daily {
+  float: left;
+  width: 100%; }
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0; }
+
+input {
+  font-family: "Cardo", "Baskerville", serif;
+  background-color: transparent;
+  border: 0;
+  outline: 0; }
+
+.c {
+  display: block;
+  float: left; }
+
+.cw {
+  width: 987px;
+  margin: 0 auto; }
+
+.totals {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 150px;
+  padding: 7px 7px 0 7px;
+  z-index: 2; }
+
+.module {
+  overflow: hidden;
+  margin: 157px 7px 7px 7px; }
+
+body {
+  font: 300 1em/1.5em "Cardo", "Baskerville", serif;
+  color: #333333; }
+
+.page-frame span {
+  display: block;
+  position: fixed;
+  background-color: #737373;
+  z-index: 5; }
+.page-frame .top, .page-frame .bottom {
+  width: 100%;
+  height: 7px; }
+.page-frame .left, .page-frame .right {
+  height: 100%;
+  width: 7px; }
+.page-frame .top, .page-frame .left {
+  top: 0;
+  left: 0; }
+.page-frame .bottom, .page-frame .right {
+  bottom: 0;
+  right: 0; }
+
+.totals {
+  border-bottom: 1px solid #737373;
+  background-color: white; }
+
+.c {
+  display: block;
+  overflow: hidden;
+  float: left;
+  white-space: nowrap; }
+  .c.date {
+    width: 197.4px; }
+  .c.amount {
+    width: 98.7px;
+    margin-right: 49.35px; }
+  .c.category {
+    width: 246.75px; }
+  .c.note {
+    width: 394.8px; }
+  .c.full {
+    width: 100%; }
+
+.daily {
+  padding-top: 26.66667px;
+  padding-bottom: 26.66667px;
+  border-bottom: 1px solid #d1d1d1; }
+  .daily .amt {
+    text-align: right; }
+  .daily > *:nth-last-child(2):not(.editing) .amount {
+    border-bottom: 2px dotted #949494; }
+
+.daily-totals {
+  line-height: 28.8px; }
+  .daily-totals .amount {
+    float: none;
+    margin-left: 197.4px; }
+
+.entry {
+  position: relative;
+  line-height: 28.8px;
+  cursor: pointer;
+  -webkit-transition: line-height, 0.2s;
+  -moz-transition: line-height, 0.2s;
+  transition: line-height, 0.2s; }
+  .entry .amount {
+    margin-left: 197.4px; }
+  .entry.editing {
+    line-height: 57.6px;
+    background-color: #737373; }
+    .entry.editing .amount {
+      margin-left: 0; }
+  .entry:hover .remove {
+    display: block; }
+  .entry:not(.editing):after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 74.66667px;
+    background-image: -webkit-linear-gradient(-360deg, rgba(255, 255, 255, 0) 0%, white 30%);
+    background-image: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, white 30%); }
+  .entry input {
+    width: 100%;
+    color: white; }
+  .entry .remove {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: -2.3em;
+    width: 2.3em;
+    text-align: center;
+    cursor: pointer; }
+
+.module-io {
+  font-size: 0.9375em;
+  background-color: white; }
+
+.timeline-date {
+  position: absolute;
+  width: 197.4px;
+  text-align: center;
+  z-index: 1;
+  left: -moz-calc((100% - 987px) / 2);
+  left: -o-calc((100% - 987px) / 2);
+  left: -webkit-calc((100% - 987px) / 2);
+  left: calc((100% - 987px) / 2); }
+  .timeline-date span:first-child {
+    display: block;
+    font-size: 27.73333px; }
+  .timeline-date span:nth-last-child(1) {
+    font-style: italic; }
+
+.s-headings {
+  background-color: #f0f0f0; }
+
+.s-new-entry input:not([type=submit]) {
+  width: 100%;
+  height: 25px; }

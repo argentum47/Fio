@@ -1,0 +1,51 @@
+<!doctype html>
+<html ng-app="fio">
+<head>
+  <title>Fio</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" href="public/favicon.ico">
+
+  <!-- The grid -->
+  <link rel="stylesheet" href="http://yui.yahooapis.com/combo?pure/0.2.0/base-min.css&pure/0.2.0/grids-min.css&pure/0.2.0/forms-min.css">
+
+  <!-- The styles -->
+  <link rel="stylesheet" href="public/styles/css/main.css">
+
+  <!-- The before-load scripts -->
+
+</head>
+<body>
+
+	<div class="page-frame"><span class="top"></span><span class="bottom"></span><span class="left"></span><span class="right"></span></div>
+
+	<header class="totals">
+		<div class="cw">Here totals</div>
+		<div class="cw thead">Here filtering</div>
+<!-- 		<nav>
+			<ul>
+				<li><a href="#/io">IO</a></li>
+				<li><a href="#/recurring">Recurring</a></li>
+				<li><a href="#/totals">Totals</a></li>
+			</ul>
+		</nav> -->
+	</header>
+
+	<div class="module" ng-view></div>
+
+	<!-- The document.ready libraries -->
+	<script src="public/lib/jquery-1.10.2.min.js"></script>
+	<script src="public/lib/angular.min.js"></script>
+
+	<!-- The plugins -->
+	<script src="public/lib/log.js"></script>
+	<script src="public/lib/csvjson.min.js"></script>
+
+	<!-- The app -->
+	<script src="public/js/app.js"></script>
+	<script src="public/js/services.js"></script>
+	<script src="public/js/controllers.js"></script>
+	<script src="public/js/directives.js"></script>
+	<script src="public/js/filters.js"></script>
+
+</body>

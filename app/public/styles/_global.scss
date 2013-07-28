@@ -1,0 +1,257 @@
+//=Display & Flow
+// display, visibility, float, clear
+// 
+//=Positioning
+// position, top, right, bottom, left, z-index
+// 
+//=Dimensions
+// width (min, max), height (min, max), overflow
+// 
+//=Margins, Padding, Borders, Outline
+// margin (top, right, bottom, left), padding (top, right, bottom, left), 
+// border (top, right, bottom, left), border-width, border-style, 
+// border-color, outline, list-style
+// 
+//=Typographic Styles
+// font, font-family, font-size, line-height, font-weight, text-align, 
+// text-indent, text-transform, text-decoration, letter-spacing, word-spacing, 
+// white-space, vertical-align, color
+// 
+//=Backgrounds
+// background, background-color, background-image, background-repeat, 
+// background-position
+// 
+//=Opacity, Cursors, Generated Content
+// opacity, cursor, content, quotes
+// 
+// 
+//=Font weights:
+// 100: Ultra Light
+// 200: Thin
+// 300: Light
+// 400: Regular
+// 500: Semi Bold
+// 600: Bold
+// 700: Extra Bold
+// 800: Heavy
+// 900: Ultra Heavy
+// 
+//=Use hyphenation for selectors; use underscores for variables.
+
+//=RESET
+//========================================================
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+input {
+	font-family: $main_font;
+	background-color: transparent;
+	border: 0;
+	outline: 0;
+}
+
+// Override .pure-g letter-spacing to work with monospaced fonts
+//.pure-g { letter-spacing: -.71em; }
+
+//=HELPERS
+//=========================================================
+// These are global classes that can be reused everywhere 
+// to aid with more elementary structure or design elements
+
+// This is a column
+.c {
+	display: block;
+	float: left;
+}
+
+// This wraps to center
+.cw {
+	@include center-wrapper($page_width);
+}
+
+//=BASE
+//=========================================================
+// Classes to define the base structure of the page
+
+$page_frame_w: 7px;
+
+.totals {
+	position: fixed;
+	top: 0;
+	width: 100%;
+	height: 150px;
+	padding: $page_frame_w $page_frame_w 0 $page_frame_w;
+	z-index: 2;
+}
+
+.module {
+	overflow: hidden;
+	margin: (150px + $page_frame_w) $page_frame_w $page_frame_w $page_frame_w;
+}
+
+section {
+	@extend %uncollapse;
+}
+
+//=========================================================
+
+body {
+	font: 300 1em/1.5em $main_font;
+	color: $dd_gray;
+}
+
+.page-frame {
+	span {
+		display: block;
+		position: fixed;
+		background-color: $d_gray;
+		z-index: 5;
+	}
+	.top, .bottom {
+		width: 100%;
+		height: $page_frame_w;
+	}
+	.left, .right {
+		height: 100%;
+		width: $page_frame_w;
+	}
+	.top, .left {
+		top: 0;
+		left: 0
+	}
+	.bottom, .right {
+		bottom: 0;
+		right: 0;
+	}
+}
+
+.totals {
+	border-bottom: 1px solid $d_gray;
+	background-color: $white;
+}
+
+// Entries ================================================
+
+$date_w: 0.2 * $module_width;
+$amount_w: 0.1 * $module_width;
+$amount_p: 0.05 * $module_width;
+$category_w: 0.25 * $module_width;
+$note_w: 0.4 * $module_width;
+
+$entries_fs: em(15px);
+$entries_lh: em(27px, $entries_fs);
+
+.c {
+	display: block;
+	overflow: hidden;
+	float: left;
+	white-space: nowrap;
+
+	&.date { width: $date_w; }
+	&.amount { width: $amount_w; margin-right: $amount_p; }
+	&.category { width: $category_w; }
+	&.note { width: $note_w; }
+	&.full { width: 100%; }
+}
+
+.entry, .daily {
+	@extend %uncollapse;
+}
+
+.daily {
+	padding-top: em(25px, $entries_fs);
+	padding-bottom: em(25px, $entries_fs);
+	//border-top: 1px solid $ll_gray;
+	border-bottom: 1px solid $l_gray;
+	.amt {
+		text-align: right;
+	}
+	// This is the separator between entries and totals
+	& > *:nth-last-child(2):not(.editing) .amount {
+		border-bottom: 2px dotted $gray;
+	}
+}
+
+.daily-totals {
+	line-height: $entries_lh;
+	.amount {
+		float: none;
+		margin-left: $date_w;
+	}
+}
+
+.entry {
+	position: relative;
+	line-height: $entries_lh;
+	cursor: pointer;
+	@include transition(line-height, 0.2s);
+	.amount { margin-left: $date_w; }
+	&.editing { 
+		line-height: 2 * $entries_lh;
+		background-color: $d_gray;
+		.amount {
+			margin-left: 0;
+		}
+	}
+	&:hover {
+		.remove { display: block; }
+	}
+	&:not(.editing):after {
+		content: '';
+		display: block;
+		position: absolute;
+		top: 0;
+		right: 0;
+		height: 100%;
+		width: em(70px, $entries_fs);
+		//@include background-image(linear-gradient(90deg, rgba($white, 0) 0%, $lll_gray 30%));
+		@include background-image(linear-gradient(90deg, rgba($white, 0) 0%, $white 30%));
+	}
+	input {
+		width: 100%;
+		color: $white;
+	}
+	.remove {
+		display: none;
+		position: absolute;
+		top: 0;
+		right: -2.3em;
+		width: 2.3em;
+		text-align: center;
+		cursor: pointer;
+	}
+}
+
+.module-io {
+	font-size: $entries_fs;
+	background-color: $white;
+}
+
+.timeline-date {
+	position: absolute;
+	width: $date_w;
+	text-align: center;
+	z-index: 1; 	// Get out of the way of the entry hover
+	@include calcu(left, "(100% - #{$page_width}) / 2");
+	span:first-child {
+		display: block;
+		font-size: em(26px, $entries_fs);
+	}
+	span:nth-last-child(1) {
+		font-style: italic;
+	}
+}
+
+.s-headings {
+	background-color: $ll_gray;
+}
+
+.s-new-entry {
+	input:not([type=submit]) {
+		width: 100%;
+		height: 25px;
+	}
+}
