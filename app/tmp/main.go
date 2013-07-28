@@ -4,9 +4,9 @@ import (
 	"flag"
 	"reflect"
 	"github.com/robfig/revel"
-	_ "github.com/elisehein/Fio/app/app"
-	controllers "github.com/elisehein/Fio/app/app/controllers"
-	tests "github.com/elisehein/Fio/app/tests"
+	_ "github.com/elisehein/Fio/app"
+	controllers "github.com/elisehein/Fio/app/controllers"
+	tests "github.com/elisehein/Fio/tests"
 	controllers0 "github.com/robfig/revel/modules/static/app/controllers"
 	_ "github.com/robfig/revel/modules/testrunner/app"
 	controllers1 "github.com/robfig/revel/modules/testrunner/app/controllers"
@@ -26,20 +26,6 @@ func main() {
 	flag.Parse()
 	revel.Init(*runMode, *importPath, *srcPath)
 	revel.INFO.Println("Running revel server")
-	
-	revel.RegisterController((*controllers.App)(nil),
-		[]*revel.MethodType{
-			&revel.MethodType{
-				Name: "Index",
-				Args: []*revel.MethodArg{ 
-				},
-				RenderArgNames: map[int][]string{ 
-					10: []string{ 
-					},
-				},
-			},
-			
-		})
 	
 	revel.RegisterController((*controllers.Entries)(nil),
 		[]*revel.MethodType{
