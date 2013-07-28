@@ -10,7 +10,7 @@ angular.module('fio.services', [])
   s.get_entries = function() {
     // For now, use test data from csv file
     var entries;
-    $.ajax('http://127.0.0.1:5000/static/data.csv', {
+    $.ajax('/public/data.csv', {
       async: false,
       success: function(data) {
         var raw_entries = csvjson.csv2json(data).rows;
@@ -48,7 +48,7 @@ angular.module('fio.services', [])
     });
     return os;
   };
-  
+
   // Add a new daily object to given dailies
   s.add_new_daily = function(date, amount, category, note, dailies) {
     dailies.push({date: date, subentries: [{amount: amount, category: category, note: note}]});
@@ -71,10 +71,10 @@ angular.module('fio.services', [])
         // If we find a match (the time does not matter, only DD/MM/YYYYY)
         if ($filter('date')(daily.date, 'yyyy-MM-dd')
             == $filter('date')(entry.date, 'yyyy-MM-dd')) {
-          
+
           // Add a subentry
           daily.subentries.push({amount: entry.amount,  category: entry.category, note: entry.note});
-          
+
           found_existing_daily = true;
 
         } // if same date

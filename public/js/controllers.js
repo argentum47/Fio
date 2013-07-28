@@ -5,7 +5,7 @@ angular.module('fio.controllers', [])
 
   var DS = DataServices;
 
-  var templates_url = 'static/partials/io/';
+  var templates_url = 'public/partials/io/';
   $scope.templates = {
     'entries': templates_url + 'entries.html'
   }
@@ -28,10 +28,10 @@ angular.module('fio.controllers', [])
     // Fill date input with today's date
     $scope.date = $scope.today;
   }; // init_data_ctrl()
- 
+
   $scope.add_entry = function() {
 
-    // Only add if necessary fields have been filled in 
+    // Only add if necessary fields have been filled in
     if ($scope.addEntryForm.$valid) {
       var new_entry = {date: new Date($scope.date), amount: $scope.amount, category: $scope.category.cat, note: $scope.note};
       // DS.save_entry(new_entry)
@@ -58,10 +58,10 @@ angular.module('fio.controllers', [])
 
       // Remove entry from our dailies list
       DS.remove_from_dailies(daily.$$hashKey, entry.$$hashKey, $scope.dailies);
-    
+
       // Re-inject the entry into a suitable place accorring to the edited date
       $scope.dailies = DS.inject_to_dailies(entry, $scope.dailies);
-    
+
     }
   }
 
