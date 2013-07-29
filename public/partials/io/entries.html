@@ -25,7 +25,10 @@
 			<div class="entry" 
 			     ng-repeat="entry in filtered_entries = (daily.subentries | filter: filters)" 
 			     ng-class="{'editing': editing, 'last': $last}" 
-			     focus-on-click>
+			     focus-on-click 
+			     interest-lost="editing=false;
+			                    daily.currently_editing = daily.currently_editing - 1;
+			                    process_edits(daily, entry)">
 
 			    <div class="cw">
 					<div ng-hide="editing"
@@ -37,10 +40,6 @@
 
 					<div ng-show="editing">
 						<form name="edit-entry" 
-						      finalise-editing="editing=false;
-						                    daily.currently_editing = daily.currently_editing - 1;
-						                    process_edits(daily, entry)" 
-						      when-click-outside="$(element).parents('.entry')" 
 						      ng-init="set_entry_date(daily.date, entry)" 
 						      novalidate>
 							<div class="c date">
@@ -62,12 +61,16 @@
 							<div class="c note">
 								<input type="text" 
 								       value="{{ entry.note }}" 
-								       ng-model="entry.note" />
+								       ng-model="entry.note" ignore-blurs="true"/>
 							</div>
 						</form>
 					</div> <!-- when editing -->
 
-					<span class="remove" ng-click="remove_entry(daily, entry)">[x]</span>
+					<span class="remove" 
+					      ng-click="daily.currently_editing = daily.currently_editing - 1;
+					                remove_entry(daily, entry)">
+					    [x]
+					</span>
 
 				</div> <!-- .cw -->
 			</div> <!-- .entry -->
