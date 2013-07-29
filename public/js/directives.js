@@ -19,14 +19,18 @@ angular.module('fio.directives', [])
     // All the inputs we need to watch
     var inputs = element.find('input');
 
-    // Lose interest on ENTER or ESC keypress,
+    // Lose interest on ENTER,
     // or TAB keypress if it is the last input in the element
     inputs.bind("keydown", function(event) {
       var key = event.keyCode || event.which;
       var is_last_input = $(this).is(inputs[inputs.length - 1]);
-      if(key === 13 || key === 27 || 
+      if(key === 13 || 
          (key === 9 && is_last_input)) {
-        interest_lost();
+        event.preventDefault();
+        // Instead of losing interest straight away,
+        // let the blur event take over
+        // so we don't double our actions
+        $(element).find('input:focus').blur();
       }
     });
 
