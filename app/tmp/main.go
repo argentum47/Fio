@@ -1,12 +1,13 @@
+// GENERATED CODE - DO NOT EDIT
 package main
 
 import (
 	"flag"
 	"reflect"
 	"github.com/robfig/revel"
-	_ "github.com/elisehein/Fio/app"
-	controllers "github.com/elisehein/Fio/app/controllers"
-	tests "github.com/elisehein/Fio/tests"
+	_ "github.com/elisehein/fio/app"
+	controllers "github.com/elisehein/fio/app/controllers"
+	tests "github.com/elisehein/fio/tests"
 	controllers0 "github.com/robfig/revel/modules/static/app/controllers"
 	_ "github.com/robfig/revel/modules/testrunner/app"
 	controllers1 "github.com/robfig/revel/modules/testrunner/app/controllers"
