@@ -75,7 +75,7 @@ angular.module('fio.controllers', [])
         if ($.isEmptyObject(daily.subentries)) {
           $scope.dailies.splice($scope.dailies.indexOf(daily), 1);
         } 
-      }, 5000);
+      }, 400);
     }, 400);
   }
 
