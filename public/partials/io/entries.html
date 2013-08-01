@@ -25,10 +25,7 @@
 			<div class="entry" 
 			     ng-repeat="entry in filtered_entries = (daily.subentries | filter: filters)" 
 			     ng-class="{'editing': editing, 'last': $last}" 
-			     focus-on-click 
-			     interest-lost="editing=false;
-			                    daily.currently_editing = daily.currently_editing - 1;
-			                    process_edits(daily, entry)">
+			     focus-on-click>
 
 			    <div class="cw">
 					<div ng-hide="editing"
@@ -41,6 +38,9 @@
 					<div ng-show="editing">
 						<form name="edit-entry" 
 						      ng-init="set_entry_date(daily.date, entry)" 
+						      interest-lost="editing=false;
+			                                 daily.currently_editing = daily.currently_editing - 1;
+			                                 process_edits(daily, entry)"
 						      novalidate>
 							<div class="c date">
 								<input type="date"  
