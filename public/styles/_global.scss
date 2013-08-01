@@ -178,7 +178,7 @@ $block_spacing: em(20px, $entries_fs);
 	@extend %uncollapse;
 	position: relative;
 	line-height: $entries_lh;
-	@include transition(line-height, 0.2s);
+	@include transition(background-color 0s);
 	// This makes ends of lines blurry so we know there's more to see
 	&:not(.editing) .note {
 		position: relative;
@@ -197,6 +197,7 @@ $block_spacing: em(20px, $entries_fs);
 		line-height: 2 * $entries_lh;
 		background-color: $d_gray;
 		z-index: 1;
+		@include transition(background-color 0s);
 		.amount {
 			margin-left: 0;
 		}
@@ -206,6 +207,21 @@ $block_spacing: em(20px, $entries_fs);
 	&.last:not(.editing) .amount { border-bottom: 2px dotted $gray; }	
 	&.losing-interest {
 		line-height: 2 * $entries_lh;
+		@include transition(line-height 0s);
+	}
+	&.removing-preps {
+		line-height: 2 * $entries_lh;
+		@include transition(background-color 0s);
+		& > * {
+			opacity: 0;
+			@include transition(opacity 0.2s)
+		}
+	}
+	&.removing {
+		line-height: 0;
+		@include transition-property (line-height);
+		@include transition-duration(0.2s);
+		@include transition-delay(0.1s);
 	}
 	.amount { margin-left: $date_w; }
 	.c { cursor: pointer; }

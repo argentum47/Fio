@@ -7,7 +7,8 @@
 		                   (get_daily_at(index - 1).date.getMonth() == daily.date.getMonth() && 
 		                    get_daily_at(index - 1).date.getFullYear() == daily.date.getFullYear())" 
      ng-show="filtered_entries.length"
-     ng-class="{'with-month': !hide_month}">
+     ng-class="{'with-month': !hide_month}"
+	 ng-animate="{leave: 'animate-leave'}">
 
      	<div class="timeline-month" 
 		     ng-hide="hide_month">
@@ -24,7 +25,11 @@
 
 			<div class="entry" 
 			     ng-repeat="entry in filtered_entries = (daily.subentries | filter: filters)" 
-			     ng-class="{'editing': editing, 'last': $last, 'losing-interest': losing_interest}" 
+			     ng-class="{'editing': editing, 
+			                'last': $last, 
+			                'losing-interest': losing_interest,
+			                'removing-preps': removing,
+			                'removing': removing}" 
 			     focus-on-click>
 
 			    <div class="cw">
@@ -68,6 +73,8 @@
 
 					<span class="remove" 
 					      ng-click="daily.currently_editing = daily.currently_editing - 1;
+					                editing = false;
+					                removing = true;
 					                remove_entry(daily, entry)">
 					    [x]
 					</span>

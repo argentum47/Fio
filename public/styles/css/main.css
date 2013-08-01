@@ -101,9 +101,9 @@ body {
 .entry {
   position: relative;
   line-height: 28.8px;
-  -webkit-transition: line-height, 0.2s;
-  -moz-transition: line-height, 0.2s;
-  transition: line-height, 0.2s; }
+  -webkit-transition: background-color 0s;
+  -moz-transition: background-color 0s;
+  transition: background-color 0s; }
   .entry:not(.editing) .note {
     position: relative; }
     .entry:not(.editing) .note:after {
@@ -119,7 +119,10 @@ body {
   .entry.editing {
     line-height: 57.6px;
     background-color: #737373;
-    z-index: 1; }
+    z-index: 1;
+    -webkit-transition: background-color 0s;
+    -moz-transition: background-color 0s;
+    transition: background-color 0s; }
     .entry.editing .amount {
       margin-left: 0; }
     .entry.editing .remove {
@@ -127,7 +130,31 @@ body {
   .entry.last:not(.editing) .amount {
     border-bottom: 2px dotted #949494; }
   .entry.losing-interest {
-    line-height: 57.6px; }
+    line-height: 57.6px;
+    -webkit-transition: line-height 0s;
+    -moz-transition: line-height 0s;
+    transition: line-height 0s; }
+  .entry.removing-preps {
+    line-height: 57.6px;
+    -webkit-transition: background-color 0s;
+    -moz-transition: background-color 0s;
+    transition: background-color 0s; }
+    .entry.removing-preps > * {
+      opacity: 0;
+      -webkit-transition: opacity 0.2s;
+      -moz-transition: opacity 0.2s;
+      transition: opacity 0.2s; }
+  .entry.removing {
+    line-height: 0;
+    -webkit-transition-property: line-height;
+    -moz-transition-property: line-height;
+    transition-property: line-height;
+    -webkit-transition-duration: 0.2s;
+    -moz-transition-duration: 0.2s;
+    transition-duration: 0.2s;
+    -webkit-transition-delay: 0.1s;
+    -moz-transition-delay: 0.1s;
+    transition-delay: 0.1s; }
   .entry .amount {
     margin-left: 197.4px; }
   .entry .c {

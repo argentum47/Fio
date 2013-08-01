@@ -1,7 +1,7 @@
 angular.module('fio.controllers', [])
 
 // Control the UI for the user's entries data list
-.controller('IOCtrl', function($scope, $filter, DataServices) {
+.controller('IOCtrl', function($scope, $filter, $timeout, DataServices) {
 
   var DS = DataServices;
 
@@ -67,7 +67,9 @@ angular.module('fio.controllers', [])
 
   $scope.remove_entry = function(daily, entry) {
     $scope.entries.splice($scope.entries.indexOf(entry), 1);
-    DS.remove_from_dailies(daily.$$hashKey, entry.$$hashKey, $scope.dailies);
+    $timeout(function() {
+      DS.remove_from_dailies(daily.$$hashKey, entry.$$hashKey, $scope.dailies);
+    }, 500);
     // DS.remove_entry(entry)
   }
 
