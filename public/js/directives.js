@@ -54,9 +54,9 @@ angular.module('fio.directives', [])
     var interest_lost = function() {
       if (!$(element).hasClass('ng-invalid')) {
         // Change the state to transitioning for just a few moments
-        scope.lost_interest = true;
+        scope.losing_interest = true;
         $timeout(function() {
-          scope.lost_interest = false;
+          scope.losing_interest = false;
         }, 400);
         // Execute the attributes
         scope.$apply(function() {

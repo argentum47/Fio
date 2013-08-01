@@ -24,7 +24,7 @@
 
 			<div class="entry" 
 			     ng-repeat="entry in filtered_entries = (daily.subentries | filter: filters)" 
-			     ng-class="{'editing': editing, 'last': $last}" 
+			     ng-class="{'editing': editing, 'last': $last, 'losing-interest': losing_interest}" 
 			     focus-on-click>
 
 			    <div class="cw">

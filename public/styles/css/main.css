@@ -100,7 +100,10 @@ body {
 
 .entry {
   position: relative;
-  line-height: 28.8px; }
+  line-height: 28.8px;
+  -webkit-transition: line-height, 0.2s;
+  -moz-transition: line-height, 0.2s;
+  transition: line-height, 0.2s; }
   .entry:not(.editing) .note {
     position: relative; }
     .entry:not(.editing) .note:after {
@@ -116,16 +119,15 @@ body {
   .entry.editing {
     line-height: 57.6px;
     background-color: #737373;
-    z-index: 1;
-    -webkit-transition: line-height, 0.2s;
-    -moz-transition: line-height, 0.2s;
-    transition: line-height, 0.2s; }
+    z-index: 1; }
     .entry.editing .amount {
       margin-left: 0; }
     .entry.editing .remove {
       display: block; }
   .entry.last:not(.editing) .amount {
     border-bottom: 2px dotted #949494; }
+  .entry.losing-interest {
+    line-height: 57.6px; }
   .entry .amount {
     margin-left: 197.4px; }
   .entry .c {
