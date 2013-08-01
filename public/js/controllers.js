@@ -65,12 +65,18 @@ angular.module('fio.controllers', [])
     }
   }
 
+  // Remove entry, but with timeouts, so that we get to show animations
   $scope.remove_entry = function(daily, entry) {
-    $scope.entries.splice($scope.entries.indexOf(entry), 1);
+    $scope.entries.splice($scope.entries.indexOf(entry), 1);   
     $timeout(function() {
       DS.remove_from_dailies(daily.$$hashKey, entry.$$hashKey, $scope.dailies);
-    }, 500);
-    // DS.remove_entry(entry)
+      $timeout(function() {
+        // If this leaves us with an empty daily, remove that, too
+        if ($.isEmptyObject(daily.subentries)) {
+          $scope.dailies.splice($scope.dailies.indexOf(daily), 1);
+        } 
+      }, 5000);
+    }, 400);
   }
 
   // This is used to get dailies at specific positions in the *sorted* list

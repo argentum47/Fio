@@ -115,10 +115,6 @@ angular.module('fio.services', [])
             }); // forEach subentries
           }
 
-          // If this leaves us with an empty daily, remove it, too
-          if ($.isEmptyObject(daily.subentries)) {
-            dailies.splice(dailies.indexOf(daily), 1);
-          }
         } // if keep_looking
 
       }); // forEach daily

@@ -262,6 +262,19 @@ $block_spacing: em(20px, $entries_fs);
 		border-right: 2px dotted $gray;
 		@include calcu(left, "((100% - #{$page_width}) / 2) + (#{$date_w} / 2)")
 	}
+	&.empty {
+		@include transition(all 0.2s);
+		.timeline-date {
+			opacity: 0;
+			@include transition(opacity, 0.2s);
+		}
+		overflow: hidden;
+		height: 0;
+		max-height: 0;
+		line-height: 0;
+		margin: 0;
+		padding: 0;
+	}
 	&.with-month {
 		// When we also display the month, we need extra space for
 		// 2 * $block_spacing for the space between the month and the date 
