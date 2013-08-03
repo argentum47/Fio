@@ -4,31 +4,15 @@ package routes
 import "github.com/robfig/revel"
 
 
-type tEntries struct {}
-var Entries tEntries
+type tApplication struct {}
+var Application tApplication
 
 
-func (_ tEntries) Index(
+func (_ tApplication) Setup(
 		) string {
 	args := make(map[string]string)
 	
-	return revel.MainRouter.Reverse("Entries.Index", args).Url
-}
-
-func (_ tEntries) Create(
-		) string {
-	args := make(map[string]string)
-	
-	return revel.MainRouter.Reverse("Entries.Create", args).Url
-}
-
-func (_ tEntries) Update(
-		id string,
-		) string {
-	args := make(map[string]string)
-	
-	revel.Unbind(args, "id", id)
-	return revel.MainRouter.Reverse("Entries.Update", args).Url
+	return revel.MainRouter.Reverse("Application.Setup", args).Url
 }
 
 
@@ -88,6 +72,34 @@ func (_ tTestRunner) List(
 	args := make(map[string]string)
 	
 	return revel.MainRouter.Reverse("TestRunner.List", args).Url
+}
+
+
+type tEntries struct {}
+var Entries tEntries
+
+
+func (_ tEntries) Index(
+		) string {
+	args := make(map[string]string)
+	
+	return revel.MainRouter.Reverse("Entries.Index", args).Url
+}
+
+func (_ tEntries) Create(
+		) string {
+	args := make(map[string]string)
+	
+	return revel.MainRouter.Reverse("Entries.Create", args).Url
+}
+
+func (_ tEntries) Update(
+		id string,
+		) string {
+	args := make(map[string]string)
+	
+	revel.Unbind(args, "id", id)
+	return revel.MainRouter.Reverse("Entries.Update", args).Url
 }
 
 
