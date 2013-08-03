@@ -5,3 +5,8 @@ var app = angular.module('fio', ['fio.services', 'fio.controllers', 'fio.directi
   $routeProvider.when('/totals', {templateUrl: 'public/partials/totals.html'});
   $routeProvider.otherwise({redirectTo: '/io'});
 }]);
+app.run(function($rootScope, $templateCache) {
+   $rootScope.$on('$viewContentLoaded', function() {
+      $templateCache.removeAll();
+   });
+});
