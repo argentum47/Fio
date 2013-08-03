@@ -75,3 +75,31 @@ func (_ tStatic) ServeModule(
 }
 
 
+type tEntries struct {}
+var Entries tEntries
+
+
+func (_ tEntries) Index(
+		) string {
+	args := make(map[string]string)
+	
+	return revel.MainRouter.Reverse("Entries.Index", args).Url
+}
+
+func (_ tEntries) Create(
+		) string {
+	args := make(map[string]string)
+	
+	return revel.MainRouter.Reverse("Entries.Create", args).Url
+}
+
+func (_ tEntries) Update(
+		id string,
+		) string {
+	args := make(map[string]string)
+	
+	revel.Unbind(args, "id", id)
+	return revel.MainRouter.Reverse("Entries.Update", args).Url
+}
+
+
