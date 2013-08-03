@@ -8,6 +8,8 @@ GET    /api/entries         Entries.Index
 POST   /api/entries         Entries.Create
 PUT    /api/entries/:id     Entries.Update
 
-GET    /                    Static.Serve("public/index.html")
-GET    /favicon.ico         Static.Serve("public/favicon.ico")
+#GET    /api/categories      Categories.Index
+
 GET    /public/*filepath    Static.Serve("public")
+GET    /favicon.ico         Static.Serve("public","favicon.ico")
+GET    /                    Static.Serve("public","index.html")
