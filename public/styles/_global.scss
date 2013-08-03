@@ -207,18 +207,15 @@ $block_spacing: em(20px, $entries_fs);
 	&.losing-interest {
 		line-height: 2 * $entries_lh;
 	}
-	&.removing-preps {
-		line-height: 2 * $entries_lh;
-		& > * {
-			opacity: 0;
-			@include transition(opacity 0.2s)
-		}
-	}
 	&.removing {
 		line-height: 0;
 		@include transition-property (line-height);
 		@include transition-duration(0.2s);
 		@include transition-delay(0.1s);
+		& > * {
+			opacity: 0;
+			@include transition(opacity 0.2s)
+		}
 	}
 	.amount { margin-left: $date_w; }
 	.c { cursor: pointer; }

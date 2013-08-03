@@ -6,8 +6,7 @@
      	                    daily.date.getFullYear() == today_date.getFullYear()) ||
 		                   (get_daily_at(index - 1).date.getMonth() == daily.date.getMonth() && 
 		                    get_daily_at(index - 1).date.getFullYear() == daily.date.getFullYear())" 
-     ng-class="{'with-month': !hide_month, 'empty': !filtered_entries.length}"
-	 ng-animate="{leave: 'animate-leave'}">
+     ng-class="{'with-month': !hide_month, 'empty': !filtered_entries.length}">
 
      	<div class="timeline-month" 
 		     ng-hide="hide_month">
@@ -27,7 +26,6 @@
 			     ng-class="{'editing': editing, 
 			                'last': $last, 
 			                'losing-interest': losing_interest,
-			                'removing-preps': removing,
 			                'removing': removing}" 
 			     focus-on-click>
 
@@ -73,6 +71,7 @@
 					<span class="remove" 
 					      ng-click="daily.currently_editing = daily.currently_editing - 1;
 					                editing = false;
+					                losing_interest = true;
 					                removing = true;
 					                remove_entry(daily, entry)">
 					    [x]

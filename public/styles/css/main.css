@@ -128,13 +128,6 @@ body {
     border-bottom: 2px dotted #949494; }
   .entry.losing-interest {
     line-height: 57.6px; }
-  .entry.removing-preps {
-    line-height: 57.6px; }
-    .entry.removing-preps > * {
-      opacity: 0;
-      -webkit-transition: opacity 0.2s;
-      -moz-transition: opacity 0.2s;
-      transition: opacity 0.2s; }
   .entry.removing {
     line-height: 0;
     -webkit-transition-property: line-height;
@@ -146,6 +139,11 @@ body {
     -webkit-transition-delay: 0.1s;
     -moz-transition-delay: 0.1s;
     transition-delay: 0.1s; }
+    .entry.removing > * {
+      opacity: 0;
+      -webkit-transition: opacity 0.2s;
+      -moz-transition: opacity 0.2s;
+      transition: opacity 0.2s; }
   .entry .amount {
     margin-left: 197.4px; }
   .entry .c {
