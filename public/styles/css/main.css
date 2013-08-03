@@ -200,6 +200,8 @@ body {
     padding-top: 96px; }
     .timeline-block.with-month .timeline-date {
       top: 96px; }
+    .timeline-block.with-month .timeline-month {
+      display: block; }
 
 .timeline-date,
 .timeline-month {
@@ -222,6 +224,7 @@ body {
     font-style: italic; }
 
 .timeline-month {
+  display: none;
   height: 32px;
   font-weight: 700;
   font-variant: small-caps;

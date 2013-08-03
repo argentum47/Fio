@@ -279,6 +279,7 @@ $block_spacing: em(20px, $entries_fs);
 		// .timeline_date is subsequently pushed down exactly that amount.
 		padding-top: (3 * $block_spacing) + $month-height;
 		.timeline-date { top: (3 * $block_spacing) + $month_height; }
+		.timeline-month { display: block; }
 	}
 }
 
@@ -301,6 +302,7 @@ $block_spacing: em(20px, $entries_fs);
 }
 
 .timeline-month {
+	display: none;
 	height: $month_height;
 	font-weight: 700;
 	font-variant: small-caps;

@@ -10,7 +10,6 @@ angular.module('fio.controllers', [])
     'entries': templates_url + 'entries.html'
   }
 
-  $scope.today_date = new Date();
   $scope.today = new Date().toJSON().slice(0,10);
   $scope.order = '-date';     // the order in which dailies are shown
   $scope.categories = [];
@@ -79,10 +78,21 @@ angular.module('fio.controllers', [])
     }, 400);
   }
 
+  // Check whether a new month starts at a given daily in the output
+  $scope.month_unchanged = function(daily, index) {
+    return (daily == $scope.get_daily_at(0) && 
+            $filter('date')(daily.date, 'yyyy-MM') == $filter('date')(new Date(), 'yyyy-MM')) ||
+           $filter('date')($scope.get_daily_at(index - 1).date, 'yyyy-MM') == $filter('date')(daily.date, 'yyyy-MM')
+  }
+
   // This is used to get dailies at specific positions in the *sorted* list
+  // Return a day in the distant past for index -1
   $scope.get_daily_at = function(index) {
     var sorted_list = $filter('orderBy')($scope.dailies, $scope.order);
-    return sorted_list[index];
+    var daily = typeof sorted_list[index] == 'undefined' ? 
+                {date: new Date('01/01/0000')} : 
+                sorted_list[index];
+    return daily;
   }
 
   $scope.set_entry_date = function(date, entry) {

@@ -1,15 +1,9 @@
 <div class="timeline-block"
      ng-repeat="(index, daily) in dailies | orderBy:order"
-	 ng-init="daily.currently_editing = 0;
-	          hide_month = ($first && 
-     	                    daily.date.getMonth() == today_date.getMonth() && 
-     	                    daily.date.getFullYear() == today_date.getFullYear()) ||
-		                   (get_daily_at(index - 1).date.getMonth() == daily.date.getMonth() && 
-		                    get_daily_at(index - 1).date.getFullYear() == daily.date.getFullYear())" 
-     ng-class="{'with-month': !hide_month, 'empty': !filtered_entries.length}">
+	 ng-init="daily.currently_editing = 0;" 
+     ng-class="{'with-month': !month_unchanged(daily, index), 'empty': !filtered_entries.length}">
 
-     	<div class="timeline-month" 
-		     ng-hide="hide_month">
+     	<div class="timeline-month">
            {{ daily.date | date: 'MMMM yyyy' }}
      	</div>
 
