@@ -49,8 +49,10 @@ angular.module('fio.controllers', [])
     // DS.update_entry(entry);
 
     // Convert form string into a Date object
-    var parts = entry.date.split('/');
+    var parts = entry.str_date.split('/');
+    log(parts);
     entry.date = new Date(parts[2], (parts[1] - 1), parts[0]);
+    log(entry.date);
 
     // If the date has changed, reorganise dailies
     if ($filter('date')(daily.date, 'yyyy-MM-dd')
@@ -97,7 +99,7 @@ angular.module('fio.controllers', [])
   }
 
   $scope.set_entry_date = function(date, entry) {
-    entry.date = date;
+    entry.str_date = $filter('date')(date, 'dd/MM/yyyy');
   }
 
   $scope.get_daily_totals = function(daily) {

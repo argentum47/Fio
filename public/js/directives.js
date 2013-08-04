@@ -62,7 +62,10 @@ angular.module('fio.directives', [])
         scope.$apply(function() {
           scope.$eval(attrs.interestLost);
         });
-      }     
+      }
+      else {
+        // Prevent other clicks
+      }
     }
 
   }; /* return function */
