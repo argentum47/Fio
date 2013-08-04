@@ -24,7 +24,8 @@ input {
   font-family: "Cardo", "Baskerville", serif;
   background-color: transparent;
   border: 0;
-  outline: 0; }
+  outline: 0;
+  cursor: pointer; }
 
 .c {
   display: block;
@@ -72,6 +73,11 @@ body {
   border-bottom: 1px solid #737373;
   background-color: white; }
 
+input::-webkit-inner-spin-button,
+input::-webkit-calendar-picker-indicator {
+  display: none;
+  -webkit-appearance: none; }
+
 .c {
   display: block;
   overflow: hidden;
@@ -95,7 +101,7 @@ body {
     float: none;
     margin-left: 197.4px; }
 
-.entries .amt {
+.entries .amt, .entries .amt input {
   text-align: right; }
 
 .entry {

@@ -37,28 +37,34 @@
 						      ng-init="set_entry_date(daily.date, entry)" 
 						      interest-lost="editing=false;
 			                                 daily.currently_editing = daily.currently_editing - 1;
-			                                 process_edits(daily, entry)"
+			                                 process_edits(daily, entry)" 
 						      novalidate>
 							<div class="c date">
-								<input type="date"  
+								<input type="date" 
+								       placeholder="Date"
 								       value="{{ daily.date | date:'yyyy-MM-dd' }}" 
-								       ng-model="entry.date" required />
+								       ng-model="entry.date"
+								       required />
 							</div>
 							<div class="c amt">
 								<input type="number" 
-								       step="any" 
+									   placeholder="Amount"
 								       value="{{ entry.amount }}" 
-								       ng-model="entry.amount" required />
+								       ng-model="entry.amount" 
+								       required />
 							</div>
 							<div class="c category">
 								<input type="text" 
+									   placeholder="Category"
 								       value="{{ entry.category }}" 
-								       ng-model="entry.category" required />
+								       ng-model="entry.category" 
+								       required />
 							</div>
 							<div class="c note">
 								<input type="text" 
+									   placeholder="Note"
 								       value="{{ entry.note }}" 
-								       ng-model="entry.note" ignore-blurs="true"/>
+								       ng-model="entry.note" />
 							</div>
 						</form>
 					</div> <!-- when editing -->
