@@ -48,8 +48,9 @@ angular.module('fio.controllers', [])
   $scope.process_edits = function(daily, entry) {
     // DS.update_entry(entry);
 
-    // Convert form date into a Date object
-    entry.date = new Date(entry.date);
+    // Convert form string into a Date object
+    var parts = entry.date.split('/');
+    entry.date = new Date(parts[2], (parts[1] - 1), parts[0]);
 
     // If the date has changed, reorganise dailies
     if ($filter('date')(daily.date, 'yyyy-MM-dd')
