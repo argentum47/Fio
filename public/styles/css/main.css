@@ -89,14 +89,14 @@ body {
   .c.full {
     width: 100%; }
 
-.entries .amt {
-  text-align: right; }
-
 .daily-totals {
   line-height: 28.8px; }
   .daily-totals .amt {
     float: none;
     margin-left: 197.4px; }
+
+.entries .amt {
+  text-align: right; }
 
 .entry {
   position: relative;
@@ -170,7 +170,7 @@ body {
   padding-top: 21.33333px;
   padding-bottom: 21.33333px;
   margin-bottom: 2px; }
-  .timeline-block:after {
+  .timeline-block:before {
     content: '';
     display: block;
     position: absolute;

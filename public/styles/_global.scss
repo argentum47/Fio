@@ -159,18 +159,18 @@ $block_spacing: em(20px, $entries_fs);
 	&.full { width: 100%; }
 }
 
-.entries {
-	@extend %uncollapse;
-	.amt {
-		text-align: right;
-	}
-}
-
 .daily-totals {
 	line-height: $entries_lh;
 	.amt {
 		float: none;
 		margin-left: $date_w;
+	}
+}
+
+.entries {
+	@extend %uncollapse;
+	.amt {
+		text-align: right;
 	}
 }
 
@@ -234,8 +234,6 @@ $block_spacing: em(20px, $entries_fs);
 	}
 }
 
-
-
 .module-io {
 	font-size: $entries_fs;
 	background-color: $white;
@@ -249,7 +247,7 @@ $block_spacing: em(20px, $entries_fs);
 	padding-bottom: $block_spacing;
 	margin-bottom: 2px; // This is so the dotted line stays nice
 	// This draws the timeline
-	&:after {
+	&:before {
 		content: '';
 		display: block;
 		position: absolute;
