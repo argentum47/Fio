@@ -79,7 +79,7 @@ body {
   white-space: nowrap; }
   .c.date {
     width: 197.4px; }
-  .c.amount {
+  .c.amt {
     width: 98.7px;
     margin-right: 49.35px; }
   .c.category {
@@ -94,7 +94,7 @@ body {
 
 .daily-totals {
   line-height: 28.8px; }
-  .daily-totals .amount {
+  .daily-totals .amt {
     float: none;
     margin-left: 197.4px; }
 
@@ -120,11 +120,11 @@ body {
     line-height: 57.6px;
     background-color: #737373;
     z-index: 1; }
-    .entry.editing .amount {
+    .entry.editing .amt {
       margin-left: 0; }
     .entry.editing .remove {
       display: block; }
-  .entry.last:not(.editing) .amount {
+  .entry.last:not(.editing) .amt {
     border-bottom: 2px dotted #949494; }
   .entry.losing-interest {
     line-height: 57.6px; }
@@ -144,7 +144,7 @@ body {
       -webkit-transition: opacity 0.2s;
       -moz-transition: opacity 0.2s;
       transition: opacity 0.2s; }
-  .entry .amount {
+  .entry .amt {
     margin-left: 197.4px; }
   .entry .c {
     cursor: pointer; }

@@ -153,7 +153,7 @@ $block_spacing: em(20px, $entries_fs);
 	white-space: nowrap;
 
 	&.date { width: $date_w; }
-	&.amount { width: $amount_w; margin-right: $amount_p; }
+	&.amt { width: $amount_w; margin-right: $amount_p; }
 	&.category { width: $category_w; }
 	&.note { width: $note_w; }
 	&.full { width: 100%; }
@@ -168,7 +168,7 @@ $block_spacing: em(20px, $entries_fs);
 
 .daily-totals {
 	line-height: $entries_lh;
-	.amount {
+	.amt {
 		float: none;
 		margin-left: $date_w;
 	}
@@ -197,13 +197,13 @@ $block_spacing: em(20px, $entries_fs);
 		line-height: 2 * $entries_lh;
 		background-color: $d_gray;
 		z-index: 1;
-		.amount {
+		.amt {
 			margin-left: 0;
 		}
 		.remove { display: block; }
 	}
 	// This is the separator between entries and totals
-	&.last:not(.editing) .amount { border-bottom: 2px dotted $gray; }	
+	&.last:not(.editing) .amt { border-bottom: 2px dotted $gray; }	
 	&.losing-interest {
 		line-height: 2 * $entries_lh;
 	}
@@ -217,7 +217,7 @@ $block_spacing: em(20px, $entries_fs);
 			@include transition(opacity 0.2s)
 		}
 	}
-	.amount { margin-left: $date_w; }
+	.amt { margin-left: $date_w; }
 	.c { cursor: pointer; }
 	input {
 		width: 100%;
