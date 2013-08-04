@@ -1,6 +1,6 @@
 <div class="timeline-block"
      ng-repeat="(index, daily) in dailies | orderBy:order"
-	 ng-init="daily.currently_editing = 0;" 
+	 ng-init="daily.currently_editing = 0" 
      ng-class="{'with-month': !month_unchanged(daily, index), 'empty': !filtered_entries.length}">
 
      	<div class="timeline-month">
@@ -40,10 +40,9 @@
 			                                 process_edits(daily, entry)" 
 						      novalidate>
 							<div class="c date">
-								<input type="text" 
-								       placeholder="dd/mm/yyyy" 
-								       ng-model="entry.str_date" 
-								       value="{{ entry.str_date }}"
+								<input type="date" 
+								       ng-model="entry.date" 
+								       value="{{ entry.date | date: 'yyyy-MM-dd'}}"
 								       required />
 							</div>
 							<div class="c amt">
