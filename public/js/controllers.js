@@ -48,6 +48,7 @@ angular.module('fio.controllers', [])
   $scope.process_edits = function(daily, entry) {
     // DS.update_entry(entry);
 
+    // Setting entry date to a Date object
     entry.date = new Date(entry.date);
 
     // If the date has changed, reorganise dailies
