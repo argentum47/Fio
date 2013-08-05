@@ -49,7 +49,7 @@ angular.module('fio.controllers', [])
     // DS.update_entry(entry);
 
     // Setting entry date to a Date object
-    entry.date = new Date(entry.date);
+    entry.date = new Date(entry.date_str);
 
     // If the date has changed, reorganise dailies
     if ($filter('date')(daily.date, 'yyyy-MM-dd')
@@ -62,6 +62,13 @@ angular.module('fio.controllers', [])
       $scope.dailies = DS.inject_to_dailies(entry, $scope.dailies);
 
     }
+  }
+
+  $scope.set_entry_date = function(date, entry) {
+    // Use a temporary string property to show a readable value in the date input
+    // The format is chosen based on what Chrome wants
+    entry.date_str = $filter('date')(date, 'yyyy-MM-dd');
+    entry.date = date;
   }
 
   // Remove entry, but with timeouts, so that we get to show animations
@@ -93,10 +100,6 @@ angular.module('fio.controllers', [])
                 {date: new Date('01/01/0000')} : 
                 sorted_list[index];
     return daily;
-  }
-
-  $scope.set_entry_date = function(date, entry) {
-    entry.date = date;
   }
 
   $scope.get_daily_totals = function(daily) {
