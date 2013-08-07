@@ -48,9 +48,6 @@ angular.module('fio.controllers', [])
   $scope.process_edits = function(daily, entry) {
     // DS.update_entry(entry);
 
-    // Setting entry date to a Date object
-    entry.date = new Date(entry.date_str);
-
     // If the date has changed, reorganise dailies
     if ($filter('date')(daily.date, 'yyyy-MM-dd')
         != $filter('date')(entry.date, 'yyyy-MM-dd')) {
@@ -65,9 +62,6 @@ angular.module('fio.controllers', [])
   }
 
   $scope.set_entry_date = function(date, entry) {
-    // Use a temporary string property to show a readable value in the date input
-    // The format is chosen based on what Chrome wants
-    entry.date_str = $filter('date')(date, 'yyyy-MM-dd');
     entry.date = date;
   }
 

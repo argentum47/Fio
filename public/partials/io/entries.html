@@ -21,7 +21,7 @@
 			                'last': $last, 
 			                'losing-interest': losing_interest,
 			                'removing': removing}" 
-			     focus-on-click>
+			     focus-on-click="1">
 
 					<div class="cw" 
 					     ng-hide="editing"
@@ -40,22 +40,22 @@
 			                                 process_edits(daily, entry)" 
 						      novalidate>
 							<div class="c date">
-								<input type="date" 
-									   placeholder="Date"
-								       ng-model="entry.date_str" 
-								       required />
+								<input placeholder="Date"
+									   ui-date 
+								       ng-model="entry.date" 
+								       ng-required="true" />
 							</div>
 							<div class="c amt">
 								<input type="number" 
 									   placeholder="Amount" 
 								       ng-model="entry.amount" 
-								       required />
+								       ng-required="true" />
 							</div>
 							<div class="c category">
 								<input type="text" 
 									   placeholder="Category"
 								       ng-model="entry.category" 
-								       required />
+								       ng-required="true" />
 							</div>
 							<div class="c note">
 								<input type="text" 
