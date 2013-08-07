@@ -40,9 +40,8 @@
 			                                 process_edits(daily, entry)" 
 						      novalidate>
 							<div class="c date">
-								<input placeholder="Date"
-									   ui-date 
-								       ng-model="entry.date" 
+								<input placeholder="Date (dd/mm/yyyy)"
+								       ng-model="entry.formatted_date" 
 								       ng-required="true" />
 							</div>
 							<div class="c amt">

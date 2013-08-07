@@ -48,6 +48,10 @@ angular.module('fio.controllers', [])
   $scope.process_edits = function(daily, entry) {
     // DS.update_entry(entry);
 
+    // Copy the formatted date value to the actual date
+    // moment.js uses different formatting syntax (uppercase)
+    entry.date = new Date(moment(entry.formatted_date, 'DD/MM/YYYY'));
+
     // If the date has changed, reorganise dailies
     if ($filter('date')(daily.date, 'yyyy-MM-dd')
         != $filter('date')(entry.date, 'yyyy-MM-dd')) {
@@ -62,6 +66,9 @@ angular.module('fio.controllers', [])
   }
 
   $scope.set_entry_date = function(date, entry) {
+    log("setting entry dates")
+    entry.formatted_date = $filter('date')(date, 'dd/MM/yyyy');
+    log(entry.formatted_date);
     entry.date = date;
   }
 
