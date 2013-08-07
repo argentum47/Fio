@@ -101,8 +101,8 @@ angular.module('fio.directives', [])
         $timeout(function() {
           if (!element.find('input').is(':focus')) {
 
-            // Start out by focusing the first input
-            element.find('input')[0].focus();
+            // Start out by focusing the input at the given index
+            element.find('input')[attrs.focusOnClick].focus();
 
             // Attempt to perform a mouse click again 
             // to focus the input I actually wanted to change
@@ -114,6 +114,28 @@ angular.module('fio.directives', [])
           }
         });
       });
+    }
+  };
+})
+
+//=========================================================
+// Add a date processor and validator to an input
+// in addition to existing angular validation.
+//=========================================================
+
+.directive('processDate', function() {
+  return {
+    require: 'ngModel',
+    link: function(scope, elem, attr, ctrl) {
+
+      // The parser will run each time the value is parsed
+      // into the model when the user updates it
+      ctrl.$parsers.unshift(function(value) {
+        var date_valid = true; // The date is valid
+        ctrl.$setValidity('validDate', date_valid);
+        return valid ? value : undefined;
+      });
+
     }
   };
 })
