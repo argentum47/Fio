@@ -226,16 +226,6 @@ $block_spacing: em(20px, $entries_fs);
 	}
 	.amt { margin-left: $date_w; }
 	.c { position: relative; cursor: pointer; }
-	.errors {
-		display: block;
-		position: absolute;
-		top: 100%;
-		left: 0;
-		width: 100%;
-		line-height: normal;
-		white-space: normal;
-		background-color: $white;
-	}
 	input {
 		width: 100%;
 		color: $white;
@@ -248,6 +238,25 @@ $block_spacing: em(20px, $entries_fs);
 		width: 2.3em;
 		text-align: center;
 		cursor: pointer;
+	}
+}
+
+.errors {
+	@extend %uncollapse;
+	line-height: normal;
+	white-space: normal;
+	color: $d_gray;
+	background-color: $l_gray;
+	span {
+		display: block;
+		height: 0;
+		overflow: hidden;
+		line-height: 0;
+		@include transition(line-height, 0.2s);
+		&.active {
+			height: auto;
+			line-height: em(30px, $entries_fs);
+		}
 	}
 }
 

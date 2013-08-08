@@ -23,81 +23,80 @@
 			                'removing': removing}" 
 			     focus-on-click="0">
 
-					<div class="cw" 
-					     ng-hide="editing"
-					     ng-click="editing=true;daily.currently_editing = daily.currently_editing + 1">
-						<div class="c amt {{ get_type(entry.amount) }}">{{ entry.amount | currency:'':2 }}</div>
-						<div class="c category">{{ entry.category }}</div>
-						<div class="c note">{{ entry.note }}</div>
+				<div class="cw" 
+				     ng-hide="editing"
+				     ng-click="editing=true;daily.currently_editing = daily.currently_editing + 1">
+					<div class="c amt {{ get_type(entry.amount) }}">{{ entry.amount | currency:'':2 }}</div>
+					<div class="c category">{{ entry.category }}</div>
+					<div class="c note">{{ entry.note }}</div>
+				</div>
+
+				<div class="cw"
+				     ng-show="editing">
+					<form name="editEntry" 
+					      ng-init="set_entry_date(daily.date, entry)" 
+					      interest-lost="editing=false;
+		                                 daily.currently_editing = daily.currently_editing - 1;
+		                                 process_edits(daily, entry)" 
+					      novalidate>
+						<div class="c date">
+							<input name="date" 
+							       placeholder="Date"
+							       ng-model="entry.formatted_date" 
+							       validate-date 
+							       ng-required="true" />
+						</div>
+						<div class="c amt">
+							<input name="amount" 
+							       validate-number 
+								   placeholder="Amount" 
+							       ng-model="entry.amount" 
+							       ng-required="true" />
+						</div>
+						<div class="c category">
+							<input name="category" 
+							       type="text" 
+								   placeholder="Category"
+							       ng-model="entry.category" 
+							       ng-required="true" />
+						</div>
+						<div class="c note">
+							<input name="note" 
+							       type="text" 
+								   placeholder="Note"
+							       ng-model="entry.note" />
+						</div>
+					</form>
+				</div> <!-- when editing -->
+
+				<span class="remove" 
+				      ng-click="daily.currently_editing = daily.currently_editing - 1;
+				                editing = false;
+				                losing_interest = true;
+				                removing = true;
+				                remove_entry(daily, entry)">
+				    [x]
+				</span>
+
+				<div class="errors">
+					<div class="cw">
+						<span ng-class="{'active': editEntry.date.$error.required}">
+					    	You forgot to enter the date of your transaction!
+					    </span>
+					    <span ng-class="{'active': editEntry.date.$error.date}">
+					    	The date should be in the format dd/mm/yyyy.
+					    </span>
+						<span ng-class="{'active': editEntry.amount.$error.required}">
+					    	You forgot to enter the transaction amount!
+					    </span>
+					    <span ng-class="{'active': editEntry.amount.$error.number}">
+					    	The amount should be a valid number (can be negative).
+					    </span>
+						<span ng-class="{'active': editEntry.category.$error.required}">
+						    The category is required!
+						</span>
 					</div>
-
-					<div class="cw"
-					     ng-show="editing">
-						<form name="editEntry" 
-						      ng-init="set_entry_date(daily.date, entry)" 
-						      interest-lost="editing=false;
-			                                 daily.currently_editing = daily.currently_editing - 1;
-			                                 process_edits(daily, entry)" 
-						      novalidate>
-							<div class="c date">
-								<input name="date" 
-								       placeholder="Date"
-								       ng-model="entry.formatted_date" 
-								       validate-date 
-								       ng-required="true" />
-								<span class="errors">
-								    <span ng-show="editEntry.date.$error.required">
-								    	You forgot to enter the date of your transaction!
-								    </span>
-								    <span ng-show="editEntry.date.$error.date">
-								    	The date should be in the format dd/mm/yyyy
-								    </span>
-								</span>
-							</div>
-							<div class="c amt">
-								<input name="amount" 
-								       validate-number 
-									   placeholder="Amount" 
-								       ng-model="entry.amount" 
-								       ng-required="true" />
-								<span class="errors">
-								    <span ng-show="editEntry.amount.$error.required">
-								    	You forgot to enter the transaction amount!
-								    </span>
-								    <span ng-show="editEntry.amount.$error.number">
-								    	The amount should be a valid number (can be negative).
-								    </span>
-								</span>
-							</div>
-							<div class="c category">
-								<input name="category" 
-								       type="text" 
-									   placeholder="Category"
-								       ng-model="entry.category" 
-								       ng-required="true" />
-								<span class="errors"> 
-								    <span ng-show="editEntry.category.$error.required">
-								    	The category is required!
-								    </span>
-								</span>
-							</div>
-							<div class="c note">
-								<input name="note" 
-								       type="text" 
-									   placeholder="Note"
-								       ng-model="entry.note" />
-							</div>
-						</form>
-					</div> <!-- when editing -->
-
-					<span class="remove" 
-					      ng-click="daily.currently_editing = daily.currently_editing - 1;
-					                editing = false;
-					                losing_interest = true;
-					                removing = true;
-					                remove_entry(daily, entry)">
-					    [x]
-					</span>
+			    </div>
 
 			</div> <!-- .entry -->
 
@@ -108,7 +107,7 @@
 			</div>
 			</div>
 
-		</div> <!-- .entries -->
+		</div> <!-- .subentries -->
 </div> <!-- repeat daily in dailies -->
 
 <div class="no-data" ng-show="dailies.length < 1">No entries added</div>

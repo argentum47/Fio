@@ -11,7 +11,7 @@
   font-weight: normal;
   font-style: normal; }
 
-section, .daily-totals, .entries, .entry, .timeline-block {
+section, .daily-totals, .entries, .entry, .errors, .timeline-block {
   float: left;
   width: 100%; }
 
@@ -154,15 +154,6 @@ input::-webkit-calendar-picker-indicator {
   .entry .c {
     position: relative;
     cursor: pointer; }
-  .entry .errors {
-    display: block;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    line-height: normal;
-    white-space: normal;
-    background-color: white; }
   .entry input {
     width: 100%;
     color: white; }
@@ -174,6 +165,23 @@ input::-webkit-calendar-picker-indicator {
     width: 2.3em;
     text-align: center;
     cursor: pointer; }
+
+.errors {
+  line-height: normal;
+  white-space: normal;
+  color: #737373;
+  background-color: #d1d1d1; }
+  .errors span {
+    display: block;
+    height: 0;
+    overflow: hidden;
+    line-height: 0;
+    -webkit-transition: line-height, 0.2s;
+    -moz-transition: line-height, 0.2s;
+    transition: line-height, 0.2s; }
+    .errors span.active {
+      height: auto;
+      line-height: 32px; }
 
 .module-io {
   font-size: 0.9375em;
