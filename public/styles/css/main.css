@@ -171,17 +171,22 @@ input::-webkit-calendar-picker-indicator {
   white-space: normal;
   color: #737373;
   background-color: #d1d1d1; }
-  .errors span {
-    display: block;
+  .errors .error {
     height: 0;
     overflow: hidden;
     line-height: 0;
-    -webkit-transition: line-height, 0.2s;
-    -moz-transition: line-height, 0.2s;
-    transition: line-height, 0.2s; }
-    .errors span.active {
+    -webkit-transition: height, 0.2s;
+    -moz-transition: height, 0.2s;
+    transition: height, 0.2s; }
+    .errors .error.active {
       height: auto;
       line-height: 32px; }
+      .errors .error.active:nth-child(1) {
+        background-color: #8d8d8d; }
+      .errors .error.active:nth-child(2) {
+        background-color: #a6a6a6; }
+      .errors .error.active:nth-child(3) {
+        background-color: silver; }
 
 .module-io {
   font-size: 0.9375em;

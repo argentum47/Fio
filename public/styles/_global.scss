@@ -247,18 +247,25 @@ $block_spacing: em(20px, $entries_fs);
 	white-space: normal;
 	color: $d_gray;
 	background-color: $l_gray;
-	span {
-		display: block;
-		height: 0;
+	.error {
+		height: 0; // Make sure hidden when no error
 		overflow: hidden;
 		line-height: 0;
-		@include transition(line-height, 0.2s);
+		@include transition(height, 0.2s);
 		&.active {
 			height: auto;
 			line-height: em(30px, $entries_fs);
-		}
-	}
-}
+
+			// Color each error group a slightly lighter bg
+			@for $i from 1 through 3 {
+				&:nth-child(#{$i}) {
+					background-color: lighten($d_gray, percentage($i / 10));
+				}
+			} // For each
+
+		} // .active
+	} // .error
+} // .errors
 
 .module-io {
 	font-size: $entries_fs;
