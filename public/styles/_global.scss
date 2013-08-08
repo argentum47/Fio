@@ -154,7 +154,7 @@ $block_spacing: em(20px, $entries_fs);
 
 .c {
 	display: block;
-	overflow: hidden;
+	// overflow: hidden;
 	float: left;
 	white-space: nowrap;
 
@@ -166,6 +166,7 @@ $block_spacing: em(20px, $entries_fs);
 }
 
 .daily-totals {
+	@extend %uncollapse;
 	line-height: $entries_lh;
 	.amt {
 		float: none;
@@ -206,6 +207,14 @@ $block_spacing: em(20px, $entries_fs);
 		.amt {
 			margin-left: 0;
 		}
+		.error {
+			position: absolute;
+			top: 100%;
+			left: 0;
+			width: 100%;
+			line-height: normal;
+			white-space: normal;
+		}
 		.remove { display: block; }
 	}
 	// This is the separator between entries and totals
@@ -224,7 +233,7 @@ $block_spacing: em(20px, $entries_fs);
 		}
 	}
 	.amt { margin-left: $date_w; }
-	.c { cursor: pointer; }
+	.c { position: relative; cursor: pointer; }
 	input {
 		width: 100%;
 		color: $white;

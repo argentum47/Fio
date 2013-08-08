@@ -11,7 +11,7 @@
   font-weight: normal;
   font-style: normal; }
 
-section, .entries, .entry, .timeline-block {
+section, .daily-totals, .entries, .entry, .timeline-block {
   float: left;
   width: 100%; }
 
@@ -80,7 +80,6 @@ input::-webkit-calendar-picker-indicator {
 
 .c {
   display: block;
-  overflow: hidden;
   float: left;
   white-space: nowrap; }
   .c.date {
@@ -128,6 +127,13 @@ input::-webkit-calendar-picker-indicator {
     z-index: 1; }
     .entry.editing .amt {
       margin-left: 0; }
+    .entry.editing .error {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      line-height: normal;
+      white-space: normal; }
     .entry.editing .remove {
       display: block; }
   .entry.last:not(.editing) .amt {
@@ -153,6 +159,7 @@ input::-webkit-calendar-picker-indicator {
   .entry .amt {
     margin-left: 197.4px; }
   .entry .c {
+    position: relative;
     cursor: pointer; }
   .entry input {
     width: 100%;

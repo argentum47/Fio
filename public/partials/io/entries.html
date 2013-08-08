@@ -33,32 +33,38 @@
 
 					<div class="cw"
 					     ng-show="editing">
-						<form name="edit-entry" 
+						<form name="editEntry" 
 						      ng-init="set_entry_date(daily.date, entry)" 
 						      interest-lost="editing=false;
 			                                 daily.currently_editing = daily.currently_editing - 1;
 			                                 process_edits(daily, entry)" 
 						      novalidate>
 							<div class="c date">
-								<input placeholder="Date (dd/mm/yyyy)"
+								<input name="date" 
+								       placeholder="Date"
 								       ng-model="entry.formatted_date" 
 								       validate-date 
 								       ng-required="true" />
+								<span class="error" ng-show="editEntry.date.$error">Please enter a valid date in the format dd/mm/yyyy</span>
 							</div>
 							<div class="c amt">
-								<input type="number" 
+								<input name="amount" 
+								       type="number" 
 									   placeholder="Amount" 
 								       ng-model="entry.amount" 
 								       ng-required="true" />
+								<span class="error">Please enter a valid amount</span>
 							</div>
 							<div class="c category">
-								<input type="text" 
+								<input name="category" type="text" 
 									   placeholder="Category"
 								       ng-model="entry.category" 
 								       ng-required="true" />
+								<span class="error">The category is required</span>
 							</div>
 							<div class="c note">
-								<input type="text" 
+								<input name="note" 
+								       type="text" 
 									   placeholder="Note"
 								       ng-model="entry.note" />
 							</div>
@@ -76,9 +82,11 @@
 
 			</div> <!-- .entry -->
 
-			<div class="cw daily-totals" ng-hide="filters.note || filters.category || filters.$">
+			<div class="daily-totals" ng-hide="filters.note || filters.category || filters.$">
+				<div class="cw">
 				<div class="c amt" ng-show="get_daily_totals(daily).inc">{{ get_daily_totals(daily).inc | currency:'':2 }}</div>
 				<div class="c amt" ng-show="get_daily_totals(daily).exp">{{ get_daily_totals(daily).exp | currency:'':2 }}</div>
+			</div>
 			</div>
 
 		</div> <!-- .entries -->
