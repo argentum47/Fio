@@ -36,6 +36,9 @@ angular.module('fio.directives', [])
     // If it is, go on to check if we've lost interest
     angular.element('body').bind('click', function(event) {
       if (/* still */active()) {
+        // Ignore this click event, we're still editing
+        // (prevents other entries from opening)
+        event.stopPropagation();
         check_interest();
       }
     });
@@ -52,6 +55,8 @@ angular.module('fio.directives', [])
 
     // When interest has been lost
     var interest_lost = function() {
+
+      // If the form is valid
       if (!$(element).hasClass('ng-invalid')) {
         // Change the state to transitioning for just a few moments
         scope.losing_interest = true;
@@ -63,8 +68,11 @@ angular.module('fio.directives', [])
           scope.$eval(attrs.interestLost);
         });
       }
+
+      // If the form is not valid
       else {
-        // Prevent other clicks
+        // Set focus to the first invalid input
+        $(inputs.filter('.ng-invalid')[0]).focus();
       }
     }
 
