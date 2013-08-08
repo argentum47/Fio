@@ -45,7 +45,14 @@
 								       ng-model="entry.formatted_date" 
 								       validate-date 
 								       ng-required="true" />
-								<span class="error" ng-show="editEntry.date.$error">Please enter a valid date in the format dd/mm/yyyy</span>
+								<span class="errors">
+								    <span ng-show="editEntry.date.$error.required">
+								    	You forgot to enter the date of your transaction!
+								    </span>
+								    <span ng-show="editEntry.date.$error.date">
+								    	The date should be in the format dd/mm/yyyy
+								    </span>
+								</span>
 							</div>
 							<div class="c amt">
 								<input name="amount" 
@@ -53,14 +60,27 @@
 									   placeholder="Amount" 
 								       ng-model="entry.amount" 
 								       ng-required="true" />
-								<span class="error">Please enter a valid amount</span>
+								<span class="errors">
+								    <span ng-show="editEntry.amount.$error.required">
+								    	You forgot to enter the transaction amount!
+								    	{{ editEntry.amount.$error }}
+								    </span>
+								    <span ng-show="editEntry.amount.$error.number">
+								    	The amount should be a valid number (can be negative).
+								    </span>
+								</span>
 							</div>
 							<div class="c category">
-								<input name="category" type="text" 
+								<input name="category" 
+								       type="text" 
 									   placeholder="Category"
 								       ng-model="entry.category" 
 								       ng-required="true" />
-								<span class="error">The category is required</span>
+								<span class="errors"> 
+								    <span ng-show="editEntry.category.$error.required">
+								    	The category is required!
+								    </span>
+								</span>
 							</div>
 							<div class="c note">
 								<input name="note" 

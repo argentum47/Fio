@@ -140,7 +140,7 @@ angular.module('fio.directives', [])
       // into the model when the user updates it
       ctrl.$parsers.unshift(function(value) {
         var date_valid = moment(value, 'DD/MM/YYYY').isValid();
-        ctrl.$setValidity('dateValid', date_valid);
+        ctrl.$setValidity('date', date_valid);
         return date_valid ? value : undefined;
       });
 
