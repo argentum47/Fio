@@ -32,13 +32,10 @@ angular.module('fio.directives', [])
     });
 
     // Whenever we make a click, we need to make sure the element
-    // is still there (which may have been a remove action)
-    // If it is, go on to check if we've lost interest
+    // is still there (which may have been a remove action),
+    // If pass, go on to check if we've lost interest
     angular.element('body').bind('click', function(event) {
       if (/* still */active()) {
-        // Ignore this click event, we're still editing
-        // (prevents other entries from opening)
-        event.stopPropagation();
         check_interest();
       }
     });
@@ -72,7 +69,7 @@ angular.module('fio.directives', [])
       // If the form is not valid
       else {
         // Set focus to the first invalid input
-        $(inputs.filter('.ng-invalid')[0]).focus();
+        $(inputs.filter('.ng-invalid')[0]).focus();h
       }
     }
 
