@@ -127,13 +127,6 @@ input::-webkit-calendar-picker-indicator {
     z-index: 1; }
     .entry.editing .amt {
       margin-left: 0; }
-    .entry.editing .error {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      width: 100%;
-      line-height: normal;
-      white-space: normal; }
     .entry.editing .remove {
       display: block; }
   .entry.last:not(.editing) .amt {
@@ -161,6 +154,15 @@ input::-webkit-calendar-picker-indicator {
   .entry .c {
     position: relative;
     cursor: pointer; }
+  .entry .errors {
+    display: block;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    line-height: normal;
+    white-space: normal;
+    background-color: white; }
   .entry input {
     width: 100%;
     color: white; }

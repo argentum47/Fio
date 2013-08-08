@@ -207,14 +207,6 @@ $block_spacing: em(20px, $entries_fs);
 		.amt {
 			margin-left: 0;
 		}
-		.error {
-			position: absolute;
-			top: 100%;
-			left: 0;
-			width: 100%;
-			line-height: normal;
-			white-space: normal;
-		}
 		.remove { display: block; }
 	}
 	// This is the separator between entries and totals
@@ -234,6 +226,16 @@ $block_spacing: em(20px, $entries_fs);
 	}
 	.amt { margin-left: $date_w; }
 	.c { position: relative; cursor: pointer; }
+	.errors {
+		display: block;
+		position: absolute;
+		top: 100%;
+		left: 0;
+		width: 100%;
+		line-height: normal;
+		white-space: normal;
+		background-color: $white;
+	}
 	input {
 		width: 100%;
 		color: $white;
