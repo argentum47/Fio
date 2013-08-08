@@ -45,18 +45,25 @@ $main_font: 'Cardo', 'Baskerville', serif;
 //=Styling helpers
 //=====================================
 
-%uncollapse {
-	float: left;
-	width: 100%;
-}
-
 @mixin center-wrapper($width) {
 	width: $width;
 	margin: 0 auto;
 }
 
+@mixin placeholder() {
+	&::-webkit-input-placeholder { @content; }
+	&:-moz-placeholder { @content; }
+	&::-moz-placeholder { @content; }
+	&:-ms-input-placeholder { @content; }
+}
+
 //=Extendables
 //=====================================
+
+%uncollapse {
+	float: left;
+	width: 100%;
+}
 
 //=Functional stuff
 //=====================================

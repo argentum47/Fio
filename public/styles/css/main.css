@@ -181,13 +181,13 @@ input::-webkit-calendar-picker-indicator {
     .errors .error.active {
       height: auto;
       line-height: 32px;
-      color: #5a5a5a; }
+      color: white; }
       .errors .error.active:nth-child(1) {
-        background-color: #8d8d8d; }
+        background-color: #ca6350; }
       .errors .error.active:nth-child(2) {
-        background-color: #a6a6a6; }
+        background-color: #d07463; }
       .errors .error.active:nth-child(3) {
-        background-color: silver; }
+        background-color: #d68677; }
 
 .module-io {
   font-size: 0.9375em;
