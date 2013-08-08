@@ -21,7 +21,7 @@
 			                'last': $last, 
 			                'losing-interest': losing_interest,
 			                'removing': removing}" 
-			     focus-on-click="1">
+			     focus-on-click="0">
 
 					<div class="cw" 
 					     ng-hide="editing"
@@ -42,6 +42,7 @@
 							<div class="c date">
 								<input placeholder="Date (dd/mm/yyyy)"
 								       ng-model="entry.formatted_date" 
+								       validate-date 
 								       ng-required="true" />
 							</div>
 							<div class="c amt">

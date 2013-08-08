@@ -66,9 +66,7 @@ angular.module('fio.controllers', [])
   }
 
   $scope.set_entry_date = function(date, entry) {
-    log("setting entry dates")
     entry.formatted_date = $filter('date')(date, 'dd/MM/yyyy');
-    log(entry.formatted_date);
     entry.date = date;
   }
 

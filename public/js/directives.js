@@ -123,7 +123,7 @@ angular.module('fio.directives', [])
 // in addition to existing angular validation.
 //=========================================================
 
-.directive('processDate', function() {
+.directive('validateDate', function() {
   return {
     require: 'ngModel',
     link: function(scope, elem, attr, ctrl) {
@@ -131,9 +131,17 @@ angular.module('fio.directives', [])
       // The parser will run each time the value is parsed
       // into the model when the user updates it
       ctrl.$parsers.unshift(function(value) {
-        var date_valid = true; // The date is valid
-        ctrl.$setValidity('validDate', date_valid);
-        return valid ? value : undefined;
+        var date_valid = moment(value, 'DD/MM/YYYY').isValid();
+        ctrl.$setValidity('dateValid', date_valid);
+        return date_valid ? value : undefined;
+      });
+
+      // Also add to $formatters.
+      // Not sure why...
+      ctrl.$formatters.unshift(function(value) {
+        var date_valid = moment(value, 'DD/MM/YYYY').isValid();
+        ctrl.$setValidity('dateValid', date_valid);
+        return date_valid ? value : undefined;
       });
 
     }
