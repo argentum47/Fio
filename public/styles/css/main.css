@@ -156,6 +156,8 @@ input::-webkit-calendar-picker-indicator {
     cursor: pointer; }
   .entry input {
     width: 100%;
+    height: 57.6px;
+    padding: 5.33333px;
     color: white; }
   .entry .remove {
     display: none;

@@ -228,6 +228,8 @@ $block_spacing: em(20px, $entries_fs);
 	.c { cursor: pointer; }
 	input {
 		width: 100%;
+		height: 2 * $entries_lh;
+		padding: em(5px, $entries_fs);
 		color: $white;
 	}
 	.remove {
