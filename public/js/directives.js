@@ -148,8 +148,40 @@ angular.module('fio.directives', [])
       // Not sure why...
       ctrl.$formatters.unshift(function(value) {
         var date_valid = moment(value, 'DD/MM/YYYY').isValid();
-        ctrl.$setValidity('dateValid', date_valid);
+        ctrl.$setValidity('date', date_valid);
         return date_valid ? value : undefined;
+      });
+
+    }
+  };
+})
+
+
+//=========================================================
+// Add a number validator to an input
+// This seems to be buggy in angular.
+// See http://stackoverflow.com/questions/17395188/angular-validate-input-type-number
+//=========================================================
+
+.directive('validateNumber', function() {
+  return {
+    require: 'ngModel',
+    link: function(scope, elem, attr, ctrl) {
+
+      // The parser will run each time the value is parsed
+      // into the model when the user updates it
+      ctrl.$parsers.unshift(function(value) {
+        var number_valid = !isNaN(parseFloat(value));
+        ctrl.$setValidity('number', number_valid);
+        return number_valid ? parseFloat(value) : undefined;
+      });
+
+      // Also add to $formatters.
+      // Not sure why...
+      ctrl.$formatters.unshift(function(value) {
+        var number_valid = !isNaN(parseFloat(value));
+        ctrl.$setValidity('number', number_valid);
+        return number_valid ? parseFloat(value) : undefined;
       });
 
     }
