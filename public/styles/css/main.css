@@ -80,6 +80,7 @@ input::-webkit-calendar-picker-indicator {
 
 .c {
   display: block;
+  overflow: hidden;
   float: left;
   white-space: nowrap; }
   .c.date {
@@ -152,7 +153,6 @@ input::-webkit-calendar-picker-indicator {
   .entry .amt {
     margin-left: 197.4px; }
   .entry .c {
-    position: relative;
     cursor: pointer; }
   .entry input {
     width: 100%;
@@ -168,9 +168,7 @@ input::-webkit-calendar-picker-indicator {
 
 .errors {
   line-height: normal;
-  white-space: normal;
-  color: #737373;
-  background-color: #d1d1d1; }
+  white-space: normal; }
   .errors .error {
     height: 0;
     overflow: hidden;
@@ -180,7 +178,8 @@ input::-webkit-calendar-picker-indicator {
     transition: height, 0.2s; }
     .errors .error.active {
       height: auto;
-      line-height: 32px; }
+      line-height: 32px;
+      color: #5a5a5a; }
       .errors .error.active:nth-child(1) {
         background-color: #8d8d8d; }
       .errors .error.active:nth-child(2) {

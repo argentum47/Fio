@@ -154,7 +154,7 @@ $block_spacing: em(20px, $entries_fs);
 
 .c {
 	display: block;
-	// overflow: hidden;
+	overflow: hidden;
 	float: left;
 	white-space: nowrap;
 
@@ -225,7 +225,7 @@ $block_spacing: em(20px, $entries_fs);
 		}
 	}
 	.amt { margin-left: $date_w; }
-	.c { position: relative; cursor: pointer; }
+	.c { cursor: pointer; }
 	input {
 		width: 100%;
 		color: $white;
@@ -245,8 +245,6 @@ $block_spacing: em(20px, $entries_fs);
 	@extend %uncollapse;
 	line-height: normal;
 	white-space: normal;
-	color: $d_gray;
-	background-color: $l_gray;
 	.error {
 		height: 0; // Make sure hidden when no error
 		overflow: hidden;
@@ -255,11 +253,13 @@ $block_spacing: em(20px, $entries_fs);
 		&.active {
 			height: auto;
 			line-height: em(30px, $entries_fs);
+			color: #5a5a5a;
 
 			// Color each error group a slightly lighter bg
 			@for $i from 1 through 3 {
 				&:nth-child(#{$i}) {
-					background-color: lighten($d_gray, percentage($i / 10));
+					$bg_color: lighten($d_gray, percentage($i / 10));
+					background-color: $bg_color;
 				}
 			} // For each
 
