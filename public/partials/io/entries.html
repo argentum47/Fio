@@ -70,12 +70,13 @@
 				</div> <!-- when editing -->
 
 				<span class="remove" 
-				      ng-click="daily.currently_editing = daily.currently_editing - 1;
+				      ng-click="daily.currently_editing = 
+				      				daily.currently_editing - 1;
 				                editing = false;
 				                losing_interest = true;
 				                removing = true;
 				                remove_entry(daily, entry)">
-				    [x]
+				    <i class="icon-remove"></i>
 				</span>
 
 				<div class="errors">

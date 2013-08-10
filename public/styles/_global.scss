@@ -141,11 +141,11 @@ input::-webkit-calendar-picker-indicator {
     display: none;
     -webkit-appearance: none;
 }
-$date_w: 0.2 * $page_width;
+$date_w: 0.15 * $page_width;
 $amount_w: 0.1 * $page_width;
 $amount_p: 0.05 * $page_width;
 $category_w: 0.25 * $page_width;
-$note_w: 0.4 * $page_width;
+$note_w: 0.45 * $page_width;
 
 $entries_fs: em(15px);
 $entries_lh: em(27px, $entries_fs);
@@ -237,11 +237,14 @@ $block_spacing: em(20px, $entries_fs);
 		position: absolute;
 		top: 0;
 		@include calcu(right, "(100% - #{$page_width}) / 2 + #{$page_width}");
-		padding: 0 em(5px, $entries_fs);
-		font-weight: 700;
+		padding: 0 em($entries_lh / 2, $entries_fs);
+		font-size: em(17px, $entries_fs);
 		text-align: center;
-		background-color: darken($d_gray, 5%);
+		color: $white;
 		cursor: pointer;
+		&:hover {
+			background-color: darken($d_gray, 5%);
+		}
 	}
 }
 

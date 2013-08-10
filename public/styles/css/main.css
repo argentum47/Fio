@@ -1,5 +1,7 @@
 @import url(http://fonts.googleapis.com/css?family=Source+Code+Pro:300,400,500,600,700&subset=latin,latin-ext);
 @import url(http://fonts.googleapis.com/css?family=Cardo:300,400,500,600,700&subset=latin,latin-ext);
+@import url("../vendor/font-awesome.css");
+@import url("../vendor/font-awesome-ie7.css");
 /* 
  * Variables, mixins, abstract classes and functions that do not themselves compile to CSS,
  * but are used throughout the project.
@@ -84,7 +86,7 @@ input::-webkit-calendar-picker-indicator {
   float: left;
   white-space: nowrap; }
   .c.date {
-    width: 197.4px; }
+    width: 148.05px; }
     .c.date input {
       text-align: center; }
   .c.amt {
@@ -93,7 +95,7 @@ input::-webkit-calendar-picker-indicator {
   .c.category {
     width: 246.75px; }
   .c.note {
-    width: 394.8px; }
+    width: 444.15px; }
   .c.full {
     width: 100%; }
 
@@ -101,7 +103,7 @@ input::-webkit-calendar-picker-indicator {
   line-height: 28.8px; }
   .daily-totals .amt {
     float: none;
-    margin-left: 197.4px; }
+    margin-left: 148.05px; }
 
 .entries .amt, .entries .amt input {
   text-align: right; }
@@ -156,7 +158,7 @@ input::-webkit-calendar-picker-indicator {
       -moz-transition: opacity 0.2s;
       transition: opacity 0.2s; }
   .entry .amt {
-    margin-left: 197.4px; }
+    margin-left: 148.05px; }
   .entry .c {
     cursor: pointer; }
   .entry input {
@@ -171,11 +173,13 @@ input::-webkit-calendar-picker-indicator {
     right: -o-calc((100% - 987px) / 2 + 987px);
     right: -webkit-calc((100% - 987px) / 2 + 987px);
     right: calc((100% - 987px) / 2 + 987px);
-    padding: 0 5.33333px;
-    font-weight: 700;
+    padding: 0 15.36px;
+    font-size: 18.13333px;
     text-align: center;
-    background-color: #666666;
+    color: white;
     cursor: pointer; }
+    .entry .remove:hover {
+      background-color: #666666; }
 
 .errors {
   line-height: normal;
@@ -216,10 +220,10 @@ input::-webkit-calendar-picker-indicator {
     width: 2px;
     height: 100%;
     border-right: 2px dotted #949494;
-    left: -moz-calc(((100% - 987px) / 2) + (197.4px / 2));
-    left: -o-calc(((100% - 987px) / 2) + (197.4px / 2));
-    left: -webkit-calc(((100% - 987px) / 2) + (197.4px / 2));
-    left: calc(((100% - 987px) / 2) + (197.4px / 2)); }
+    left: -moz-calc(((100% - 987px) / 2) + (148.05px / 2));
+    left: -o-calc(((100% - 987px) / 2) + (148.05px / 2));
+    left: -webkit-calc(((100% - 987px) / 2) + (148.05px / 2));
+    left: calc(((100% - 987px) / 2) + (148.05px / 2)); }
   .timeline-block.empty, .timeline-block.empty.with-month {
     -webkit-transition: all 0.2s;
     -moz-transition: all 0.2s;
@@ -245,7 +249,7 @@ input::-webkit-calendar-picker-indicator {
 .timeline-month {
   position: absolute;
   top: 21.33333px;
-  width: 197.4px;
+  width: 148.05px;
   text-align: center;
   background-color: white;
   z-index: 1;
