@@ -77,7 +77,7 @@ input {
 //=========================================================
 // Classes to define the base structure of the page
 
-$page_frame_w: 7px;
+$page_frame_w: 0px;
 
 .totals {
 	position: fixed;
@@ -141,11 +141,11 @@ input::-webkit-calendar-picker-indicator {
     display: none;
     -webkit-appearance: none;
 }
-$date_w: 0.2 * $module_width;
-$amount_w: 0.1 * $module_width;
-$amount_p: 0.05 * $module_width;
-$category_w: 0.25 * $module_width;
-$note_w: 0.4 * $module_width;
+$date_w: 0.2 * $page_width;
+$amount_w: 0.1 * $page_width;
+$amount_p: 0.05 * $page_width;
+$category_w: 0.25 * $page_width;
+$note_w: 0.4 * $page_width;
 
 $entries_fs: em(15px);
 $entries_lh: em(27px, $entries_fs);
@@ -158,7 +158,7 @@ $block_spacing: em(20px, $entries_fs);
 	float: left;
 	white-space: nowrap;
 
-	&.date { width: $date_w; }
+	&.date { width: $date_w; input {text-align: center}}
 	&.amt { width: $amount_w; margin-right: $amount_p; }
 	&.category { width: $category_w; }
 	&.note { width: $note_w; }
@@ -204,6 +204,7 @@ $block_spacing: em(20px, $entries_fs);
 		line-height: 2 * $entries_lh;
 		background-color: $d_gray;
 		z-index: 1;
+		@include transition(line-height 0.2s);
 		.amt {
 			margin-left: 0;
 		}
@@ -228,7 +229,6 @@ $block_spacing: em(20px, $entries_fs);
 	.c { cursor: pointer; }
 	input {
 		width: 100%;
-		height: 2 * $entries_lh;
 		padding: em(5px, $entries_fs);
 		color: $white;
 	}
@@ -236,9 +236,11 @@ $block_spacing: em(20px, $entries_fs);
 		display: none;
 		position: absolute;
 		top: 0;
-		right: 0em;
-		width: 2.3em;
+		@include calcu(right, "(100% - #{$page_width}) / 2 + #{$page_width}");
+		padding: 0 em(5px, $entries_fs);
+		font-weight: 700;
 		text-align: center;
+		background-color: darken($d_gray, 5%);
 		cursor: pointer;
 	}
 }
@@ -255,7 +257,6 @@ $block_spacing: em(20px, $entries_fs);
 		&.active {
 			height: auto;
 			line-height: em(30px, $entries_fs);
-			//color: #5a5a5a;
 			color: $white;
 
 			// Color each error group a slightly lighter bg
