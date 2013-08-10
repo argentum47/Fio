@@ -18,12 +18,12 @@ angular.module('fio.directives', [])
       return angular.element(element).is(':visible') ? true: false;
     }
 
-    // Blur input on ENTER
+    // Blur input on ENTER or ESC
     // or TAB keypress if it is the last input in the element
     inputs.bind("keydown", function(event) {
       var key = event.keyCode || event.which;
       var is_last_input = $(this).is(inputs[inputs.length - 1]);
-      if(key === 13 || 
+      if(key === 13 || key === 27 ||
          (key === 9 && is_last_input)) {
         event.preventDefault();
         element.find('input:focus').blur();
