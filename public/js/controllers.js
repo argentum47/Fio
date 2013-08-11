@@ -38,11 +38,12 @@ angular.module('fio.controllers', [])
       $scope.entries.push(new_entry);
       $scope.dailies = DS.inject_to_dailies(new_entry, $scope.dailies);
 
-      // Reset fields
+      // Reset form
       $scope.date = $scope.today;
       $scope.amount = '';
       $scope.category = '';
       $scope.note = '';
+      $scope.addEntry.$setPristine();
     }
   };
 
