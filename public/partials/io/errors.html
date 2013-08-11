@@ -1,0 +1,19 @@
+<div class="errors">
+	<div class="error" ng-class="{'active': form.date.$invalid && !form.date.$pristine}">
+		<div class="cw">
+			<span ng-show="form.date.$error.required">You forgot to enter the date of your transaction!</span>
+			<span ng-show="form.date.$error.date">The date should be in the format dd/mm/yyyy.</span>
+		</div> <!-- .cw -->
+	</div> <!-- .error -->
+	<div class="error" ng-class="{'active': form.amount.$invalid && !form.amount.$pristine}">
+		<div class="cw">
+			<span ng-show="form.amount.$error.required">You forgot to enter the transaction amount!</span>
+			<span ng-show="form.amount.$error.number">The amount should be a valid number (can be negative).</span>
+		</div> <!-- .cw -->
+	</div> <!-- .error -->
+	<div class="error" ng-class="{'active': form.category.$invalid && !form.category.$pristine}">
+		<div class="cw">
+			<span>The category is required!</span>
+		</div> <!-- .cw -->
+	</div> <!-- .error -->
+</div> <!-- .errors -->

@@ -7,7 +7,8 @@ angular.module('fio.controllers', [])
 
   var templates_url = 'public/partials/io/';
   $scope.templates = {
-    'entries': templates_url + 'entries.html'
+    'entries': templates_url + 'entries.html',
+    'errors': templates_url + 'errors.html'
   }
 
   $scope.today = new Date().toJSON().slice(0,10);
@@ -31,8 +32,8 @@ angular.module('fio.controllers', [])
   $scope.add_entry = function() {
 
     // Only add if necessary fields have been filled in
-    if ($scope.addEntryForm.$valid) {
-      var new_entry = {date: new Date($scope.date), amount: $scope.amount, category: $scope.category.cat, note: $scope.note};
+    if ($scope.addEntry.$valid) {
+      var new_entry = {date: new Date(moment($scope.date, 'DD/MM/YYYY')), amount: $scope.amount, category: $scope.category.cat, note: $scope.note};
       // DS.save_entry(new_entry)
       $scope.entries.push(new_entry);
       $scope.dailies = DS.inject_to_dailies(new_entry, $scope.dailies);

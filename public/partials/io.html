@@ -32,23 +32,31 @@
 		</div>
 	</section> -->
 
-<!-- 	<div class="new-entry">
+	<div class="new-entry" on-pull-down="element.addClass('active')">
 		<div class="cw">
-			<form name="addEntryForm" 
+			<form name="addEntry" 
 			      press-enter="add_entry()" 
 			      ng-click="filters={}"
 			      novalidate>
-				<div class="c date"><input type="date" name="date" ng-model="date" required></div>
-				<div class="c amount"><input type="number" step="any" ng-model="amount" required></div>
+				<div class="c date">
+					<input type="text" name="date" ng-model="date" validate-date ng-required="true">
+				</div>
+				<div class="c amt">
+					<input type="text" name="amount" ng-model="amount" validate-number ng-required="true">
+				</div>
 				<div class="c category">
-					<select name="category" ng-model="category" ng-options="c.cat group by c.type for c in categories" required>
+					<select name="category" ng-model="category" ng-options="c.cat group by c.type for c in categories" ng-required="true">
 						<option value="">Choose category</option>
 					</select>
 				</div>
-				<div class="c note"><input type="text" ng-model="note" /></div>
+				<div class="c note">
+					<input type="text" ng-model="note" />
+				</div>
 			</form>
 		</div>
-	</div> -->
+
+		<ng-include src="templates.errors" onload="form=addEntry"></ng-include>
+	</div>
 
 	<div class="entries"  ng-include src="templates.entries">
 
