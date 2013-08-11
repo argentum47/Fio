@@ -58,10 +58,7 @@ angular.module('fio.controllers', [])
 
       // Remove entry from our dailies list
       DS.remove_from_dailies(daily.$$hashKey, entry.$$hashKey, $scope.dailies);
-
-      $timeout(function() {
-        DS.remove_daily_if_empty($scope.dailies, daily);
-      }, 1000);
+      DS.remove_daily_if_empty($scope.dailies, daily);
 
       // Re-inject the entry into a suitable place accorring to the edited date
       $scope.dailies = DS.inject_to_dailies(entry, $scope.dailies);

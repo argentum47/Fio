@@ -210,11 +210,7 @@ input::-webkit-calendar-picker-indicator {
   position: relative;
   padding-top: 21.33333px;
   padding-bottom: 21.33333px;
-  margin-bottom: 2px;
-  height: auto;
-  -webkit-transition: height 0.2s;
-  -moz-transition: height 0.2s;
-  transition: height 0.2s; }
+  margin-bottom: 2px; }
   .timeline-block:before {
     content: '';
     display: block;
@@ -228,25 +224,20 @@ input::-webkit-calendar-picker-indicator {
     left: -webkit-calc(((100% - 987px) / 2) + (148.05px / 2));
     left: calc(((100% - 987px) / 2) + (148.05px / 2)); }
   .timeline-block.empty, .timeline-block.empty.with-month {
-    height: 100px;
-    -webkit-transition: height 0.2s ease 0.1s;
-    -moz-transition: height 0.2s ease 0.1s;
-    transition: height 0.2s ease 0.1s;
     overflow: hidden;
     margin: 0;
     padding: 0;
     line-height: 0; }
-    .timeline-block.empty .timeline-date, .timeline-block.empty.with-month .timeline-date {
-      opacity: 0;
-      -webkit-transition: opacity 0.2s ease 0.1s;
-      -moz-transition: opacity 0.2s ease 0.1s;
-      transition: opacity 0.2s ease 0.1s; }
   .timeline-block.with-month {
     padding-top: 96px; }
     .timeline-block.with-month .timeline-date {
       top: 96px; }
     .timeline-block.with-month .timeline-month {
-      display: block; }
+      height: 32px;
+      line-height: 28.8px;
+      -webkit-transition: line-height 0.2s ease 2s;
+      -moz-transition: line-height 0.2s ease 2s;
+      transition: line-height 0.2s ease 2s; }
 
 .timeline-date,
 .timeline-month {
@@ -269,9 +260,13 @@ input::-webkit-calendar-picker-indicator {
     font-style: italic; }
 
 .timeline-month {
-  display: none;
-  height: 32px;
+  height: 0;
+  line-height: 0;
+  overflow: hidden;
   font-weight: 700;
   font-variant: small-caps;
   text-transform: lowercase;
-  line-height: 32px; }
+  line-height: 32px;
+  -webkit-transition: line-height 0.2s;
+  -moz-transition: line-height 0.2s;
+  transition: line-height 0.2s; }

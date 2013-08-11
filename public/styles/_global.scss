@@ -286,8 +286,6 @@ $block_spacing: em(20px, $entries_fs);
 	padding-top: $block_spacing;
 	padding-bottom: $block_spacing;
 	margin-bottom: 2px; // This is so the dotted line stays nice
-	height: auto;
-	@include transition(height 0.2s);
 	// This draws the timeline
 	&:before {
 		content: '';
@@ -300,13 +298,6 @@ $block_spacing: em(20px, $entries_fs);
 		@include calcu(left, "((100% - #{$page_width}) / 2) + (#{$date_w} / 2)")
 	}
 	&.empty, &.empty.with-month {
-		height: 100px;
-		@include transition(height 0.2s ease 0.1s);
-		.timeline-date {
-			opacity: 0;
-			@include transition(opacity 0.2s ease 0.1s);
-		}
-		//height: 0;
 		overflow: hidden;
 		margin: 0;
 		padding: 0;
@@ -320,7 +311,11 @@ $block_spacing: em(20px, $entries_fs);
 		// .timeline_date is subsequently pushed down exactly that amount.
 		padding-top: (3 * $block_spacing) + $month_height;
 		.timeline-date { top: (3 * $block_spacing) + $month_height; }
-		.timeline-month { display: block; }
+		.timeline-month { 
+			height: $month_height;
+			line-height: $entries_lh;
+			@include transition(line-height 0.2s ease 2s);
+		}
 	}
 }
 
@@ -343,10 +338,12 @@ $block_spacing: em(20px, $entries_fs);
 }
 
 .timeline-month {
-	display: none;
-	height: $month_height;
+	height: 0;
+	line-height: 0;
+	overflow: hidden;
 	font-weight: 700;
 	font-variant: small-caps;
 	text-transform: lowercase;
 	line-height: $month_height;
+	@include transition(line-height 0.2s);
 }
