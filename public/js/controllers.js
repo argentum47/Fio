@@ -86,9 +86,23 @@ angular.module('fio.controllers', [])
 
   // Check whether a new month starts at a given daily in the output
   $scope.month_unchanged = function(daily, index) {
-    return (daily == $scope.get_daily_at(0) && 
+    var month_unchanged = (daily == $scope.get_daily_at(0) && 
             $filter('date')(daily.date, 'yyyy-MM') == $filter('date')(new Date(), 'yyyy-MM')) ||
            $filter('date')($scope.get_daily_at(index - 1).date, 'yyyy-MM') == $filter('date')(daily.date, 'yyyy-MM')
+
+    if ($filter('date')(daily.date, 'ddMMyyyy') == '26072013') {
+      log("Evaluating month; triggered by " + $filter('date')(daily.date, 'dd/MM/yyyy, EEEE'));
+      log(month_unchanged);
+    }
+    if ($filter('date')(daily.date, 'ddMMyyyy') == '26082013') {
+      log("Evaluating month; triggered by " + $filter('date')(daily.date, 'dd/MM/yyyy, EEEE'));
+      log(month_unchanged)
+    }
+    if ($filter('date')(daily.date, 'ddMMyyyy') == '25082013') {
+      log("Evaluating month; triggered by " + $filter('date')(daily.date, 'dd/MM/yyyy, EEEE'));
+      log(month_unchanged)
+    }
+    return month_unchanged;
   }
 
   // This is used to get dailies at specific positions in the *sorted* list

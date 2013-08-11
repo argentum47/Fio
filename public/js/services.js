@@ -115,6 +115,7 @@ angular.module('fio.services', [])
             }); // forEach subentries
           }
 
+          s.remove_daily_if_empty(dailies, daily);
         } // if keep_looking
 
       }); // forEach daily
@@ -122,6 +123,17 @@ angular.module('fio.services', [])
     // Return the entry we got rid of
     return entry_removed;
   };
+
+  s.remove_daily_if_empty = function(dailies, daily) {
+    // If a given daily is empty, remove it from dailies
+    if ($.isEmptyObject(daily.subentries)) {
+      dailies.splice(dailies.indexOf(daily), 1);
+      return daily;
+    }
+    else {
+      return false;
+    }
+  }
 
   s.get_totals_for = function(daily) {
     var totals = {balance: 0, inc: 0, exp: 0}
