@@ -114,8 +114,6 @@ angular.module('fio.services', [])
               }
             }); // forEach subentries
           }
-
-          s.remove_daily_if_empty(dailies, daily);
         } // if keep_looking
 
       }); // forEach daily

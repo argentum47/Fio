@@ -173,7 +173,7 @@ input::-webkit-calendar-picker-indicator {
     right: -o-calc((100% - 987px) / 2 + 987px);
     right: -webkit-calc((100% - 987px) / 2 + 987px);
     right: calc((100% - 987px) / 2 + 987px);
-    padding: 0 15.36px;
+    padding: 0 30.72px;
     font-size: 18.13333px;
     text-align: center;
     color: white;
@@ -208,10 +208,13 @@ input::-webkit-calendar-picker-indicator {
 
 .timeline-block {
   position: relative;
-  position: relative;
   padding-top: 21.33333px;
   padding-bottom: 21.33333px;
-  margin-bottom: 2px; }
+  margin-bottom: 2px;
+  height: auto;
+  -webkit-transition: height 0.2s;
+  -moz-transition: height 0.2s;
+  transition: height 0.2s; }
   .timeline-block:before {
     content: '';
     display: block;
@@ -225,19 +228,19 @@ input::-webkit-calendar-picker-indicator {
     left: -webkit-calc(((100% - 987px) / 2) + (148.05px / 2));
     left: calc(((100% - 987px) / 2) + (148.05px / 2)); }
   .timeline-block.empty, .timeline-block.empty.with-month {
-    -webkit-transition: all 0.2s;
-    -moz-transition: all 0.2s;
-    transition: all 0.2s;
-    height: 0;
+    height: 100px;
+    -webkit-transition: height 0.2s ease 0.1s;
+    -moz-transition: height 0.2s ease 0.1s;
+    transition: height 0.2s ease 0.1s;
     overflow: hidden;
     margin: 0;
     padding: 0;
     line-height: 0; }
     .timeline-block.empty .timeline-date, .timeline-block.empty.with-month .timeline-date {
       opacity: 0;
-      -webkit-transition: opacity, 0.2s;
-      -moz-transition: opacity, 0.2s;
-      transition: opacity, 0.2s; }
+      -webkit-transition: opacity 0.2s ease 0.1s;
+      -moz-transition: opacity 0.2s ease 0.1s;
+      transition: opacity 0.2s ease 0.1s; }
   .timeline-block.with-month {
     padding-top: 96px; }
     .timeline-block.with-month .timeline-date {

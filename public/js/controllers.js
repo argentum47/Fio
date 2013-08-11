@@ -59,6 +59,10 @@ angular.module('fio.controllers', [])
       // Remove entry from our dailies list
       DS.remove_from_dailies(daily.$$hashKey, entry.$$hashKey, $scope.dailies);
 
+      $timeout(function() {
+        DS.remove_daily_if_empty($scope.dailies, daily);
+      }, 1000);
+
       // Re-inject the entry into a suitable place accorring to the edited date
       $scope.dailies = DS.inject_to_dailies(entry, $scope.dailies);
 
@@ -77,32 +81,16 @@ angular.module('fio.controllers', [])
       DS.remove_from_dailies(daily.$$hashKey, entry.$$hashKey, $scope.dailies);
       $timeout(function() {
         // If this leaves us with an empty daily, remove that, too
-        if ($.isEmptyObject(daily.subentries)) {
-          $scope.dailies.splice($scope.dailies.indexOf(daily), 1);
-        } 
+        DS.remove_daily_if_empty($scope.dailies, daily);
       }, 400);
     }, 400);
   }
 
   // Check whether a new month starts at a given daily in the output
   $scope.month_unchanged = function(daily, index) {
-    var month_unchanged = (daily == $scope.get_daily_at(0) && 
+    return (daily == $scope.get_daily_at(0) && 
             $filter('date')(daily.date, 'yyyy-MM') == $filter('date')(new Date(), 'yyyy-MM')) ||
            $filter('date')($scope.get_daily_at(index - 1).date, 'yyyy-MM') == $filter('date')(daily.date, 'yyyy-MM')
-
-    if ($filter('date')(daily.date, 'ddMMyyyy') == '26072013') {
-      log("Evaluating month; triggered by " + $filter('date')(daily.date, 'dd/MM/yyyy, EEEE'));
-      log(month_unchanged);
-    }
-    if ($filter('date')(daily.date, 'ddMMyyyy') == '26082013') {
-      log("Evaluating month; triggered by " + $filter('date')(daily.date, 'dd/MM/yyyy, EEEE'));
-      log(month_unchanged)
-    }
-    if ($filter('date')(daily.date, 'ddMMyyyy') == '25082013') {
-      log("Evaluating month; triggered by " + $filter('date')(daily.date, 'dd/MM/yyyy, EEEE'));
-      log(month_unchanged)
-    }
-    return month_unchanged;
   }
 
   // This is used to get dailies at specific positions in the *sorted* list
