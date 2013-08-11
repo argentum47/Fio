@@ -227,11 +227,6 @@ $block_spacing: em(20px, $entries_fs);
 	}
 	.amt { margin-left: $date_w; }
 	.c { cursor: pointer; }
-	input {
-		width: 100%;
-		padding: em(5px, $entries_fs);
-		color: $white;
-	}
 	.remove {
 		display: none;
 		position: absolute;
@@ -278,6 +273,23 @@ $block_spacing: em(20px, $entries_fs);
 .module-io {
 	font-size: $entries_fs;
 	background-color: $white;
+	input {
+		width: 100%;
+		padding: em(5px, $entries_fs);
+		color: $white;
+	}
+}
+
+.new-entry {
+	@extend %uncollapse;
+	height: 0;
+	overflow: hidden;
+	line-height: 2 * $entries_lh;
+	background-color: $d_gray;
+	&.active {
+		height: auto;
+		overflow: visible;
+	}
 }
 
 .timeline-block {
@@ -334,6 +346,16 @@ $block_spacing: em(20px, $entries_fs);
 	}
 	.day {
 		font-style: italic;
+	}
+}
+
+.timeline-date {
+	&.active {
+		opacity: 1;
+		@include transition(opacity, 0.1s, ease, 0.4s);
+	}
+	&.hidden {
+		opacity: 0;
 	}
 }
 

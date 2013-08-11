@@ -13,7 +13,7 @@
   font-weight: normal;
   font-style: normal; }
 
-section, .daily-totals, .entries, .entry, .errors, .timeline-block {
+section, .daily-totals, .entries, .entry, .errors, .new-entry, .timeline-block {
   float: left;
   width: 100%; }
 
@@ -161,10 +161,6 @@ input::-webkit-calendar-picker-indicator {
     margin-left: 148.05px; }
   .entry .c {
     cursor: pointer; }
-  .entry input {
-    width: 100%;
-    padding: 5.33333px;
-    color: white; }
   .entry .remove {
     display: none;
     position: absolute;
@@ -205,6 +201,19 @@ input::-webkit-calendar-picker-indicator {
 .module-io {
   font-size: 0.9375em;
   background-color: white; }
+  .module-io input {
+    width: 100%;
+    padding: 5.33333px;
+    color: white; }
+
+.new-entry {
+  height: 0;
+  overflow: hidden;
+  line-height: 57.6px;
+  background-color: #737373; }
+  .new-entry.active {
+    height: auto;
+    overflow: visible; }
 
 .timeline-block {
   position: relative;
@@ -258,6 +267,14 @@ input::-webkit-calendar-picker-indicator {
   .timeline-date .day,
   .timeline-month .day {
     font-style: italic; }
+
+.timeline-date.active {
+  opacity: 1;
+  -webkit-transition: opacity, 0.1s, ease, 0.4s;
+  -moz-transition: opacity, 0.1s, ease, 0.4s;
+  transition: opacity, 0.1s, ease, 0.4s; }
+.timeline-date.hidden {
+  opacity: 0; }
 
 .timeline-month {
   height: 0;

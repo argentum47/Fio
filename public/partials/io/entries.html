@@ -8,7 +8,8 @@
      	</div>
 
      	<div class="timeline-date" 
-     	     ng-show="daily.currently_editing == 0">
+     	     ng-class="{'active': daily.currently_editing == 0, 
+     	     			'hidden': daily.currently_editing > 0}">
 			<span class="date">{{ daily.date | date: 'dd' }}</span>
 			<span class="day">{{ daily.date | date: 'EEEE' }}</span>
 		</div>
@@ -79,25 +80,7 @@
 				    <i class="icon-remove"></i>
 				</span>
 
-				<div class="errors">
-					<div class="error" ng-class="{'active': editEntry.date.$invalid}">
-						<div class="cw">
-					    	<span ng-show="editEntry.date.$error.required">You forgot to enter the date of your transaction!</span>
-					    	<span ng-show="editEntry.date.$error.date">The date should be in the format dd/mm/yyyy.</span>
-					    </div> <!-- .cw -->
-				    </div> <!-- .error -->
-					<div class="error" ng-class="{'active': editEntry.amount.$invalid}">
-						<div class="cw">
-					    	<span ng-show="editEntry.amount.$error.required">You forgot to enter the transaction amount!</span>
-					    	<span ng-show="editEntry.amount.$error.number">The amount should be a valid number (can be negative).</span>
-					   	</div> <!-- .cw -->
-				    </div> <!-- .error -->
-					<div class="error" ng-class="{'active': editEntry.category.$invalid}">
-						<div class="cw">
-						    <span>The category is required!</span>
-						</div> <!-- .cw -->
-					</div> <!-- .error -->
-			    </div> <!-- .errors -->
+				<ng-include src="templates.errors" onload="form=editEntry"></ng-include>
 
 			</div> <!-- .entry -->
 
