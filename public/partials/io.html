@@ -37,27 +37,44 @@
      	 ng-mouseenter="form_preview=true" 
      	 ng-mouseleave="form_preview=false" 
 		 ng-class="{'active': form_visible || form_preview, 
-		 			'preview': form_preview && !form_visible}">
+		 			'preview': form_preview && !form_visible}"
+		 focus-on-click="1">
 
 		<!-- AddEntry form -->
 		<div class="cw" ng-show="form_visible">
 			<form name="addEntry" 
-			      press-enter="add_entry()" 
+			      press-enter="add_entry();reset_form();"
+			      focus-on-enter="1" 
 			      ng-click="filters={}"
 			      novalidate>
 				<div class="c date">
-					<input type="text" name="date" ng-model="date" validate-date ng-required="true">
+					<input type="text" 
+						   name="date" 
+						   placeholder="Date" 
+						   ng-model="date"
+						   validate-date 
+						   ng-required="true">
 				</div>
 				<div class="c amt">
-					<input type="text" name="amount" ng-model="amount" validate-number ng-required="true">
+					<input type="text" 
+						   name="amount" 
+						   placeholder="Amount"
+						   ng-model="amount" 
+						   validate-number 
+						   ng-required="true">
 				</div>
 				<div class="c category">
-					<select name="category" ng-model="category" ng-options="c.cat group by c.type for c in categories" ng-required="true">
+					<select name="category" 
+						    ng-model="category" 
+						    ng-options="c.cat group by c.type for c in categories" 
+						    ng-required="true">
 						<option value="">Choose category</option>
 					</select>
 				</div>
 				<div class="c note">
-					<input type="text" ng-model="note" />
+					<input type="text" 
+						   placeholder="Note"
+						   ng-model="note" />
 				</div>
 			</form>
 		</div>
