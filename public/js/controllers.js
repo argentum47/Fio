@@ -11,7 +11,7 @@ angular.module('fio.controllers', [])
     'errors': templates_url + 'errors.html'
   }
 
-  $scope.today = new Date().toJSON().slice(0,10);
+  $scope.today = new Date();
   $scope.order = '-date';     // the order in which dailies are shown
   $scope.categories = [];
   $scope.entries = [];        // the list of entries for this user
@@ -26,7 +26,7 @@ angular.module('fio.controllers', [])
     $scope.categories = DS.get_categories();
 
     // Fill date input with today's date
-    $scope.date = $scope.today;
+    // $scope.date = $scope.today;
   }; // init_data_ctrl()
 
   $scope.add_entry = function() {
@@ -39,7 +39,7 @@ angular.module('fio.controllers', [])
       $scope.dailies = DS.inject_to_dailies(new_entry, $scope.dailies);
 
       // Reset form
-      $scope.date = $scope.today;
+      // $scope.date = $scope.today;
       $scope.amount = '';
       $scope.category = '';
       $scope.note = '';
