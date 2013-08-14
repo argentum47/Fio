@@ -94,7 +94,7 @@ angular.module('fio.directives', [])
 })
 
 //=========================================================
-// Focus the first input contained in the directive applied to
+// Focus a given input contained in the element,
 // unless other inputs of the form have focus
 // (this would mean we are still editing the entry)
 //=========================================================
@@ -118,6 +118,24 @@ angular.module('fio.directives', [])
 
           }
         });
+      });
+    }
+  };
+})
+
+//=========================================================
+// Focus a given input in the element on ENTER keypress
+//=========================================================
+
+.directive('focusOnEnter', function($timeout) {
+  return {
+    link: function(scope, element, attrs) {
+      element.bind('keypress keydown', function(event) {
+        var key = event.keyCode || event.which;
+        if (key == 13) {
+          // Focus the input at the given index
+          element.find('input')[attrs.focusOnEnter].focus();
+        }
       });
     }
   };
@@ -152,7 +170,6 @@ angular.module('fio.directives', [])
     }
   };
 })
-
 
 //=========================================================
 // Add a number validator to an input
