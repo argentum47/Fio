@@ -26,7 +26,7 @@ angular.module('fio.controllers', [])
     $scope.categories = DS.get_categories();
 
     // Fill date input with today's date
-    // $scope.date = $scope.today;
+    $scope.date = $filter('date')($scope.today, 'dd/MM/yyyy');
   }; // init_data_ctrl()
 
   $scope.add_entry = function() {
@@ -37,15 +37,23 @@ angular.module('fio.controllers', [])
       // DS.save_entry(new_entry)
       $scope.entries.push(new_entry);
       $scope.dailies = DS.inject_to_dailies(new_entry, $scope.dailies);
+    }
+  };
 
-      // Reset form
-      // $scope.date = $scope.today;
+  $scope.reset_form = function() {
+    // If inputs were OK, reset the fiels
+    // and make the form pristine again
+    if ($scope.addEntry.$valid) {
+      $scope.date = $filter('date')($scope.today, 'dd/MM/yyyy');
       $scope.amount = '';
       $scope.category = '';
       $scope.note = '';
       $scope.addEntry.$setPristine();
     }
-  };
+    else {
+      $scope.addEntry.$setDirty();
+    }
+  }
 
   $scope.process_edits = function(daily, entry) {
     // DS.update_entry(entry);
