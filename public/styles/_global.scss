@@ -136,11 +136,6 @@ body {
 
 // Entries ================================================
 
-input::-webkit-inner-spin-button,
-input::-webkit-calendar-picker-indicator {
-    display: none;
-    -webkit-appearance: none;
-}
 $date_w: 0.15 * $page_width;
 $amount_w: 0.1 * $page_width;
 $amount_p: 0.05 * $page_width;
@@ -152,14 +147,28 @@ $entries_lh: em(27px, $entries_fs);
 $month_height: em(30px, $entries_fs);
 $block_spacing: em(20px, $entries_fs);
 
+input::-webkit-inner-spin-button,
+input::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
+}
+
 .c {
 	display: block;
 	overflow: hidden;
 	float: left;
 	white-space: nowrap;
 
-	&.date { width: $date_w; input {text-align: center}}
-	&.amt { width: $amount_w; margin-right: $amount_p; }
+	&.date { 
+		width: $date_w; 
+		input {text-align: center}
+	}
+	&.amt { 
+		width: $amount_w; 
+		margin-right: $amount_p; 
+		margin-left: $date_w; 
+		&, & input { text-align: right; }
+	}
 	&.category { width: $category_w; }
 	&.note { width: $note_w; }
 	&.full { width: 100%; }
@@ -176,9 +185,6 @@ $block_spacing: em(20px, $entries_fs);
 
 .entries {
 	@extend %uncollapse;
-	.amt, .amt input {
-		text-align: right;
-	}
 }
 
 .entry {
@@ -225,7 +231,6 @@ $block_spacing: em(20px, $entries_fs);
 			@include transition(opacity 0.2s)
 		}
 	}
-	.amt { margin-left: $date_w; }
 	.c { cursor: pointer; }
 	.remove {
 		display: none;
@@ -282,13 +287,42 @@ $block_spacing: em(20px, $entries_fs);
 
 .new-entry {
 	@extend %uncollapse;
-	height: 0;
-	overflow: hidden;
-	line-height: 2 * $entries_lh;
-	background-color: $d_gray;
+	position: relative;
+	min-height: $entries_lh + $block_spacing;
+	margin-bottom: 2px;
+	line-height: $entries_lh;
+	@include timeline;
+	@include transition(line-height 0.2s);
+	@include transition(min-height 0.2s);
 	&.active {
-		height: auto;
-		overflow: visible;
+		min-height: 2 * $entries_lh + 2 * $block_spacing;
+		padding: $block-spacing 0;
+		&:not(.preview) .amt { margin-left: 0; }
+	}
+	&.preview { 
+		cursor: pointer; 
+		.amt { border-bottom: 2px dotted $l_gray; }
+		@include transition(padding 0.2s);@include transition(line-height 0.2s);
+		@include transition(min-height 0.2s);
+		@include transition(padding 0.2s);
+	}
+	input {
+		color: $dd_gray;
+	}
+	.prompt { color: $gray; }
+	.text-link {
+		width: $date_w;
+		position: absolute;
+		top: $block_spacing / 2;
+		text-align: center;
+		background-color: $white;
+		@include calcu(left, "(100% - #{$page_width}) / 2");
+		i {
+			margin-left: 4px; // Adjust for dotted line width
+		}
+	}
+	.timeline-date {
+		top: $block-spacing;
 	}
 }
 
@@ -298,17 +332,7 @@ $block_spacing: em(20px, $entries_fs);
 	padding-top: $block_spacing;
 	padding-bottom: $block_spacing;
 	margin-bottom: 2px; // This is so the dotted line stays nice
-	// This draws the timeline
-	&:before {
-		content: '';
-		display: block;
-		position: absolute;
-		top: 0;
-		width: 2px;
-		height: 100%;
-		border-right: 2px dotted $gray;
-		@include calcu(left, "((100% - #{$page_width}) / 2) + (#{$date_w} / 2)")
-	}
+	@include timeline;
 	&.empty, &.empty.with-month {
 		overflow: hidden;
 		margin: 0;
@@ -352,7 +376,7 @@ $block_spacing: em(20px, $entries_fs);
 .timeline-date {
 	&.active {
 		opacity: 1;
-		@include transition(opacity, 0.1s, ease, 0.4s);
+		@include transition(opacity, 0.05s, ease, 0.4s);
 	}
 	&.hidden {
 		opacity: 0;

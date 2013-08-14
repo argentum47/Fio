@@ -55,6 +55,20 @@ $main_font: 'Cardo', 'Baskerville', serif;
 	&:-ms-input-placeholder { @content; }
 }
 
+// Add the dotted timeline to a full-width element
+@mixin timeline {
+	&:before {
+		content: '';
+		display: block;
+		position: absolute;
+		top: 0;
+		width: 2px;
+		height: 100%;
+		border-right: 2px dotted $gray;
+		@include calcu(left, "((100% - #{$page_width}) / 2) + (#{$date_w} / 2)")
+	}
+}
+
 //=Extendables
 //=====================================
 

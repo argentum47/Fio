@@ -32,8 +32,15 @@
 		</div>
 	</section> -->
 
-	<div class="new-entry" on-pull-down="element.addClass('active')">
-		<div class="cw">
+	<div class="new-entry" 
+		 ng-init="form_visible=false;form_preview=false"
+     	 ng-mouseenter="form_preview=true" 
+     	 ng-mouseleave="form_preview=false" 
+		 ng-class="{'active': form_visible || form_preview, 
+		 			'preview': form_preview && !form_visible}">
+
+		<!-- AddEntry form -->
+		<div class="cw" ng-show="form_visible">
 			<form name="addEntry" 
 			      press-enter="add_entry()" 
 			      ng-click="filters={}"
@@ -54,6 +61,24 @@
 				</div>
 			</form>
 		</div>
+
+		<!-- AddEntry trigger -->
+		<div class="prompt" 
+	     	 ng-click="form_visible=true"
+	     	 ng-hide="form_visible">
+	     	<div class="timeline-date"
+	     		 ng-show="form_preview && !form_visible">
+				<span class="date">{{ today | date: 'dd' }}</span>
+				<span class="day">{{ today | date: 'EEEE' }}</span>
+			</div>
+			<div class="cw" ng-show="form_preview && !form_visible">
+				<div class="c amt">Amount</div>
+				<div class="c category">Category</div>
+				<div class="c note">Note</div>
+			</div>
+			<div class="text-link" ng-hide="form_preview && !form_visible"><i class="icon-plus"></i></div>
+		</div>
+
 
 		<ng-include src="templates.errors" onload="form=addEntry"></ng-include>
 	</div>
