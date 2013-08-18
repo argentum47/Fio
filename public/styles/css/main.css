@@ -249,7 +249,8 @@ input::-webkit-calendar-picker-indicator {
     .new-entry.preview .amt {
       border-bottom: 2px dotted #d1d1d1; }
   .new-entry input {
-    color: #333333; }
+    color: #333333;
+    background-color: white; }
   .new-entry .prompt {
     color: #949494; }
   .new-entry .text-link {

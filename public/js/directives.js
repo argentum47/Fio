@@ -54,7 +54,7 @@ angular.module('fio.directives', [])
     var interest_lost = function() {
 
       // If the form is valid
-      if (!$(element).hasClass('ng-invalid')) {
+      if ($(element).hasClass('ng-valid')) {
         // Change the state to transitioning for just a few moments
         scope.losing_interest = true;
         $timeout(function() {
@@ -69,7 +69,7 @@ angular.module('fio.directives', [])
       // If the form is not valid
       else {
         // Set focus to the first invalid input
-        $(inputs.filter('.ng-invalid')[0]).focus();h
+        $(inputs.filter('.ng-invalid')[0]).focus();
       }
     }
 

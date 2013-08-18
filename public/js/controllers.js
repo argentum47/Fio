@@ -50,9 +50,14 @@ angular.module('fio.controllers', [])
       $scope.note = '';
       $scope.addEntry.$setPristine();
     }
+    // If inputs were invalid
     else {
       $scope.addEntry.$setDirty();
     }
+  }
+
+  $scope.disregard_edits = function() {
+    $scope.addEntry.$setPristine();
   }
 
   $scope.process_edits = function(daily, entry) {

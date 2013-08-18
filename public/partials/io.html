@@ -43,9 +43,9 @@
 		<!-- AddEntry form -->
 		<div class="cw" ng-show="form_visible">
 			<form name="addEntry" 
-			      press-enter="add_entry();reset_form();"
+			      press-enter="add_entry();reset_form()"
 			      focus-on-enter="1" 
-			      ng-click="filters={}"
+			      ng-click="filters={}" 
 			      novalidate>
 				<div class="c date">
 					<input type="text" 
@@ -79,6 +79,15 @@
 			</form>
 		</div>
 
+		<!-- Cancel editing -->
+		<div class="cancel" 
+			 ng-show="form_visible" 
+			 ng-click="disregard_edits();
+			 		   form_visible=false;
+			 		   form_preview=false">
+			<i class="icon-remove"></i>
+		</div>
+
 		<!-- AddEntry trigger -->
 		<div class="prompt" 
 	     	 ng-click="form_visible=true"
@@ -95,7 +104,6 @@
 			</div>
 			<div class="text-link" ng-hide="form_preview && !form_visible"><i class="icon-plus"></i></div>
 		</div>
-
 
 		<ng-include src="templates.errors" onload="form=addEntry"></ng-include>
 	</div>
