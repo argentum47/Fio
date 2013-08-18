@@ -29,34 +29,37 @@ angular.module('fio.controllers', [])
     $scope.date = $filter('date')($scope.today, 'dd/MM/yyyy');
   }; // init_data_ctrl()
 
-  $scope.add_entry = function() {
-
-    // Only add if necessary fields have been filled in
-    if ($scope.addEntry.$valid) {
-      var new_entry = {date: new Date(moment($scope.date, 'DD/MM/YYYY')), amount: $scope.amount, category: $scope.category.cat, note: $scope.note};
-      // DS.save_entry(new_entry)
-      $scope.entries.push(new_entry);
-      $scope.dailies = DS.inject_to_dailies(new_entry, $scope.dailies);
-    }
+$scope.add_entry = function() {
+    var new_entry = {date: new Date(moment($scope.date, 'DD/MM/YYYY')), amount: $scope.amount, category: $scope.category.cat, note: $scope.note};
+    // DS.save_entry(new_entry)
+    $scope.entries.push(new_entry);
+    $scope.dailies = DS.inject_to_dailies(new_entry, $scope.dailies);
   };
 
-  $scope.reset_form = function() {
+  $scope.submit_new_entry_form = function() {
     // If inputs were OK, reset the fiels
     // and make the form pristine again
     if ($scope.addEntry.$valid) {
-      $scope.date = $filter('date')($scope.today, 'dd/MM/yyyy');
-      $scope.amount = '';
-      $scope.category = '';
-      $scope.note = '';
-      $scope.addEntry.$setPristine();
+      $scope.add_entry();
+      $scope.reset_new_entry_form();
     }
-    // If inputs were invalid
+    // Else change form state to submitted and invalid
+    // so that can handle showing of errors
     else {
-      $scope.addEntry.$setDirty();
+      $scope.submitted_invalid = true;
     }
   }
 
-  $scope.disregard_edits = function() {
+  $scope.disregard_new_entry_form = function() {
+    $scope.reset_new_entry_form();
+  }
+
+  $scope.reset_new_entry_form = function() {
+    $scope.submitted_invalid = false;
+    $scope.date = $filter('date')($scope.today, 'dd/MM/yyyy');
+    $scope.amount = '';
+    $scope.category = '';
+    $scope.note = '';
     $scope.addEntry.$setPristine();
   }
 
